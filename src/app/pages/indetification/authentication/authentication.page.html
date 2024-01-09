@@ -1,0 +1,180 @@
+<!-- <ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" defaultHref="/access"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="primary">Autenticación</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content class="background">
+
+
+  <main [ngSwitch]="avatar.label">
+
+
+  <!-- <h4 *ngIf="avatar.label!=='civil'">Ayudanos a verificar que eres {{ avatar.label.toLowerCase() }}</h4> -->
+<!--
+    <ion-item *ngIf="expression" [ngClass]="{'fondo-cop': avatar.label='Policia'}">
+      <ion-label>Awesome Label</ion-label>
+    </ion-item> -->
+
+
+  <div id="container" [ngClass]="{'fondo-cop': avatar.label==='Policia', 'fondo-med': avatar.label==='Personal médico', 'fondo-bombero': avatar.label==='Bombero'}">
+      <img id="logo-image" src="/assets/images/loco_cuidame.png" alt="logo-cuidame">
+      <section class="btn-container">
+
+        <div class="button">
+          <img class="ico" src="/assets/images/botiquin.png" alt="botiquin">
+          <div id="emergency-btn">
+
+            <p>Personal de emergencias</p>
+            <span>Médico, policia, bombero</span>
+
+          </div>
+        </div>
+
+
+      </section>
+
+      <div>
+
+
+        <!-- <ion-img class="avatar" src="/assets/avatars/{{ avatar.img }}"></ion-img> -->
+          <form #fFormCC="ngForm" id="cc">
+            <ion-item *ngSwitchCase="'Personal médico'" mode="md" class="ion-margin">
+              <ion-label class="label" position="floating">Nombres y apellidos</ion-label>
+              <ion-input name="nombres" type="text" [(ngModel)]="nombresPersonalMedico" required></ion-input>
+            </ion-item>
+
+            <ion-item mode="md" class="ion-margin">
+              <ion-label class="label" position="floating">Documento de identidad</ion-label>
+              <ion-input name="numberID" type="number" [(ngModel)]="numeroID" required></ion-input>
+            </ion-item>
+
+          </form>
+
+          <section class="btn-container"  *ngSwitchCase="'Personal médico'">
+            <div class="button bg2-button" (click)="insertMed(fFormCC)">
+              <img class="ico" src="/assets/images/ico-medico.svg" alt="">
+              <p>Continuar</p>
+            </div>
+          </section>
+
+          <section class="btn-container"  *ngSwitchCase="'Policia'">
+            <div class="button bg2-button" (click)="authTemporal(fFormCC)">
+              <img class="ico" src="/assets/images/ico-policia.svg" alt="">
+              <p>Continuar</p>
+            </div>
+          </section>
+
+          <section class="btn-container"  *ngSwitchCase="'Bombero'">
+            <div class="button bg2-button" (click)="authTemporal(fFormCC)">
+              <img class="ico" src="/assets/images/ico-bombero.svg" alt="">
+              <p>Continuar</p>
+            </div>
+          </section>
+
+
+        </div>
+
+
+      <section class="nav-btns">
+        <ion-icon name="arrow-back-outline" (click)="back()"></ion-icon>
+        <ion-icon name="exit-outline" (click)="navigateInitial()"></ion-icon>
+      </section>
+
+    </div>
+
+<!--
+    <div *ngSwitchCase="'Personal médico'">
+      <ion-img class="avatar" src="/assets/avatars/{{ avatar.img }}"></ion-img>
+      <form>
+
+
+
+        <div class="ion-margin">
+          <ion-label class="label" >Numero de identificación:</ion-label>
+          <ion-input  name="numeroID" type="text"  [(ngModel)]="numeroID" required ></ion-input>
+        </div>
+
+        <div class="ion-margin">
+          <ion-label class="label" >Registro de profesión: </ion-label>
+          <ion-input name="password"type="text" [(ngModel)]="authentication" required></ion-input>
+        </div>
+
+
+
+      </form>
+    </div>
+
+
+    <div *ngSwitchCase="'Bombero'">
+      <ion-img class="avatar" src="/assets/avatars/{{ avatar.img }}"></ion-img>
+      <form>
+
+
+
+        <div class="ion-margin">
+          <ion-label class="label" >Documento de identidad</ion-label>
+          <ion-input name="numberID" type="text" [(ngModel)]="numeroID" required></ion-input>
+        </div>
+
+        <div class="ion-margin">
+          <ion-label class="label" >Numero de bombero: </ion-label>
+          <ion-input name="password"type="text" [(ngModel)]="authentication" required></ion-input>
+        </div>
+
+      </form>
+
+    </div>
+
+    <div *ngSwitchCase="'Defensa civíl'">
+
+      <ion-img class="avatar" src="/assets/avatars/{{ avatar.img }}"></ion-img>
+      <form>
+
+        <div class="ion-margin">
+          <ion-label class="label" >Documento de identidad</ion-label>
+          <ion-input name="numberID" type="text" required [(ngModel)]="numeroID"></ion-input>
+        </div>
+
+        <div class="ion-margin">
+          <ion-label class="label" >Numero de reconomiento</ion-label>
+          <ion-input name="password"type="text" [(ngModel)]="authentication" required></ion-input>
+        </div>
+
+
+      </form>
+    </div > -->
+  </main>
+
+
+
+</ion-content>
+<!--
+<ion-footer no-border>
+  <ion-toolbar>
+
+    <ion-row>
+
+      <ion-col>
+        <div class="btn-wrapper">
+          <ion-button
+                      size="small"
+                      fill="outline"
+                      color="tertiary"
+                      (click)="onClickAuth()">
+            Continuar
+            <ion-icon slot="end" name="caret-forward-outline"></ion-icon>
+          </ion-button>
+
+        </div>
+      </ion-col>
+
+    </ion-row>
+
+
+
+  </ion-toolbar>
+</ion-footer> -->

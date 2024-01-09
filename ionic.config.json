@@ -1,0 +1,7 @@
+{
+  "name": "smarthealth",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

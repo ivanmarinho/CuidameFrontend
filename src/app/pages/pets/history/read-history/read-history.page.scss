@@ -1,0 +1,167 @@
+ion-spinner {
+  color: #fff;
+  width: 100px;
+  height: 100px;
+}
+.history {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 150px;
+  margin-bottom: 200px;
+  align-items: center;
+}
+
+.h-card {
+  position: relative;
+  color: #fff;
+  width: 350px;
+  height: 140px;
+  border-radius: 20px;
+  padding: 15px;
+  margin: 10px 0 10px 0;
+
+  background-image: url("/assets/pets/bg-orange-xlarge.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1;
+
+  .h-container {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    .left-side {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    .right-side {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+    }
+  }
+
+  .lighter {
+    font-family: "Quicksand", sans-serif;
+    font-size: 0.9rem;
+  }
+
+  .h-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  .h-type {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .doctor {
+    text-decoration: underline;
+  }
+
+  .plus-show {
+    display: flex;
+    justify-content: flex-end;
+    font-family: "Quicksand", sans-serif;
+    color: #2e4f85;
+    font-weight: lighter;
+    font-size: 1rem;
+    transition: all 1s ease-in-out;
+
+    position: absolute;
+    bottom: 5px;
+    left: 285px;
+  }
+}
+
+.descrip-card {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  align-items: start;
+  padding: 0 0 0 20px;
+  color: #2e4f85;
+  background-color: #fff;
+  right: 1;
+  width: 350px;
+  height: 130px;
+  border-radius: 20px;
+  transform: translateY(-145px);
+  transition: all 0.3s ease-in-out;
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  img {
+    width: 25px;
+    height: auto;
+  }
+}
+
+
+.pencil-container {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  left: -10px;
+  bottom: 10px;
+  width: 100%;
+}
+
+.pencil-container button:active {
+  transform: translateY(4px);
+}
+
+.disease-description {
+  display: flex;
+  height: 100px;
+  width: 85%;
+  align-items: flex-end;
+  margin-top: 30px;
+}
+
+.expanded {
+  height: 130px;
+  transform: translateY(-40px);
+}
+
+.v-add {
+  display: flex;
+  position: fixed;
+  margin-bottom: 50px;
+  padding: 10px 0 10px 0;
+  bottom: 0;
+  left: 3%;
+  right: 0;
+  width: 100%;
+  align-items: center;
+  color: #549ebd;
+  background-color: #d8e7ee;
+  z-index: 9999;
+
+  label {
+    margin-left: 20px;
+    font-family: "Quicksand", sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+}
+
+
+@media only screen and (max-width: 280px) {
+  .h-card {
+    width: 250px;
+  }
+  .descrip-card{
+    width: 250px;
+  }
+  .plus-show{
+    left: 185px;
+  }
+}

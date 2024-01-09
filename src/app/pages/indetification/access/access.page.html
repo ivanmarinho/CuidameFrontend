@@ -1,0 +1,55 @@
+<ion-content>
+
+  <div id="container">
+
+
+    <img id="logo-image" src="/assets/images/loco_cuidame.png" alt="">
+
+
+    <section class="btn-container">
+
+
+      <div class="button">
+        <img class="ico" src="/assets/images/botiquin.png" alt="">
+        <div id="emergency-btn">
+
+          <p>Personal de emergencias</p>
+          <span>Médico, policia, bombero</span>
+
+        </div>
+      </div>
+
+      <div class="button bg2-button" (click)="seleccionar('Personal médico')">
+        <img class="ico" src="/assets/images/ico-medico.svg" alt="">
+        <p>Personal médico</p>
+      </div>
+      <div class="button bg2-button" (click)="seleccionar('Policia')">
+        <img class="ico" src="/assets/images/ico-policia.svg" alt="">
+        <p>Policía</p>
+      </div>
+      <div class="button bg2-button" (click)="seleccionar('Bombero')">
+        <img class="ico" src="/assets/images/ico-bombero.svg" alt="">
+        <p>Bombero</p>
+      </div>
+
+    </section>
+
+
+
+    <div class="nav-bar">
+      <section class="nav-btns">
+
+        <ion-icon name="arrow-back-outline" (click)="back()"></ion-icon>
+        <!-- <ion-icon name="menu-outline"></ion-icon> -->
+        <ion-icon name="exit-outline" (click)="navigateInitial()"></ion-icon>
+      </section>
+
+    </div>
+
+  </div>
+
+
+
+</ion-content>
+
+

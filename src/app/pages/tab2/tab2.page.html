@@ -1,0 +1,75 @@
+<ion-content class="background">
+
+  <div id="head">
+    <h1>¿Qué objeto encontraste? </h1>
+  </div>
+
+  <div id="container">
+    <img id="logo-image" src="/assets/images/loco_cuidame.png" alt="">
+
+    <div *ngIf="sinObjetos">
+      <p>El usuario no tiene objetos registrados</p>
+    </div>
+
+    <div class="scrolldiv" *ngIf="!sinObjetos">
+
+      <ion-list>
+        <ion-item color="primary">
+          <ion-select
+            placeholder="Seleccionar objeto"
+            (ionChange)="handleChange($event)"
+            interface="popover"
+          >
+            <ion-select-option *ngFor="let item of objetos | keyvalue, let i = index" [value]="item.value['objeto']">{{ item.value['objeto'] }}</ion-select-option>
+
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+      <div class="desc">
+        <p> {{ descObjeto }} </p>
+      </div>
+
+      <!-- <p *ngFor="let item of infoPaciente | keyvalue">{{item.value}}</p> -->
+      <ion-card>
+          <ion-card-header>
+            <ion-card-title>Nombre del contacto</ion-card-title>
+            <label id="label-card"> {{ infoPaciente['Nombre del pariente'] }}</label>
+
+
+          </ion-card-header>
+
+          <ion-card-content>
+            <span id="span-card">{{ infoPaciente['Teléfono de pariente'] }}</span>
+            <br><label id="label-card">Teléfono de propietario</label>
+            <br><span id="span-card"> {{ infoPaciente['ciudad']  }}, {{ infoPaciente['departamento']  }}</span>
+            <br><label id="label-card"> Ubicación </label>
+            <br><span id="span-card"> {{ infoPaciente['direccion'] }}</span>
+            <br><label id="label-card"> Dirección</label>
+          </ion-card-content>
+        </ion-card>
+        <div class="desc">
+          <p>Por favor ponte en contacto con el propietario cuyos datos están en la tarjeta mostrada en pantalla.</p>
+        </div>
+
+      <!-- <ion-list class="color-transparent" lines="none">
+        <div *ngFor="let item of [1,2,3,4] | keyvalue; let i = index">
+
+          <ion-item [ngClass]="{'par' : i%2 === 0, 'impar' : i%2 !== 0}" class="impar">
+            <ion-label>{{i+1}}. {{item.value}}</ion-label>
+            <ion-icon slot="end" name="trash-outline"></ion-icon>
+          </ion-item>
+
+        </div>
+      </ion-list> -->
+
+
+    </div>
+
+  </div>
+
+  <div class="button" (click)="aceptar()">
+    <img class="ico" src="/assets/images/ico_otros.png" alt="">
+    <label>Encontré este objeto</label>
+  </div>
+</ion-content>

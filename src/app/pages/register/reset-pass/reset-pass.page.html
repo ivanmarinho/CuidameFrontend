@@ -1,0 +1,35 @@
+<ion-content class="background">
+  <ion-img id="img-logo" src="assets/images/logo_cuidame.svg"></ion-img>
+  <main>
+    <!-- <p class="ion-margin ion-margin-bottom" id="label">¡Hola!</p> -->
+    <div class="container-info">
+      <p class="info">
+        Te ayudaremos a recuperar tu contraseña, por favor, recuérdanos tu
+        dirección de correo con el que te registraste.
+      </p>
+      <ion-label [class.wait-message-visible]="isSending" class="wait-message">
+        Espera {{ remainingTime }} segundos antes de volver a intentar.
+      </ion-label>
+    </div>
+
+    <form>
+      <ion-list mode="md">
+        <div class="item">
+          <ion-label color="primary">Email</ion-label>
+          <ion-input type="email" name="email" required [(ngModel)]="email"></ion-input>
+        </div>
+      </ion-list>
+      
+    </form>
+    <section id="buttons">
+      <div class="button"  [class.sending]="isSending" (click)="sendResetEmail()">
+        <label>Recuperar Contraseña</label>
+      </div>
+    </section>
+  </main>
+</ion-content>
+<!-- <app-tab-bar
+  [enableBackButton]="true"
+  [enableMiddleButton]="false"
+  [enableExitButton]="true"
+></app-tab-bar> -->

@@ -1,0 +1,94 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" defaultHref="/initial"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="primary">Contactos </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+  <!-- <div id="header">
+    <h1> {{name}}</h1>
+    <ion-img src="assets/images/logo_eSMART.png" ></ion-img>
+  </div> -->
+
+  <form #fForm2="ngForm">
+    <ion-grid fixed>
+      <ion-row class="ion-align-items-center">
+        <ion-col class="ion-text-center">
+          <!-- <p class="ion-margin ion-margin-bottom" id="label">¡Gracias por adquirir uno de nuestros productos!</p> -->
+          <p class="ion-margin">
+            Ingresa los datos de tus contactos que recibirán alertas en caso de
+            una eventualidad
+          </p>
+
+          <section>
+            <ion-list class="lista" mode="md">
+              <div id="divv" *ngFor="let item of [0]">
+                <p id="numeral">Contacto Principal</p>
+                <ion-item>
+                  <ion-label color="primary" position="floating"
+                    >Nombre:
+                  </ion-label>
+                  <ion-input
+                    name="nombre{{item}}"
+                    type="text"
+                    required
+                    [(ngModel)]="contacts[item].nombre"
+                  ></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label color="primary" position="floating"
+                    >Teléfono:
+                  </ion-label>
+                  <ion-input
+                    name="telefono{{item}}"
+                    type="number"
+                    required
+                    [(ngModel)]="contacts[item].telefono"
+                  ></ion-input>
+                </ion-item>
+              </div>
+              <div id="divv" *ngFor="let item of [1,2]">
+                <p id="numeral">Contacto {{item + 1}}</p>
+                <ion-item>
+                  <ion-label color="primary" position="floating"
+                    >Nombre:
+                  </ion-label>
+                  <ion-input
+                    name="nombre{{item}}"
+                    type="text"
+                    required
+                    [(ngModel)]="contacts[item].nombre"
+                  ></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label color="primary" position="floating"
+                    >Teléfono:
+                  </ion-label>
+                  <ion-input
+                    name="telefono{{item}}"
+                    type="number"
+                    required
+                    [(ngModel)]="contacts[item].telefono"
+                  ></ion-input>
+                </ion-item>
+              </div>
+
+              <div class="botones">
+                <!-- <p  id="quitar" (click)="anadirEnf(false)" style="text-align: end;">Quitar</p> -->
+              </div>
+            </ion-list>
+          </section>
+
+          <ion-button (click)="guardar()" shape="round">
+            Guardar cambios
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

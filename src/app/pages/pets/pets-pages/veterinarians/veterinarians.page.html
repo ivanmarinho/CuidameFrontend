@@ -1,0 +1,36 @@
+<app-greeting></app-greeting>
+<div class="veterinarian" *ngIf="finishedLoading_" style="margin-top: 0px">
+  <div class="vet-card" *ngFor="let vet of database">
+    <div class="vet-container">
+      <img
+        class="vet-profile"
+        src="/assets/pets/image-veterinarian.svg"
+        alt=""
+      />
+      <div class="vet-info">
+        <div class="info">
+          <label class="vet-title">{{vet.fullname}}</label>
+          <label class="vet-desc">Veterinario</label>
+        </div>
+        <div class="info">
+          <label class="vet-title">{{vet.phone}}</label>
+          <label class="vet-desc">Teléfono</label>
+        </div>
+        <div class="info">
+          <label class="vet-title">{{vet.city}}, {{vet.department}}</label>
+          <label class="vet-desc">Ubicación</label>
+        </div>
+        <div class="info">
+          <label class="vet-title">{{vet.address}}</label>
+        </div>
+      </div>
+    </div>
+    <div class="options">
+      <div class="appointment-container">
+        <button (click)="goToCalendy(vet.calendy)" *ngIf="vet.link">
+          <ion-label class="a-label">Agendar Cita</ion-label>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+#map {
+  height: 100%;
+}
+
+ion-button {
+  position: relative;
+  top: 90%;
+  z-index: 1;
+}
+
+ion-content {
+  text-align: center;
+}
+
+.ion-padding {
+  --padding-start: var(--ion-padding, 0);
+  --padding-end: var(--ion-padding, 0);
+  --padding-top: var(--ion-padding, 0);
+  --padding-bottom: var(--ion-padding, 0);
+}
+
+ion-toolbar, ion-header {
+  --background: transparent !important;
+  --background-color: transparent !important;
+  }
+
+.header-ios ion-toolbar:last-of-type {
+  --border-width: 0 0 0 0; 
+}
+
+// ----------------------------------------------------------------------------------
+
+/*
+   * vet styles in unhighlighted state.
+   */
+.vet-card {
+  display: grid;
+  justify-content: start;
+  align-items: center;
+  color: #fff;
+  width: 200px;
+  height: 120px;
+  border-radius: 20px;
+  padding: 15px;
+  margin: 10px 0 10px 0;
+
+  background-image: url("/assets/pets/bg-blue-xlarge.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1;
+}
+
+.vet-profile {
+  width: 50px;
+}
+
+.vet-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.vet-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4%;
+
+  .vet-title {
+    font-family: "Quicksand", sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+
+  .vet-desc {
+    font-family: "Quicksand", sans-serif;
+    font-size: 0.9rem;
+  }
+}

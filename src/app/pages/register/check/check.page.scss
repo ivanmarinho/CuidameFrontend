@@ -1,0 +1,117 @@
+ion-content.background{
+  --background: url('/assets/images/fondo.svg') ;
+
+  #bgcard{
+    background: rgba(255,255,255,0.5);
+    padding: 10px;
+  }
+}
+p {
+  text-align: left;
+  // color: #353535;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#label{
+
+  font-weight: 700;
+  font-size: 22px;
+  // text-align: center;
+
+}
+
+main{
+
+  h1{
+    color: var(--ion-color-primary);
+    font-weight: bold;
+    font-size: 34px;
+     margin-bottom: 1rem;
+     margin-top: 0rem;
+  }
+
+
+}
+
+ion-content {
+  --background: #bfbfbf;
+  --keyboard-offset: 0px;
+  --offset-bottom: 0px;
+  --offset-top: 0px;
+  --padding-bottom: 0px;
+  --padding-end: 2rem;
+  --padding-start: 1rem;
+  --padding-top: 0rem;
+  // margin: 10% 10%;
+
+  ion-list{
+    background-color: transparent;
+    padding: 0;
+  }
+
+
+  font-family: 'Arial';
+  --background: #bfbfbf;
+  ion-item{
+    border-radius: 10px;
+    height: 50px;
+    box-shadow: 1px 8px 8px 0px rgba(0, 0, 0, 0.12);
+    --highlight-height: 0px;
+    margin-bottom: 10px;
+
+    ion-input{
+
+      font-size: 15px;
+      --pading-top: 15px;
+      --pading-bottom: 15px;
+      --pading-start: 5px;
+    }
+
+    a {
+      font-size: 15px;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+    }
+  }
+
+
+}
+
+#img-logo{
+
+  height: 115px;
+  // margin-bottom: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
+
+#buttons{
+  margin: 1.5rem 0;
+}
+
+
+#header {
+  margin-top: 50px;
+  font-family: 'Poppins';
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+}
+
+#crearCuenta{
+  color: var(--ion-color-primary);
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.bottomText{
+  font-size: 11.5px;
+}
+
+.bottomLink{
+  text-decoration: underline;
+}

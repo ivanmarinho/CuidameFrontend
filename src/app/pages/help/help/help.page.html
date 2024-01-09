@@ -1,0 +1,33 @@
+
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button color="primary" defaultHref="/tab1"></ion-back-button>
+      </ion-buttons>
+      <ion-title color="primary">Ayuda</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content class="background">
+
+  <h1 class="ion-margin">Estamos acá para ayudarte</h1>
+
+  <ion-list class="ion-margin" lines="none">
+
+    <ion-item (click)="contactanos()">
+      <ion-icon name="people-outline"></ion-icon>
+      <ion-label>Contáctanos</ion-label>
+    </ion-item>  
+
+    <ion-item (click)="info()">
+      <ion-icon name="information-circle-outline"></ion-icon>
+      <ion-label>¿Cómo se maneja mi información?</ion-label>
+    </ion-item>
+
+    <ion-item (click)="borrarCuenta()">
+      <ion-icon name="trash-outline"></ion-icon>
+      <ion-label>Quiero eliminar mi cuenta</ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

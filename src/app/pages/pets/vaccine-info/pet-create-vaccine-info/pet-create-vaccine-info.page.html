@@ -1,0 +1,132 @@
+<div style="margin-top: 40%">
+  <div class="info">
+    <p>Por favor, ingresa los datos de las vacunas de tu mascota.</p>
+  </div>
+
+  <form #vaccineForm="ngForm" enctype="multipart/form-data">
+    <div class="pet-profile">
+      <ion-item lines="none" class="item-with-circle">
+        <div>
+          <ion-label class="circle">
+            <ion-img [src]="imageUrl" *ngIf="imageUrl"></ion-img>
+          </ion-label>
+        </div>
+        <div class="small-circle">
+          <ion-icon
+            (click)="openFileInput()"
+            (click)="fileInput.click()"
+            class="camera-ico"
+            src="/assets/images/add_img.svg"
+            role="img"
+          ></ion-icon>
+        </div>
+        <input
+          #fileInput
+          type="file"
+          name="image"
+          accept="image/*"
+          style="display: none"
+          (change)="handleFileInput($event)"
+        />
+      </ion-item>
+      <div class="sticker-info">
+        <img
+          class="sticker"
+          src="/assets/pets/icon-sticker-vaccine.svg"
+          alt=""
+        />
+        <ion-label class="sticker-label"
+          >Agrega la foto del sticker de la vacuna</ion-label
+        >
+      </div>
+    </div>
+    <ion-list mode="md">
+      <div class="item">
+        <ion-label>Nombre</ion-label>
+        <ion-input
+          type="text"
+          name="name"
+          [(ngModel)]="vaccine.name"
+          required
+          ngDefaultControl
+        ></ion-input>
+      </div>
+
+      <div class="item">
+        <ion-label>Laboratorio</ion-label>
+        <ion-input
+          type="text"
+          name="laboratory"
+          [(ngModel)]="vaccine.laboratory"
+          required
+          ngDefaultControl
+        ></ion-input>
+      </div>
+
+      <div class="horizontal-fields-container">
+        <div class="item horizontal-fields">
+          <ion-label>Fecha de Aplicación</ion-label>
+          <ion-input
+            type="date"
+            class="input-orange"
+            name="startDate"
+            [(ngModel)]="vaccine.startDate"
+            required
+            ngDefaultControl
+          >
+          </ion-input>
+        </div>
+
+        <div class="item horizontal-fields">
+          <ion-label>Prox. Aplicación </ion-label>
+          <ion-input
+            type="date"
+            class="input-orange"
+            name="nextDate"
+            [(ngModel)]="vaccine.nextDate"
+            ngDefaultControl
+          ></ion-input>
+        </div>
+      </div>
+      <div class="horizontal-fields-container">
+        <div class="item horizontal-fields">
+          <ion-label>Dosis</ion-label>
+          <select
+            interface="popover"
+            name="dose"
+            class="orange-select"
+            [(ngModel)]="vaccine.dose"
+            required
+            ngDefaultControl
+          >
+            <option value="Única">Única</option>
+            <option value="Primera">Primera</option>
+            <option value="Segunda">Segunda</option>
+            <option value="Tercera">Tercera</option>
+            <option value="Cuarta">Cuarta</option>
+            <option value="Quinta">Quinta</option>
+          </select>
+        </div>
+      </div>
+      <div class="plus-add-container" *ngIf="button">
+        <button
+          class="plus-add"
+          style="background-color: #fff"
+          (click)="add(vaccineForm)"
+        >
+          <label>+ Guardar</label>
+        </button>
+      </div>
+    </ion-list>
+    <div class="plus-add-container" *ngIf="!button">
+      <button class="plus-add" style="background-color: #fff" (click)="add(vaccineForm)" >
+        <label>+ Guardar</label>
+      </button>
+    </div>
+    <section id="save-button">
+      <button *ngIf="button" class="button" (click)="goToDisease()">
+        <label>Continuar</label>
+      </button>
+    </section>
+  </form>
+</div>

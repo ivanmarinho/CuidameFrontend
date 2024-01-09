@@ -1,0 +1,75 @@
+p{
+  color: var(--ion-color-primary);
+  font-weight: bold;
+  font-size: 18px;
+  padding-left: 10px;
+}
+
+
+
+.large-text{
+  height: 200px;
+}
+
+ion-item{
+  --ion-item-background:#D8E7EE;
+  width: 90%;
+  border-radius: 3px;
+  height: 50px;
+  border: none;
+  box-shadow: 1px 8px 8px 0px rgba(0, 0, 0, 0.12);
+
+  --highlight-height: 0px;
+  margin: 0 auto 10px auto;
+
+  ion-input{
+
+    font-size: 15px;
+    --pading-top: 15px;
+    --pading-bottom: 15px;
+    --pading-start: 5px;
+  }
+
+  a {
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+  }
+}
+
+
+.button:active {
+  // background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  left: 50%;
+  transform: translateY(4px);
+
+
+}
+
+.button{
+  justify-content: center;
+  width: 200px;
+  bottom: 10%;
+  display: flex;
+  color: white;
+  margin: 15px auto 15px auto;
+  padding: 20px 0 20px 0;
+  height: 55px;
+  border-radius: 12px;
+  font-weight: bold;
+  box-shadow: 0 5px #666;
+
+  background-image: url("/assets/images/bgbtn.svg");
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  opacity: 1;
+
+  .ico{
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+  }
+
+}

@@ -1,0 +1,230 @@
+ion-loading.custom-loading {
+  --background: #e3edff;
+  --spinner-color: #1c6dff;
+
+  color: #1c6dff;
+}
+
+#label {
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 5%;
+  text-align: left;
+  text-align: center;
+}
+
+ion-content.background {
+  --background: url("/assets/images/fondo.svg");
+}
+
+.item {
+  margin: 0 auto 10px auto;
+
+  ion-label {
+    margin-top: 30px;
+    color: #275289;
+
+    font-family: "Quicksand", sans-serif;
+    font-weight: bold;
+  }
+
+  ion-input {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    margin-top: 10px;
+    text-align: start;
+    border-radius: 100px;
+    border: 1px solid #d8e7ee;
+    font-size: 15px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+
+    ion-icon.password-toggle-icon {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+  }
+
+  .input-highlighted {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    margin-top: 10px;
+    text-align: start;
+    border-radius: 100px;
+    border: 1px solid #d8e7ee;
+    font-size: 15px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: #f0f0f0;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  a {
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+  }
+}
+
+main {
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  border-radius: 10% 10% 0% 0%;
+  width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
+
+  .wait-message {
+  color: #636363;
+  font-size: medium;
+  visibility: hidden; 
+}
+
+.wait-message-visible {
+  visibility: visible; 
+  color: #636363;
+  font-size: medium;
+}
+
+.info {
+  color: #236495;
+  font-size: medium;
+}
+
+.container-info {
+  text-align: start;
+}
+
+  h1 {
+    color: var(--ion-color-primary);
+    font-weight: bold;
+    font-size: 34px;
+    margin-top: 15%;
+  }
+
+  p {
+    font-family: "Quicksand Bold";
+    padding-top: 50px;
+  }
+}
+
+ion-content {
+  // --background: #bfbfbf;
+  --keyboard-offset: 0px;
+  --offset-bottom: 0px;
+  --offset-top: 0px;
+  --padding-bottom: 0px;
+  // --padding-end: 3rem;
+  // --padding-start: 2rem;
+  // --padding-top: 2rem;
+  margin: 10% 10%;
+  font-family: "Arial";
+
+  ion-list {
+    background-color: transparent;
+    padding: 5px;
+  }
+
+  ion-item {
+    border-radius: 3px;
+    height: 50px;
+    border: 1px solid var(--text-color);
+    box-shadow: 1px 8px 8px 0px rgba(0, 0, 0, 0.12);
+    --highlight-height: 0px;
+    margin: 0 auto 10px auto;
+
+    ion-input {
+      font-size: 15px;
+      --pading-top: 15px;
+      --pading-bottom: 15px;
+      --pading-start: 5px;
+    }
+
+    a {
+      font-size: 15px;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+    }
+  }
+  .no-border {
+    border: none;
+    box-shadow: none;
+  }
+}
+
+// #scan-icon{
+//   width: 50px;
+// }
+
+#img-logo {
+  height: 375px;
+  margin-bottom: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
+
+#img-qr {
+  position: absolute;
+  width: 80px;
+  right: 12px;
+  bottom: 12px;
+}
+
+#buttons {
+  margin: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+
+    margin: 15px 0px 15px auto;
+
+    width: 100%;
+    height: 50px;
+
+    border-radius: 100px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+
+    background-image: url("/assets/images/bg_btn_login.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1;
+    padding: 10px;
+    transition: filter 0.3s;
+
+    label {
+      font-family: "Quicksand", sans-serif;
+      font-weight: bold;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+  }
+
+  .button.sending {
+    filter: brightness(0.7); /* Reduce el brillo para oscurecer */
+    pointer-events: none;
+  }
+}
+
+#header {
+  margin-top: 50px;
+  font-family: "Poppins";
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}

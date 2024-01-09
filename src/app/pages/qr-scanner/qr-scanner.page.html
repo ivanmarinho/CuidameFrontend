@@ -1,0 +1,41 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      <!-- <ion-button (click)="dismissModal()">
+        <ion-icon color="primary" slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button> -->
+    </ion-buttons>
+    <ion-title color="primary">QR Escaner</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <!-- <ion-button (click)="startScan()" expand="block" fill="clear" shape="round">
+    <ion-icon slot="start" name="refresh"></ion-icon>
+  </ion-button> -->
+
+  <ion-button *ngIf="scanResult" (click)="reset()" expand="block" fill="clear" shape="round" >
+    <ion-icon slot="start" name="refresh"></ion-icon>
+  </ion-button>
+
+  <div class="center">
+    <video class="video" #video [hidden]="!scanActive" width="90%"></video>
+  </div>
+  <canvas #canvas hidden></canvas>
+
+<!-- <div *ngIf="scanActive">
+  <ion-button color="primary" (click)="stopScan()" expand="block"  shape="round" >
+    Hola
+    <ion-icon slot="start" name="refresh"></ion-icon>
+  </ion-button>
+</div> -->
+
+<div class="card">
+  <p >Para continuar, por favor escanea el codigo QR presente en tu uniforme</p>
+  <img src="assets/images/scan.png" alt="codescan" width="70">
+  <img src="assets/images/qr_policia.png" alt="Codigo qr policia" width="800">
+  <!-- <ion-img src="assets/images/logo_eSMART.png" ></ion-img> -->
+</div>
+
+
+</ion-content>

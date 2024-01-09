@@ -1,0 +1,211 @@
+
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button color="primary" defaultHref="/initial"></ion-back-button>
+      </ion-buttons>
+      <ion-title color="primary">{{ title }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="background">
+    <!-- <div id="header">
+      <h1> {{name}}</h1>
+      <ion-img src="assets/images/logo_eSMART.png" ></ion-img>
+    </div> -->
+
+
+
+
+  <form #fForm2="ngForm">
+    <ion-grid fixed>
+      <ion-row class="ion-align-items-center">
+        <ion-col class="ion-text-center">
+          <!-- <p class="ion-margin ion-margin-bottom" id="label">¡Gracias por adquirir uno de nuestros productos!</p> -->
+          <p class="ion-margin">A continuación, ingresa los datos de la persona que deseas cuidar:</p>
+          <ion-list class="lista" mode="md">
+
+
+        <section>
+              <p id="listheader">Enfermedades </p>
+            <ion-item>
+              <ion-label>¿Tiene alguna enfermedad crónica o de larga duración?</ion-label>
+              <ion-select interface="popover" name="enfermedad_B" placeholder="Seleccionar..." required [(ngModel)]="form2.enfermedadB" >
+                <ion-select-option value="si" required>Sí</ion-select-option>
+                <ion-select-option value="no" required>No</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+
+
+
+
+            <div  *ngIf="form2.enfermedadB === 'si'">
+
+              <div *ngFor="let item of listEnf; let index = index">
+                <ion-item>
+                  <ion-label position="floating">¿Cuál? </ion-label>
+                  <ion-input name="diagEnfermedad{{index}}" type="text" required [(ngModel)]="formEnf[index].enfermedad"></ion-input>
+                </ion-item>
+
+                <!-- <ion-item>
+                  <ion-label position="floating">Cual</ion-label>
+                  <ion-input id="trigger-button" type="text" name="enfermedad"  [(ngModel)]="form2.diagEnfermedad"></ion-input>
+
+                  <ion-popover id="enfermedades-popover" trigger="trigger-button">
+                    <ng-template>
+                      <ion-searchbar name="term" [(ngModel)]="term" placeholder="Busqueda..."  [debounce]="250" showCancelButton="always"></ion-searchbar>
+                      <ion-list>
+                        <ion-item *ngFor="let item of enfermedades |filter:term" (click)="selectEnfermedad(item)">
+                          <ion-label>{{item.name}}</ion-label>
+                        </ion-item>
+                      </ion-list>
+                    </ng-template>
+                  </ion-popover>
+                </ion-item> -->
+
+                <!-- <ion-item>
+                  <ion-label position="floating">Código de diagnostico: </ion-label>
+                  <ion-input name="codDiagnostico" type="text" required [(ngModel)]="form2.codDiagnostico"></ion-input>
+                </ion-item> -->
+              </div>
+              <div class="botones" >
+                <p id="anadir" (click)="anadirEnf(true)">Agregar otra
+                <ion-icon slot="start" name="add"  ></ion-icon>
+                </p>
+                <p *ngIf="noEnf !== 1" id="quitar" (click)="anadirEnf(false)" style="text-align: end;">Quitar</p>
+                 </div>
+            </div>
+
+          </section>
+
+          <section>
+
+            <p id="listheader">Discapacidad</p>
+            <ion-item>
+              <ion-label>¿Es una persona con discapacidad?</ion-label>
+              <ion-select interface="popover" name="condicionEspecial" placeholder="Seleccionar..." required [(ngModel)]="form2.discapacidadB" >
+                <ion-select-option value="si" required>Sí</ion-select-option>
+                <ion-select-option value="no" required>No</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <div  *ngIf="form2.discapacidadB === 'si'">
+              <ion-item class="text_area">
+                <ion-label position="floating">¿Cuál? </ion-label>
+                <ion-textarea type="text" name="codCondicionEspecial" required [(ngModel)]="form2.discapacidad"></ion-textarea>
+              </ion-item>
+
+            </div>
+          </section>
+
+          <section>
+            <p id="listheader">Distintivos</p>
+
+
+            <ion-item *ngIf="womanFlag">
+              <ion-label>¿Está embarazada?</ion-label>
+              <ion-select interface="popover" name="embarazada" placeholder="Seleccionar..." required [(ngModel)]="form2.embarazada">
+                <ion-select-option value="si" required>Sí</ion-select-option>
+                <ion-select-option value="no" required>No</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <p class="desc">La siguiente información (opcional) será usada con el fin de corroborar que la persona que estamos cuidando es la misma que está registrada</p>
+
+            <ion-item>
+              <ion-label>¿Tiene cicatrices?</ion-label>
+              <ion-select interface="popover" name="cicatrices" placeholder="Seleccionar..." required [(ngModel)]="form2.cicatricesB">
+                <ion-select-option value="si" required>Sí</ion-select-option>
+                <ion-select-option value="no" required>No</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <div  *ngIf="form2.cicatricesB === 'si'">
+            <!-- <ion-item>
+              <ion-label position="floating">¿En que parte del cuerpo?</ion-label>
+              <ion-input type="text" name="cicatricesLugar" required [(ngModel)]="form2.cicatricesLugar"></ion-input>
+            </ion-item> -->
+
+            <ion-item>
+              <ion-label position="floating">Por favor describa las cicatrices:</ion-label>
+              <ion-textarea name="cicatricesDescripcion" rows="3" type="text"  [(ngModel)]="form2.cicatricesDescripcion" required></ion-textarea>
+            </ion-item>
+           </div>
+
+            <ion-item >
+              <ion-label>¿Tiene tatuajes?</ion-label>
+              <ion-select interface="popover" name="tatuajes" placeholder="Seleccionar..." required [(ngModel)]="form2.tatuajesB" >
+                <ion-select-option value="si" required>Sí</ion-select-option>
+                <ion-select-option value="no" required>No</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <div  *ngIf="form2.tatuajesB === 'si'">
+            <!-- <ion-item>
+              <ion-label position="floating">¿En que parte del cuerpo?</ion-label>
+              <ion-textarea name="tatuajesLugar" rows="3" type="text" [(ngModel)]="form2.tatuajesLugar" ></ion-textarea>
+            </ion-item> -->
+
+            <ion-item>
+              <ion-label position="floating">Por favor describa los tatuajes:</ion-label>
+              <ion-textarea type="text" rows="3" name="tatuajesDescripcion" [(ngModel)]="form2.tatuajesDescripcion" required></ion-textarea>
+            </ion-item>
+          </div>
+        </section>
+
+
+
+
+
+
+
+          </ion-list>
+
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+
+
+
+  </ion-content>
+  <ion-footer no-border>
+    <ion-toolbar>
+
+
+      <ion-row>
+
+        <!-- <ion-col>
+          <ion-button
+                      size="small"
+                      fill="outline"
+                      color="danger"
+                      (click)="logOut()">
+            Cerrar sesión
+          </ion-button>
+      </ion-col> -->
+
+        <ion-col>
+          <div class="btn-wrapper">
+            <ion-button
+                        size="small"
+                        fill="outline"
+                        color="primary"
+                        (click)="onClickNext(fForm2)">
+              {{textNextButton}}
+              <ion-icon slot="end" name="caret-forward-outline"></ion-icon>
+            </ion-button>
+
+          </div>
+        </ion-col>
+
+      </ion-row>
+
+
+
+    </ion-toolbar>
+  </ion-footer>
+

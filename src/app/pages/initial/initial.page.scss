@@ -1,0 +1,175 @@
+ion-content.background {
+  --background: url("../../../assets/images/fondo.svg");
+}
+
+main {
+  background-color: white;
+  border-radius: 10% 10% 0% 0%;
+  position: absolute;
+  width: 100%;
+
+  padding-left: 5%;
+  padding-right: 5%;
+  max-height: 50%;
+  overflow-y: auto;
+  bottom: 0;
+
+  ion-item.show-pass {
+    position: relative;
+    font-size: 0.8rem;
+    margin: 10px 0 0 0;
+    border-radius: 50px;
+    right: 10px;
+  }
+
+  .ion-input {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    margin-top: 10px;
+    border-radius: 100px;
+    border: 1px solid #d8e7ee;
+    font-size: 15px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+
+    ion-icon {
+      transform: translateX(-50%);
+    }
+  }
+
+  h1 {
+    color: var(--ion-color-primary);
+    font-weight: bold;
+    font-size: 34px;
+    margin-top: 15%;
+  }
+  .item {
+    margin: 0 auto 10px auto;
+
+    ion-label {
+      color: #275289;
+      font-family: "Quicksand", sans-serif;
+      font-weight: bold;
+    }
+
+    a {
+      font-size: 15px;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+    }
+  }
+
+  .form {
+    padding-top: 50px;
+  }
+}
+
+ion-content {
+  --background: #bfbfbf;
+  --keyboard-offset: 0px;
+  --offset-bottom: 0px;
+  --offset-top: 0px;
+  --padding-bottom: 0px;
+  // --padding-end: 3rem;
+  // --padding-start: 2rem;
+  // --padding-top: 2rem;
+}
+
+#img-logo {
+  height: 55%;
+  margin-left: auto;
+  margin-right: auto;
+  // margin-top: 20px;
+}
+
+#img-qr {
+  position: absolute;
+  width: 80px;
+  right: 12px;
+  bottom: 12px;
+}
+
+.forgot-pass {
+  font-family: "Quicksand", sans-serif;
+  color: #236495;
+  font-size: medium;
+  margin: 4% 0 0 0;
+}
+
+#buttons {
+  margin-bottom: 20%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .no-account {
+    font-family: "Quicksand", sans-serif;
+    color: #236495;
+    font-size: medium;
+  }
+
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+
+    margin: 15px 0px 15px auto;
+
+    width: 100%;
+    height: 50px;
+
+    border-radius: 100px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+
+    background-image: url("/assets/images/bg_btn_login.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1;
+    padding: 10px;
+
+    label {
+      font-family: "Quicksand", sans-serif;
+      font-weight: bold;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+  }
+
+  .button:active {
+    transform: translateY(4px);
+  }
+}
+
+#header {
+  margin-top: 50px;
+  font-family: "Poppins";
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+:host {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  .type-toggle {
+    padding-inline-start: 0.5rem;
+    .show-option,
+    .hide-option {
+      font-size: 1.2rem;
+      display: block; // In case you want to use text instead of icons
+      &:not(ion-icon) {
+        text-transform: uppercase;
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+ion-icon {
+  font-size: 20px;
+}

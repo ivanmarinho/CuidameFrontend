@@ -1,0 +1,141 @@
+<ion-content class="background">
+  <div id="head">
+    <h1>Gracias por tu colaboración</h1>
+  </div>
+
+  <div id="container">
+    <img id="logo-image" src="/assets/images/loco_cuidame.png" alt="" />
+
+    <div *ngIf="sinMascota">
+      <p>El usuario no tiene una mascota registrada</p>
+    </div>
+
+    <div class="scrolldiv" *ngIf="!sinMascota">
+      <div class="pet" style="margin-top: 0" *ngIf="finishedLoading else nopet">
+        <ion-label class="rectangle">
+          <ion-img
+            class="pet-photo"
+            src="{{ServerUrl}}{{mascota.photourl}}"
+            (click)="showImageModal(ServerUrl,mascota.photourl)"
+          ></ion-img>
+        </ion-label>
+        <div class="pet-card">
+          <div class="pet-info">
+            <div class="pet-header">
+              <label class="pet-name">{{mascota.nombre}}</label>
+              <label class="pet-breed">{{mascota.especie}}</label>
+            </div>
+            <div class="pet-content">
+              <div class="left-card">
+                <label>{{age}}</label>
+              </div>
+              <div class="right-card">
+                <label>{{mascota.color}}</label>
+              </div>
+            </div>
+            <div class="pet-content">
+              <div class="left-card">
+                <label>{{mascota.sexo}}</label>
+              </div>
+              <div class="right-card">
+                <label>ID: {{mascota.petid}}</label>
+              </div>
+            </div>
+
+            <div class="pet-scontent">
+              <div class="pet-column">
+                <label class="pet-title">Peso</label>
+                <label class="pet-desc">{{mascota.peso}} kg</label>
+              </div>
+              <div class="pet-column">
+                <label class="pet-title">Estatura</label>
+                <label class="pet-desc">{{mascota.estatura}} cm</label>
+              </div>
+              <div class="pet-column">
+                <label class="pet-title">Temperamento</label>
+                <label class="pet-desc">{{mascota.temperamento}}</label>
+              </div>
+            </div>
+            <!-- <div class="pet-address">
+              <img src="/assets/pets/icon-map-marker.svg" alt="map-marker" />
+              <label>{{owner.city}}, {{owner.department}}</label>
+            </div> -->
+          </div>
+        </div>
+        
+        <div class="owner-content" style="top: -110px;">
+          <img src="/assets/pets/owner-profile.svg" alt="person" />
+          <div class="owner">
+            <div class="info">
+              <label class="owner-title"
+                >{{ owner.name}}&nbsp;{{ owner.lastname}}</label
+              >
+              <label class="owner-desc">Nombre propietario</label>
+            </div>
+
+            <div class="info">
+              <label class="owner-title">{{ owner.phone}}</label>
+              <label class="owner-desc">Teléfono</label>
+            </div>
+          </div>
+        </div>
+        <div class="desc" style="position: relative; top: -100px;">
+          <p>
+            Por favor ponte en contacto con el propietario cuyos datos están en
+            la tarjeta mostrada en pantalla.
+          </p>
+        </div>
+      </div>
+
+      <!-- <p *ngFor="let item of infoPaciente | keyvalue">{{item.value}}</p> -->
+      <!-- <ion-card>
+        <div class="pet-profile">
+          <ion-item lines="none">
+            <div>
+              <ion-label class="circle">
+                <ion-img src="{{productionServerUrl}}{{mascota.photourl}}"></ion-img>
+              </ion-label>
+            </div>
+          </ion-item>
+        </div>
+        <ion-card-header>
+          <ion-card-title>{{ mascota.nombre }}</ion-card-title>
+          
+        </ion-card-header>
+
+        <ion-card-content>
+          <span id="span-card">{{ mascota.descripcion }}</span>
+          <br /><label id="label-card">Descripción</label> <br/>
+          <span id="span-card">{{ mascota.raza }}</span>
+          <br /><label id="label-card">Raza</label> <br /><span id="span-card"
+            >{{ mascota.peso}} Kg</span
+          >
+          <br /><label id="label-card">Peso</label> <br /><span id="span-card"
+            >{{ infoUser['name'] }}</span
+          >
+          <br /><span id="span-card">{{ infoUser['lastname'] }}</span>
+          <br /><label id="label-card">Nombre del propietario</label>
+          <br /><span id="span-card">{{ infoUser['phone'] }}</span> <br /><label
+            id="label-card"
+            >Teléfono de propietario</label
+          >
+        </ion-card-content>
+      </ion-card> -->
+
+      <!-- <ion-list class="color-transparent" lines="none">
+        <div *ngFor="let item of [1,2,3,4] | keyvalue; let i = index">
+
+          <ion-item [ngClass]="{'par' : i%2 === 0, 'impar' : i%2 !== 0}" class="impar">
+            <ion-label>{{i+1}}. {{item.value}}</ion-label>
+            <ion-icon slot="end" name="trash-outline"></ion-icon>
+          </ion-item>
+
+        </div>
+      </ion-list> -->
+    </div>
+  </div>
+</ion-content>
+
+<ng-template #nopet>
+  <p>El usuario no tiene una mascota registrada</p>
+</ng-template>

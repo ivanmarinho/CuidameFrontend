@@ -1,0 +1,33 @@
+<ion-content class="background">
+  <div id="container">
+    <img id="logo-image" src="/assets/images/loco_cuidame.png" alt="" />
+
+    <section class="btn-container">
+      <div class="containerinfo">
+        <div class="containerdir">
+          <label
+            >Confirmar y seguir las instrucciones enviadas al e-mail
+            registrado</label
+          >
+          <p>{{receivedData}}</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</ion-content>
+<div class="flex-container">
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button class="button" [disabled]="true">
+      <ion-icon
+        class="ion-icon"
+        src="/assets/images/btn_back_arrow.svg"
+      ></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button class="button" [disabled]="true">
+      <ion-icon class="ion-icon" src="/assets/images/btn_menu.svg"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button (click)="exitApp()" class="button" routerLink="/initial">
+      <ion-icon class="ion-icon" src="/assets/images/btn_exit.svg"></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+</div>

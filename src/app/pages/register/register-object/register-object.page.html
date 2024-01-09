@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registrar objeto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <form #fRegisterObject="ngForm">
+
+  <p>¿Qué objeto deseas cuidar?</p>
+  <ion-list mode="md">
+  <ion-item >
+    <ion-label color="primary" position="floating"></ion-label>
+    <ion-input type="text" name="nombre"  required [(ngModel)]="nombreObjeto" ></ion-input>
+  </ion-item>
+
+
+  <p>Descripción breve</p>
+  <ion-item >
+    <ion-label color="primary" position="floating"></ion-label>
+    <ion-textarea class="large-text" type="text" name="descObjeto"  required [(ngModel)]="descObjeto" ></ion-textarea>
+  </ion-item>
+  </ion-list>
+</form>
+
+  <div class="button" (click)="agregar()">
+    <label>Agregar</label>
+  </div>
+
+  </ion-content>
+

@@ -1,0 +1,136 @@
+
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button color="primary" ></ion-back-button>
+      </ion-buttons>
+      <ion-title color="primary">{{ title }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="background">
+    <!-- <div id="header">
+      <h1> {{name}}</h1>
+      <ion-img src="assets/images/logo_eSMART.png" ></ion-img>
+    </div> -->
+
+
+
+
+
+  <form #fForm4="ngForm">
+    <ion-grid fixed>
+      <ion-row class="ion-align-items-center">
+        <ion-col >
+          <!-- <p class="ion-margin ion-margin-bottom" id="label">¡Gracias por adquirir uno de nuestros productos!</p> -->
+          <p class="ion-margin">A continuación, ingresa los datos de la persona que usará la banda de seguridad</p>
+          <ion-list class="lista " mode="md">
+
+            <section>
+              <p id="listheader">Medicamentos: </p>
+
+              <div *ngFor="let item of listMed; let index = index">
+                <p *ngIf="noMeds !== 1" class="numeral">Medicamento {{item}}:</p>
+                <ion-item>
+                  <ion-label position="floating">Medicamento</ion-label>
+                  <ion-input name="medicamento{{item}}" type="text" [(ngModel)]="form4Med[index].medicamento" ></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label position="floating">Laboratorio</ion-label>
+                  <ion-input name="laboratorio{{item}}" type="text" [(ngModel)]="form4Med[index].laboratorio" required></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label position="floating">Dósis</ion-label>
+                  <ion-input name="formula{{item}}" type="text" [(ngModel)]="form4Med[index].formula" required></ion-input>
+                </ion-item>
+              </div>
+
+              <div class="botones">
+                <p id="anadir" (click)="anadirMed(true)">Añadir medicamento
+                 <ion-icon slot="start" name="add"></ion-icon>
+                </p>
+                <p *ngIf="noMeds !== 1" id="quitar" (click)="anadirMed(false)" style="text-align: end;">Quitar</p>
+              </div>
+            </section>
+
+          <section>
+            <p id="listheader">Alergias: </p>
+            <div *ngFor="let item of listAlergias; let index = index">
+              <p *ngIf="noAlergias !== 1" class="numeral">Alergia {{item}}:</p>
+              <ion-item>
+                <ion-label position="floating">Tipo de alergia</ion-label>
+                <ion-input name="tipoAlergia{{item}}" type="text" [(ngModel)]="form5Alergia[index].tipoAlergia" required></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="floating">Descripción</ion-label>
+                <ion-input name="descripcionAlergia{{item}}" type="text" [(ngModel)]="form5Alergia[index].descripcion" required></ion-input>
+              </ion-item>
+              </div>
+
+              <div class="botones" >
+                <p id="anadir" (click)="anadirAlergia(true)">Añadir alergia
+                  <ion-icon slot="start" name="add"  ></ion-icon>
+                </p>
+                <p *ngIf="noAlergias !== 1" id="quitar" (click)="anadirAlergia(false)" style="text-align: end;">Quitar</p>
+            </div>
+          </section>
+
+
+
+
+
+
+
+
+          </ion-list>
+
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+
+
+
+  </ion-content>
+
+
+  <ion-footer no-border>
+    <ion-toolbar>
+
+      <ion-row>
+
+        <!-- <ion-col>
+          <ion-button
+                      size="small"
+                      fill="outline"
+                      color="danger"
+                      (click)="logOut()">
+            Cerrar sesión
+          </ion-button>
+      </ion-col> -->
+
+        <ion-col>
+          <div class="btn-wrapper">
+            <ion-button
+                        size="small"
+                        fill="outline"
+                        color="primary"
+                        (click)="onClickNext(fForm4)">
+              {{ textNextButton }}
+              <ion-icon slot="end" name="caret-forward-outline"></ion-icon>
+            </ion-button>
+
+          </div>
+        </ion-col>
+
+      </ion-row>
+
+
+
+    </ion-toolbar>
+  </ion-footer>

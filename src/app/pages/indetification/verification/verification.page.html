@@ -1,0 +1,75 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>choice</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content class="background">
+  <div id="head">
+    <h1 *ngIf="identificado">El código QR que escaneaste pertenece a:</h1>
+    <h1 *ngIf="!identificado">No encontrado</h1>
+  </div>
+
+  <div id="container">
+    <img id="logo-image" src="/assets/images/loco_cuidame.png" alt="" />
+
+    <section *ngIf="identificado" class="btn-container">
+      <div *ngIf="cargaFinalizada; else spinner">
+        <div *ngIf="type === 'Health'">
+          <div class="button" (click)="continuePersona()">
+            <img class="ico" src="/assets/images/ico_persona.png" alt="" />
+            <label>Una persona</label>
+          </div>
+
+          <div class="button" (click)="continueObjeto()">
+            <img class="ico" src="/assets/images/ico_otros.png" alt="" />
+            <p>Un objeto</p>
+          </div>
+        </div>
+
+        <div *ngIf="type === 'Enterprise'">
+          <div class="button" (click)="onNextForEmployee()">
+            <img class="ico" src="/assets/images/ico_persona.png" alt="" />
+            <label>Un Trabajador</label>
+          </div>
+        </div>
+
+        <div *ngIf="type === 'Pets'">
+          <div class="button" (click)="continueMascota()">
+            <img class="ico2" src="/assets/images/icveterinario2.png" />
+            <p>Una mascota</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <p *ngIf="!identificado">
+      Al parecer, el código que escaneaste no está siendo utilizado. Gracias por
+      usar nuestros servicios.
+    </p>
+
+    <!-- <ion-footer text-center class="ion-no-border" >
+      A la verga
+    </ion-footer> -->
+
+    <!-- <section class="nav-btns">
+
+      <ion-icon name="arrow-back-outline"></ion-icon>
+      <ion-icon name="menu-outline"></ion-icon>
+      <ion-icon name="exit-outline"></ion-icon>
+    </section> -->
+  </div>
+</ion-content>
+
+<!--INICIO: Spinner-->
+<ng-template #spinner>
+  <div class="col-md text-center">
+    <div class="col-md text-center">
+      <span class="text-primary" style="font-size: 25">
+        <h2>Cargando información...</h2>
+      </span>
+    </div>
+    <ion-spinner name="dots"></ion-spinner>
+  </div>
+</ng-template>
+<!--FIN: Spinner-->

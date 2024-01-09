@@ -1,0 +1,78 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>initial</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content class="background">
+  <ion-img id="img-logo" src="assets/images/logo_cuidame.svg"></ion-img>
+  <main>
+    <!-- <h1>¡Bienvenido!</h1> -->
+    <!-- <p>Para continuar, escanea uno de nuestros códigos QR ó inicia sesión</p> -->
+
+    <form #fLogin="ngForm" class="form">
+      <div mode="md" class="item">
+        <!-- <ion-icon color="primary" slot="start" name="mail-open-outline"></ion-icon> -->
+        <ion-label color="primary">E-mail</ion-label>
+        <div class="ion-input">
+          <ion-input
+            type="email"
+            name="email"
+            [(ngModel)]="logUser.username"
+            required
+          ></ion-input>
+        </div>
+      </div>
+
+      <div mode="md" class="item">
+        <!-- <ion-icon color="primary" slot="start" name="lock-closed-outline"></ion-icon> -->
+        <ion-label color="primary">Contraseña</ion-label>
+        <div class="ion-input">
+          <ion-input
+            type="{{ passwordVisible ? 'text' : 'password' }}"
+            name="password"
+            [(ngModel)]="logUser.password"
+            required
+          ></ion-input>
+          <!-- <ion-icon
+            name="{{ passwordVisible ? 'eye-off-outline' : 'eye-outline' }}"
+            (click)="togglePasswordVisibility()"
+          ></ion-icon> -->
+        </div>
+
+        <ion-item lines="none" class="show-pass">
+          <ion-checkbox
+            (click)="togglePasswordVisibility()"
+            mode="ios"
+            slot="start"
+          ></ion-checkbox>
+          <ion-label>Mostrar contraseña</ion-label>
+        </ion-item>
+
+        <p class="forgot-pass" routerLink="/resetpassword">
+          ¿Olvidaste tu contraseña?
+        </p>
+      </div>
+    </form>
+
+    <section id="buttons">
+      <div class="button" (click)="login(fLogin)">
+        <label>Iniciar sesión</label>
+      </div>
+
+      <p class="no-account">
+        ¿No tienes cuenta?
+        <strong routerLink="/register-band">Regístrate</strong>
+      </p>
+
+      <!-- <div class="button" routerLink="/register-band">
+        <label>Registrarse</label>
+      </div> -->
+    </section>
+    <!-- <p style="text-align: center;">ó</p>
+    <p>Escanea un código QR</p>
+    <ion-img id="scan-icon" src="assets/images/scan-icon.png"></ion-img> -->
+  </main>
+
+  <!-- <ion-img id="img-qr" src="assets/images/esmartqr.png"></ion-img> -->
+</ion-content>

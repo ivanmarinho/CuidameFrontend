@@ -1,0 +1,44 @@
+.container-greeting {
+    font-family: "Quicksand", sans-serif;
+    margin: 10% 0 5% 5%;
+    display: flex;
+    align-items: center;
+    color: #275289;
+  
+    .greeting-labels {
+      display: flex;
+      flex-direction: column;
+      text-align: start;
+    }
+    .icon-label{
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      margin-right: 10%;
+    }
+    .logo-text {
+      font-family: "Quicksand", sans-serif;
+      font-weight: bold;
+      color: #236495;
+      margin: 5% 0 25% 0;
+      font-size: 12px;
+    }
+  
+    .greeting {
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+  
+    .greeting-time {
+      @extend .greeting;
+      font-weight: lighter;
+      font-size: 2.5rem;
+    }
+  
+    .logo {
+      width: 70%;
+      margin-bottom: 20%;
+    
+    }
+  }

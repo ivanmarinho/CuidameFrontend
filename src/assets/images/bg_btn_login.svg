@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="348" height="51" viewBox="0 0 348 51">
+  <defs>
+    <filter id="Rectángulo_169" x="-9" y="-6" width="366" height="69" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#275289" flood-opacity="0.459"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-path">
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Rectángulo_169)">
+        <rect id="Rectángulo_169-2" data-name="Rectángulo 169" width="348" height="51" rx="25.5" transform="translate(2646 2085)" fill="#fff" stroke="#d8e7ee" stroke-width="1"/>
+      </g>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="0.5" y1="1" x2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#f7a20f"/>
+      <stop offset="1" stop-color="#f96611"/>
+    </linearGradient>
+  </defs>
+  <g id="Enmascarar_grupo_8" data-name="Enmascarar grupo 8" transform="translate(-2646 -2085)" clip-path="url(#clip-path)">
+    <g id="Grupo_5" data-name="Grupo 5" transform="translate(3012.583 2055.967) rotate(90)">
+      <rect id="Rectángulo_84" data-name="Rectángulo 84" width="101.244" height="377.333" transform="translate(0 4.283)" fill="url(#linear-gradient)"/>
+      <ellipse id="Elipse_16" data-name="Elipse 16" cx="27.352" cy="27.421" rx="27.352" ry="27.421" transform="translate(10.999 318.18)" fill="#1fe1da" opacity="0.27" style="mix-blend-mode: color-dodge;isolation: isolate"/>
+      <ellipse id="Elipse_17" data-name="Elipse 17" cx="19.508" cy="19.508" rx="19.508" ry="19.508" transform="translate(7.179 98.278)" fill="#1fe1da" opacity="0.27" style="mix-blend-mode: color-dodge;isolation: isolate"/>
+      <ellipse id="Elipse_21" data-name="Elipse 21" cx="19.508" cy="19.508" rx="19.508" ry="19.508" transform="translate(56.517)" fill="#1fe1da" opacity="0.27" style="mix-blend-mode: color-dodge;isolation: isolate"/>
+      <ellipse id="Elipse_18" data-name="Elipse 18" cx="11.937" cy="12.005" rx="11.937" ry="12.005" transform="translate(54.142 170.566)" fill="#1fe1da" opacity="0.27" style="mix-blend-mode: color-dodge;isolation: isolate"/>
+      <ellipse id="Elipse_19" data-name="Elipse 19" cx="16.37" cy="16.371" rx="16.37" ry="16.371" transform="translate(62.792 260.569)" fill="#35ffd7" opacity="0.15" style="mix-blend-mode: color-dodge;isolation: isolate"/>
+    </g>
+  </g>
+</svg>

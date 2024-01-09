@@ -1,0 +1,27 @@
+<ion-content class="background">
+
+  <div id="container">
+    <img id="logo-image" src="/assets/images/loco_cuidame.png" alt="">
+    <div class="scrolldiv">
+
+      <ion-list class="color-transparent" lines="none">
+        <div *ngFor="let item of objetos['data'] | keyvalue; let i = index">
+
+          <ion-item [ngClass]="{'par' : i%2 === 0, 'impar' : i%2 !== 0}" class="impar">
+            <ion-label>{{i+1}}. {{item.value['objeto']}}</ion-label>
+            <ion-icon (click)="deleteObject(item.value['objeto'])" slot="end" name="trash-outline"></ion-icon>
+          </ion-item>
+
+        </div>
+      </ion-list>
+
+
+    </div>
+
+  </div>
+
+  <div class="button" (click)="anadirObjeto()">
+    <img class="ico" src="/assets/images/ico_otros.png" alt="">
+    <label>Agregar un objeto</label>
+  </div>
+</ion-content>

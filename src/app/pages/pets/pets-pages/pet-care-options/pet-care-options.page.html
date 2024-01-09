@@ -1,0 +1,178 @@
+<div>
+  <app-greeting></app-greeting>
+
+  <div class="container" *ngIf="!serviceRequest">
+    <div
+      class="card-container"
+      [ngClass]="{'active': isClicked}"
+      (click)="toggleClick()"
+    >
+      <ion-label class="card" (click)="goToVeterinarians()">
+        <div class="background-gradient"></div>
+        <ion-img
+          class="background-img"
+          src="/assets/pets/care/medical_dog.svg"
+        ></ion-img>
+      </ion-label>
+      <div class="title" (click)="goToVeterinarians()"><label>Consulta Veterinaria Virtual</label></div>
+    </div>
+    <div
+      class="card-container"
+      [ngClass]="{'active': isClicked}"
+      (click)="toggleClick()"
+    >
+      <ion-label class="card" (click)="openWhatsappBath()">
+        <div class="background-gradient"></div>
+        <ion-img
+          class="background-img"
+          src="/assets/pets/care/cat_bathroom.svg"
+        ></ion-img>
+      </ion-label>
+      <div class="title position" (click)="openWhatsappBath()"><label>Agenda Baño y Peluqueria</label></div>
+    </div>
+    <div
+      class="card-container"
+      [ngClass]="{'active': isClicked}"
+      (click)="toggleClick()"
+    >
+      <ion-label class="card" (click)="openWhatsappHotel()">
+        <div class="background-gradient"></div>
+        <ion-img
+          class="background-img"
+          src="/assets/pets/care/cat_w_glasses.svg"
+        ></ion-img>
+      </ion-label>
+      <div class="title position" (click)="openWhatsappHotel()"><label>Hotel y Guardería</label></div>
+    </div>
+    <div
+      class="card-container"
+      [ngClass]="{'active': isClicked}"
+      (click)="toggleClick()"
+    >
+      <ion-label class="card" (click)="openWhatsappSpa()">
+        <div class="background-gradient"></div>
+        <ion-img
+          class="background-img"
+          src="/assets/pets/care/spa_dog.svg"
+        ></ion-img>
+      </ion-label>
+      <div class="title position" (click)="openWhatsappSpa()"><label>Bienestar y Spa</label></div>
+    </div>
+    <div
+      class="card-container"
+      [ngClass]="{'active': isClicked}"
+      (click)="toggleClick()"
+    >
+      <ion-label class="card" (click)="openWhatsappStore()">
+        <div class="background-gradient"></div>
+        <ion-img
+          class="background-img"
+          src="/assets/pets/care/headphone_dog.svg"
+        ></ion-img>
+      </ion-label>
+      <div class="title" style="top: -45px" (click)="openWhatsappStore()"><label>Pet Store</label></div>
+    </div>
+    <div
+      class="card-container"
+      [ngClass]="{'active': isClicked}"
+      (click)="toggleClick()"
+    >
+      <ion-label class="card" (click)="openWhatsappExequial()">
+        <div class="background-gradient"></div>
+        <ion-img
+          class="background-img"
+          src="/assets/pets/care/wings_cat_dog.svg"
+        ></ion-img>
+      </ion-label>
+      <div class="title position" (click)="openWhatsappExequial()"><label>Servicios Exequiales</label></div>
+    </div>
+  </div>
+
+  <div class="container" *ngIf="serviceRequest">
+    <div
+      class="card-container"
+      [ngClass]="{'active': isClicked}"
+      (click)="toggleClick()"
+    >
+      <ion-label class="card">
+        <div class="background-gradient"></div>
+        <ion-img
+          class="background-img"
+          src="/assets/health/care/medicine.svg"
+        ></ion-img>
+      </ion-label>
+      <div class="title" style="top: -50px"><label>Medicina General</label></div>
+    </div>
+    <div
+      class="card-container"
+      [ngClass]="{'active': isClicked}"
+      (click)="toggleClick()"
+    >
+      <ion-label class="card">
+        <div class="background-gradient"></div>
+        <ion-img
+          class="background-img"
+          src="/assets/health/care/psychology.svg"
+        ></ion-img>
+      </ion-label>
+      <div class="title health-position"><label>Psicología</label></div>
+    </div>
+    <div
+      class="card-container"
+      [ngClass]="{'active': isClicked}"
+      (click)="toggleClick()"
+    >
+      <ion-label class="card" >
+        <div class="background-gradient"></div>
+        <ion-img
+          class="background-img"
+          src="/assets/health/care/laboratory.svg"
+        ></ion-img>
+      </ion-label>
+      <div class="title health-position"><label>Laboratorio</label></div>
+    </div>
+    <div
+      class="card-container"
+      [ngClass]="{'active': isClicked}"
+      (click)="toggleClick()"
+    >
+      <ion-label class="card">
+        <div class="background-gradient"></div>
+        <ion-img
+          class="background-img"
+          src="/assets/health/care/dentistry.svg"
+        ></ion-img>
+      </ion-label>
+      <div class="title health-position"><label>Odontología</label></div>
+    </div>
+    <div
+      class="card-container"
+      [ngClass]="{'active': isClicked}"
+      (click)="toggleClick()"
+    >
+      <ion-label class="card">
+        <div class="background-gradient"></div>
+        <ion-img
+          class="background-img"
+          src="/assets/health/care/nursing.svg"
+        ></ion-img>
+      </ion-label>
+      <div class="title" style="top: -55px"><label>Cuidador y Enfermería</label></div>
+    </div>
+    <div
+      class="card-container"
+      [ngClass]="{'active': isClicked}"
+      (click)="toggleClick()"
+    >
+      <ion-label class="card" >
+        <div class="background-gradient"></div>
+        <ion-img
+          class="background-img"
+          src="/assets/health/care/procedures.svg"
+        ></ion-img>
+      </ion-label>
+      <div class="title health-position" ><label style="font-size: 1.2rem;">Procedimientos</label></div>
+    </div>
+  </div>
+
+</div>

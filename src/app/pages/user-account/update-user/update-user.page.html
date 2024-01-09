@@ -1,0 +1,152 @@
+<ion-content class="background">
+  <ion-img id="img-logo" src="assets/images/logo_cuidame.svg"></ion-img>
+  <main>
+    <div class="info">
+      <p>
+        A continuación puedes actualizar los datos de la cuenta.
+      </p>
+    </div>
+    <form #updateForm="ngForm">
+      <ion-list mode="md">
+        <div class="horizontal-fields-container">
+          <div class="item horizontal-fields">
+            <ion-label color="primary">Nombres</ion-label>
+            <ion-input
+              type="text"
+              name="name"
+              required
+              [(ngModel)]="userinfo.name"
+            ></ion-input>
+          </div>
+
+          <div class="item horizontal-fields">
+            <ion-label color="primary">Apellidos</ion-label>
+            <ion-input
+              type="text"
+              name="lastname"
+              required
+              [(ngModel)]="userinfo.lastname"
+            ></ion-input>
+          </div>
+        </div>
+
+        <div class="horizontal-fields-container">
+          <div class="item">
+            <ion-label color="primary" class="select-label"
+              >Identificación</ion-label
+            >
+            <ion-select
+              interface="popover"
+              name="typeID"
+              required
+              [(ngModel)]="userinfo.typeid"
+            >
+              <ion-select-option
+                *ngFor="let item of tiposID"
+                value="{{item.valor}}"
+                required
+                >{{item.etiqueta}}</ion-select-option
+              >
+            </ion-select>
+          </div>
+
+          <div
+            class="item horizontal-fields-id"
+            *ngIf="userinfo.typeid !== 'pasaporte'"
+          >
+            <ion-label color="primary">&nbsp;</ion-label>
+            <ion-input
+              type="number"
+              name="numberID"
+              required
+              [(ngModel)]="userinfo.numberid"
+            ></ion-input>
+          </div>
+
+          <div
+            class="item horizontal-fields-id"
+            *ngIf="userinfo.typeid === 'pasaporte'"
+          >
+            <ion-label color="primary">&nbsp;</ion-label>
+            <ion-input
+              type="text"
+              name="numberID"
+              required
+              [(ngModel)]="userinfo.numberid"
+            ></ion-input>
+          </div>
+        </div>
+
+        <div class="item">
+          <ion-label color="primary">Dirección</ion-label>
+          <ion-input
+            type="text"
+            name="address"
+            required
+            [(ngModel)]="userinfo.address"
+          ></ion-input>
+        </div>
+
+        <div class="horizontal-fields-container">
+          <div class="item horizontal-fields">
+            <ion-label color="primary">Departamento</ion-label>
+            <ion-select
+              interface="popover"
+              name="department"
+              required
+              (ionChange)="onDepartmentChange($event)"
+              [(ngModel)]="userinfo.department"
+            >
+              <ion-select-option
+                *ngFor="let department of departments"
+                [value]="department.id"
+                required
+              >
+                {{ department.name }}
+              </ion-select-option>
+            </ion-select>
+          </div>
+
+          <div class="item horizontal-fields" >
+            <ion-label style="margin-left: 10px;" color="primary">Ciudad</ion-label>
+            <select
+              interface="popover"
+              name="city_id"
+              class="select"
+              (change)="onDepartmentChange($event)"
+              [(ngModel)]="selectedCityId"
+              required
+              #townshipsSelect
+            >
+              <option
+                *ngFor="let township of townships"
+                [value]="township.id"
+                required
+              >
+                {{ township.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="item">
+          <ion-label color="primary">Teléfono</ion-label>
+          <ion-input
+            type="number"
+            name="phone"
+            maxlength=10
+            required
+            [(ngModel)]="userinfo.phone"
+          ></ion-input>
+        </div>
+
+      </ion-list>
+    </form>
+
+    <section id="buttons">
+      <div class="button" (click)="update(updateForm)">
+        <label>Actualizar</label>
+      </div>
+    </section>
+  </main>
+</ion-content>

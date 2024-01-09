@@ -1,0 +1,8 @@
+<ion-content [ngClass]="{'background':  background(urls), 'white-background': !background(urls)}">
+  <app-header-dash *ngIf="shouldShowFlag()"></app-header-dash>
+  <main [ngClass]="{'main':  isUrlInArray(urls), '': !isUrlInArray(urls)}">
+    <app-header-greeting *ngIf="shouldShowGreeting()"></app-header-greeting>
+    <router-outlet></router-outlet>
+  </main>
+</ion-content>
+<app-tab-bar-dash [enableBackButton]="true" [enableMiddleButton]="true" [enableExitButton]="true" ></app-tab-bar-dash>

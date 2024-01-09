@@ -1,0 +1,56 @@
+<div class="all-pets-container">
+  <div class="container-greeting">
+    <div class="greeting-labels">
+      <label class="greeting">Hola, {{name}}</label>
+      <label class="greeting-time">Buenas tardes</label>
+    </div>
+    <img class="logo" src="/assets/images/logo_cuidame.svg" alt="" />
+  </div>
+
+  <div class="your-pets">
+    <label>Tus mascotas, </label>
+    <label>selecciona la que quieras consultar</label>
+  </div>
+  <form method="post">
+    <div class="search-container">
+      <ion-input
+        name="searchTerm"
+        [(ngModel)]="searchTerm"
+        [ngModelOptions]="{standalone: true}"
+      ></ion-input>
+      <ion-icon src="/assets/pets/icon-search.svg"></ion-icon>
+    </div>
+  </form>
+
+  <div class="container" *ngIf="finishedLoading; else loading">
+    <div
+      class="card-container"
+      *ngFor="let pet of petsArray | filterPets: searchTerm"
+    >
+      <ion-label class="card" (click)="goToPet(pet.id, pet.agreement)">
+        <ion-img
+          class="pet-photo"
+          src="{{productionServerUrl}}{{pet.photourl}}"
+        ></ion-img>
+      </ion-label>
+      <div class="pet-name"><label>{{pet.nombre}}</label></div>
+    </div>
+
+
+    <ion-label (click)="goToCreatePet()" class="add-pet-card">
+      <div class="center-add-icon">
+        <ion-img
+          class="add-icon"
+          src="/assets/pets/icon-add-circle.svg"
+        ></ion-img>
+      </div>
+      <div class="left-label">
+        <label>Agregar</label>
+      </div>
+    </ion-label>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="all-pets-container"></div>
+</ng-template>

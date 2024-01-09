@@ -1,0 +1,16 @@
+<app-greeting></app-greeting>
+<div>
+  <div class="cat-container">
+    <img class="cat" src="/assets/pets/care/catdog.svg" alt="cat" />
+  </div>
+  <div>
+    <div class="button" (click)="goToPetInfo()">
+      <img class="icon" src="/assets/pets/ico_edit_info.svg" />
+      <label>Gestiona Información de {{pet.nombre}}</label>
+    </div>
+    <div class="button" (click)="goToPetCare()">
+      <img class="icon" src="/assets/pets/pet_square.svg" />
+      <label>Gestiona el cuidado de {{pet.nombre}}</label>
+    </div>
+  </div>
+</div>

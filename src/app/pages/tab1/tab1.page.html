@@ -1,0 +1,395 @@
+<ion-menu side="start" content-id="main-content" *ngIf="user">
+  <ion-header>
+    <ion-toolbar translucent>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list lines="none">
+      <!-- <ion-item>
+        <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+        <ion-label>Mi perfil</ion-label>
+        <ion-icon size="small" name="chevron-forward-outline" slot="end"></ion-icon>
+      </ion-item> -->
+      <!-- <ion-item (click)="goEdit()">
+        <ion-icon name="create-outline" slot="start"></ion-icon>
+        <ion-label>Editar información</ion-label>
+        <ion-icon size="small" name="chevron-forward-outline" slot="end"></ion-icon>
+      </ion-item> -->
+
+      <!-- Contactos comentados por cambio en el diseno del front -->
+      <!-- <ion-item routerLink="/contacts">
+        <ion-icon name="arrow-redo-outline" slot="start"></ion-icon>
+        <ion-label>Contactos</ion-label>
+        <ion-icon size="small" name="chevron-forward-outline" slot="end"></ion-icon>
+      </ion-item> -->
+      <ion-item (click)="goHelpPage()">
+        <ion-icon name="help-circle-outline" slot="start"></ion-icon>
+        <ion-label>Ayuda</ion-label>
+        <ion-icon
+          size="small"
+          name="chevron-forward-outline"
+          slot="end"
+        ></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="moon-outline" slot="start"></ion-icon>
+        <ion-label>Dark mode</ion-label>
+        <ion-toggle slot="end" (ionChange)="toogleTheme($event)"></ion-toggle>
+      </ion-item>
+      <ion-item (click)="goMenu()">
+        <ion-icon name="grid-outline" slot="start"></ion-icon>
+        <ion-label>Menú</ion-label>
+      </ion-item>
+      <ion-item (click)="logOut()">
+        <ion-icon name="power-outline" slot="start"></ion-icon>
+        <ion-label>Cerrar sesión</ion-label>
+      </ion-item>
+      <!-- <ion-item (click)="testing()">
+        <ion-icon name="power-outline" slot="start"></ion-icon>
+        <ion-label>Hacer test</ion-label>
+      </ion-item> -->
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start" *ngIf="user">
+        <ion-button (click)="openMenu()">
+          <ion-icon name="person-circle"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title color="secondary" #titleName>Cuídame</ion-title>
+      <ion-buttons slot="end" *ngIf="user">
+        <ion-button (click)="goEdit()">
+          <ion-icon name="create-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content [fullscreen]="true" class="background">
+    <div *ngIf="!isCivilAccesing">
+      <ion-segment  
+        [value]="selectedCategory"
+        (ionChange)="segmentChanged($event)"
+        scrollable
+        mode="md"
+      >
+        <ion-segment-button
+          layout="icon-bottom"
+          *ngFor="let category of categories, index as i"
+          [value]="category"
+        >
+          <ion-label class="ion-text-capitalize">{{ category }} </ion-label>
+          <ion-icon src="/assets/images/iconos/{{ iconsNames[i] }}"></ion-icon>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+    <!-- PACIENTE -->
+
+    <!-- SI ES CIUDADANOO -->
+    <!-- SI ES CIUDADANOO -->
+    <!-- SI ES CIUDADANOO -->
+
+    <ul>
+      <section *ngIf="selectedCategory === 'usuario'">
+        <!-- <section> -->
+
+        <!-- Mostrar solo informacion a un civil -->
+        <div *ngIf="isCivilAccesing">
+          <img id="logo-image" src="/assets/images/loco_cuidame.png" alt="" />
+
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>{{mayus(modeloPaciente[2][1])}}</ion-card-title>
+              <label id="label-card"> {{mayus(modeloPaciente[2][0])}}</label>
+            </ion-card-header>
+
+            <ion-card-content>
+               <span id="span-card"> {{mayus(modeloPaciente[6][1])}}</span>
+              <br /><label id="label-card">
+                {{mayus(modeloPaciente[6][0])}}</label
+              >
+              <br /><span id="span-card">
+                {{mayus(modeloPaciente[10][1])}},
+                {{mayus(modeloPaciente[11][1])}}</span
+              >
+              <br /><label id="label-card"> Ubicación </label> <br /><span
+                id="span-card"
+              >
+                {{mayus(modeloPaciente[9][1])}}</span
+              >
+              <br /><label id="label-card"> Dirección</label>
+
+              <br /><span id="span-card">{{mayus(modeloPaciente[18][1])}}</span>
+              <br /><label id="label-card"
+                >{{mayus(modeloPaciente[18][0])}}</label
+              >
+
+              <br /><span id="span-card">{{mayus(modeloPaciente[19][1])}}</span>
+              <br /><label id="label-card"
+                >{{mayus(modeloPaciente[19][0])}}</label
+              >
+            </ion-card-content>
+          </ion-card>
+        </div>
+
+        <div *ngIf="!isCivilAccesing">
+          <p class="title">Información básica:</p>
+
+          <div *ngFor="let item of modeloPaciente ">
+            <div
+              class="li-item"
+              *ngIf="item[0] !== 'id' && item[0] !== 'a_cargo_id'  && item[1] !== null"
+            >
+              <li>
+                <!-- <label id="label1" class="label" color="primary"> {{mayus(item[0])}}: </label> -->
+                <label id="label2" slot="end" type="text" readonly
+                  >{{mayus(item[1])}}</label
+                >
+              </li>
+              <p id="label1">{{mayus(item[0])}}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONDICION -->
+      <div *ngIf="selectedCategory === 'condición'">
+        <section>
+          <p class="title">Enfermedades:</p>
+          <div *ngFor="let item of enfToShow; let index = index">
+            <li *ngIf="item[0] !== 'id' && item[1] !== null">
+              <label class="ion-text-capitalize label">
+                {{index + 1}}. <span>{{item[1]}}</span></label
+              >
+            </li>
+          </div>
+        </section>
+
+        <section>
+          <p class="title">Condición:</p>
+          <div *ngFor="let item of modeloPaciente ">
+            <li *ngIf="item[0] !== 'id' && item[1] !== null">
+              <label id="label2" slot="end" type="text" readonly
+                >{{item[1]}}</label
+              >
+            </li>
+            <p
+              *ngIf="item[0] !== 'id' && item[1] !== null"
+              id="label1"
+              class="ion-text-capitalize label"
+              color="primary"
+            >
+              {{item[0]}}:
+            </p>
+          </div>
+        </section>
+      </div>
+      <!-- ANTECEDENTES -->
+      <div *ngIf="selectedCategory === 'antecedentes'">
+        <section>
+          <p class="title">Antecedentes personales</p>
+          <div *ngFor="let antecedente of antPToShow; let index = index">
+            <!-- <p class="numeral">Antecende {{index + 1}}</p> -->
+            <!-- <div *ngFor="let item of antecedente"> -->
+            <li>
+              <label
+                id="label2"
+                slot="end"
+                class="ion-text-capitalize"
+                type="text"
+                readonly
+                >{{antecedente[0][1]}}</label
+              >
+            </li>
+            <p id="label1" class="label" color="primary">Tipo antecedente:</p>
+            <li>
+              <label
+                id="label2"
+                slot="end"
+                class="ion-text-capitalize"
+                type="text"
+                readonly
+                >{{antecedente[1][1]}}</label
+              >
+            </li>
+            <p id="label1" class="label" color="primary">
+              Descripción antecedente:
+            </p>
+            <li>
+              <label
+                id="label2"
+                slot="end"
+                class="ion-text-capitalize"
+                type="text"
+                readonly
+                >{{antecedente[2][1]}}</label
+              >
+            </li>
+            <p id="label1" class="label" color="primary">Fecha antecedente</p>
+            <!-- </div> -->
+            <br />
+          </div>
+        </section>
+
+        <section>
+          <p class="title">Antecedentes familiares</p>
+
+          <div *ngFor="let antecedente of antFToShow; let index = index">
+            <!-- <p class="numeral">Antecende {{index + 1}}</p> -->
+
+            <!-- <div *ngFor="let item of antecedente"> -->
+            <li>
+              <label
+                id="label2"
+                slot="end"
+                class="ion-text-capitalize"
+                type="text"
+                readonly
+                >{{antecedente[0][1]}}</label
+              >
+            </li>
+            <p id="label1" class="label" color="primary">Tipo antecedente:</p>
+            <li>
+              <label
+                id="label2"
+                slot="end"
+                class="ion-text-capitalize"
+                type="text"
+                readonly
+                >{{antecedente[1][1]}}</label
+              >
+            </li>
+            <p id="label1" class="label" color="primary">Parentesco:</p>
+            <li>
+              <label
+                id="label2"
+                slot="end"
+                class="ion-text-capitalize"
+                type="text"
+                readonly
+                >{{antecedente[2][1]}}</label
+              >
+            </li>
+            <p id="label1" class="label" color="primary">
+              Descripción antecedente
+            </p>
+            <!-- </div> -->
+            <br />
+          </div>
+        </section>
+      </div>
+
+      <!-- MEDALERGIAS -->
+      <div *ngIf="selectedCategory === 'medAlergias'">
+        <section>
+          <p class="title">Medicamentos</p>
+          <div *ngFor="let medicamento of medToShow; let index = index">
+            <!-- <p class="numeral">Antecende {{index + 1}}</p> -->
+            <!-- <div *ngFor="let item of medicamento"> -->
+            <li>
+              <label
+                id="label2"
+                slot="end"
+                class="ion-text-capitalize"
+                type="text"
+                readonly
+                >{{medicamento[0][1]}}</label
+              >
+            </li>
+            <p id="label1" class="label" color="primary">Medicamento</p>
+            <li>
+              <label
+                id="label2"
+                slot="end"
+                class="ion-text-capitalize"
+                type="text"
+                readonly
+                >{{medicamento[1][1]}}</label
+              >
+            </li>
+            <p id="label1" class="label" color="primary">Laboratorio:</p>
+            <li>
+              <label
+                id="label2"
+                slot="end"
+                class="ion-text-capitalize"
+                type="text"
+                readonly
+                >{{medicamento[2][1]}}</label
+              >
+            </li>
+            <p id="label1" class="label" color="primary">Dósis:</p>
+            <!-- </div> -->
+
+            <br />
+          </div>
+        </section>
+        <section>
+          <p class="title">Alergias</p>
+
+          <div *ngFor="let alergia of alergiasToShow; let index = index">
+            <!-- <p class="numeral">Antecende {{index + 1}}</p> -->
+
+            <!-- <div *ngFor="let item of alergia"> -->
+            <li>
+              <label
+                id="label2"
+                slot="end"
+                class="ion-text-capitalize"
+                type="text"
+                readonly
+                >{{alergia[0][1]}}</label
+              >
+            </li>
+            <p id="label1" class="label" color="primary">Tipo de alergia:</p>
+            <li>
+              <label
+                id="label2"
+                slot="end"
+                class="ion-text-capitalize"
+                type="text"
+                readonly
+                >{{alergia[1][1]}}</label
+              >
+            </li>
+            <p id="label1" class="label" color="primary">
+              Descripción alergia:
+            </p>
+            <!-- </div> -->
+            <br />
+          </div>
+        </section>
+      </div>
+
+      <!-- //VACUNAS -->
+
+      <section *ngIf="selectedCategory === 'vacunas'">
+        <p class="title">Vacunas</p>
+        <div *ngFor="let vacuna of vacunasToShow; let index = index">
+          <li>
+            <label
+              id="label2"
+              slot="end"
+              class="ion-text-capitalize"
+              type="text"
+              readonly
+              >{{vacuna[1]}}</label
+            >
+          </li>
+          <p id="label1" class="label" color="primary">Vacuna:</p>
+        </div>
+      </section>
+    </ul>
+    <!-- <ion-button color="secondary"  expand="block" fill="clear" shape="round" (click)="logOut()">
+      Cerrar sesión
+    </ion-button> -->
+  </ion-content>
+</div>
+
+<!-- </ion-header> -->

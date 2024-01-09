@@ -1,0 +1,95 @@
+
+
+<ion-content class="background">
+  <ion-img id="img-logo" src="assets/images/logo_cuidame.svg"></ion-img>
+  <main>
+    <!-- <p class="ion-margin ion-margin-bottom" id="label">¡Hola!</p> -->
+    <div class="band-info">
+      <p>
+        Por favor, ingresa a continuación la información referente a la banda
+        adquirida
+      </p>
+    </div>
+
+    <form #RegBand="ngForm">
+      <ion-list mode="md">
+        <div class="band">
+          <div class="left-content">
+            <ion-checkbox
+              name="usuarioPaciente"
+              [(ngModel)]="registerBand.usuarioPaciente"
+              (click)="reset()"
+            ></ion-checkbox>
+            <ion-label class="ion-margin">La manilla es para mi</ion-label>
+          </div>
+          <ion-icon id="help-button" slot="end" name="help-circle-outline"></ion-icon>
+        </div>
+        
+
+        <div class="item">
+          <!-- <ion-icon color="primary" slot="start" name="scan-circle-outline"></ion-icon> -->
+          <ion-label color="primary" 
+            >Código de registro (Salud)</ion-label
+          >
+          <ion-input
+            type="text"
+            name="code"
+            required
+            [(ngModel)]="registerBand.code"
+          ></ion-input>
+        </div>
+
+        <!-- <ion-item >
+        <ion-icon color="primary" slot="start" name="key-outline"></ion-icon>
+        <ion-label color="primary" >Pin de seguridad</ion-label>
+        <ion-input type="password" name="pin"  required [(ngModel)]="registerBand.pin"></ion-input>
+      </ion-item> -->
+
+        <div class="item">
+          <!-- <ion-icon color="primary" slot="start" name="people-outline"></ion-icon> -->
+          <ion-label color="primary" 
+            >Parentesco con paciente</ion-label
+          >
+          <ion-input
+            [disabled]="registerBand.usuarioPaciente"
+            type="text"
+            name="parentesco"
+            required
+            [(ngModel)]="registerBand.parentesco"
+            (keyup)="IdPed($event)"
+            [ngClass]="{ 'input-highlighted': registerBand.usuarioPaciente }"
+          ></ion-input>
+        </div>
+
+        <ion-popover showBackdrop="false" trigger="help-button">
+          <ng-template>
+            <ion-card class="ion-no-margin">
+              <ion-card-content>
+                Si tu serás quien usará la banda, marca esta casilla.
+                <br />
+                Si tu estás a cargo de una persona que usará la banda, desmarca
+                esta casilla e indica el parentesco con la persona que hará uso
+                de la banda.
+              </ion-card-content>
+            </ion-card>
+          </ng-template>
+        </ion-popover>
+
+        <div class="link-container" >
+          <label class="link">¡Regístrate para usar el servicio de tus mascotas!</label>
+          <div class="register-button" (click)="goToRegister()">
+            <label>Regístrate</label>
+          </div>
+        </div>
+
+      </ion-list>
+    </form>
+
+    <section id="buttons">
+      <!-- <ion-icon name="arrow-back-outline" (click)="back()"></ion-icon> -->
+      <div class="button" (click)="next(RegBand)">
+        <label>Confimar</label>
+      </div>
+    </section>
+  </main>
+</ion-content>

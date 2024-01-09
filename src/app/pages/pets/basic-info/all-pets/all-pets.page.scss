@@ -1,0 +1,178 @@
+.all-pets-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-greeting {
+  font-family: "Quicksand", sans-serif;
+  margin: 7% 0 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #275289;
+
+  .greeting-labels {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+  }
+
+  .greeting {
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
+
+  .greeting-time {
+    @extend .greeting;
+    font-weight: lighter;
+    font-size: 2.5rem;
+  }
+
+  .logo {
+    width: 35%;
+  }
+}
+
+.your-pets {
+  font-family: "Quicksand", sans-serif;
+  margin: 0 10% 10% 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  text-align: start;
+  font-size: 1.4rem;
+
+  label {
+    color: #95b8c8;
+    font-weight: lighter;
+  }
+}
+.container {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.card {
+  width: 167px;
+  height: 245px;
+  background-color: #fff;
+  margin: 10px 10px 10px 10px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+
+  .pet-photo {
+    width: 167px;
+    height: 245px;
+    transform: scale(1.5);
+    overflow: hidden;
+  }
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.pet-name {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  position: relative;
+  top: -40px;
+  left: 20px;
+  width: 167px;
+  height: 20px;
+
+  label {
+    width: 100%;
+    text-align: left;
+    font-family: "Quicksand Bold";
+    font-weight: bold;
+    color: #fff;
+    font-size: 1.5rem;
+  }
+}
+
+.background-gradient {
+  position: absolute;
+  height: 50%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, #f96910, transparent);
+  z-index: 1;
+  opacity: 0.8;
+}
+
+.background-img {
+  width: 167px;
+  height: 245px;
+  transform: scale(1.5);
+  overflow: hidden;
+}
+
+.add-pet-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 167px;
+  height: 245px;
+  background-color: #fff;
+  margin: 10px;
+  border-radius: 20px;
+  padding: 10px;
+  opacity: 0.5;
+  box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.4);
+  padding: 10px;
+}
+
+.left-label {
+  width: 100%;
+  text-align: left;
+  font-family: "Quicksand Bold";
+  font-weight: bold;
+  color: #95b8c8;
+  font-size: 1.5rem;
+  z-index: 2;
+}
+
+.center-add-icon {
+  flex: 1;
+  display: flex;
+  z-index: 2;
+}
+
+.search-container {
+  display: flex;
+  align-self: flex-end;
+  align-items: center;
+
+  width: 100%;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #fff;
+  border: 0;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  margin: 10px 0 10% 0;
+
+  ion-icon {
+    transform: translateX(-50%);
+    font-size: 20px;
+  }
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+ion-loading.custom-loading {
+  --background: #e3edff;
+  --spinner-color: #1c6dff;
+
+  color: #1c6dff;
+}

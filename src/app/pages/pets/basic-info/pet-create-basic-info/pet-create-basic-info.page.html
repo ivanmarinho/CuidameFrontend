@@ -1,0 +1,211 @@
+<div style="margin-top: 40%">
+  <div class="info">
+    <p>Por favor, ingresa a continuación la información básica de tu mascota</p>
+  </div>
+
+  <form #petForm="ngForm" enctype="multipart/form-data">
+    <ion-label>Foto de Perfil</ion-label>
+    <div class="pet-profile">
+      <ion-item lines="none" class="item-with-circle">
+        <div>
+          <ion-label class="circle">
+            <ion-img [src]="imageUrl" *ngIf="imageUrl"></ion-img>
+          </ion-label>
+        </div>
+        <div class="small-circle">
+          <ion-icon
+            (click)="openFileInput()"
+            (click)="fileInput.click()"
+            class="camera-ico"
+            src="/assets/images/add_img.svg"
+            role="img"
+          ></ion-icon>
+        </div>
+        <input
+          #fileInput
+          type="file"
+          name="image"
+          accept="image/*"
+          style="display: none"
+          (change)="handleFileInput($event)"
+        />
+      </ion-item>
+    </div>
+
+    <ion-list mode="md">
+      <div class="item">
+        <ion-label>Nombre</ion-label>
+        <ion-input
+          type="text"
+          name="nombre"
+          maxlength=10
+          required
+          [(ngModel)]="pet.nombre"
+          ngDefaultControl
+        ></ion-input>
+      </div>
+
+      <div class="horizontal-fields-container">
+        <div class="item horizontal-fields">
+          <ion-label>Especie</ion-label>
+          <select
+            class="species"
+            interface="popover"
+            name="especie"
+            [(ngModel)]="pet.especie"
+            required
+            ngDefaultControl
+          >
+          <option value="Perro">Perro</option>
+          <option value="Gato">Gato</option>
+          <option value="Conejo">Conejo</option>
+          <option value="Conejo">Tortuga</option>
+          <option value="Ave">Ave</option>
+          <option value="Hamsters">Hámsters</option>
+          <option value="Ratones y ratas" >Ratones y ratas</option >
+          <option value="Cobayas">Cobayas</option>
+          <option value="Iguana">Iguana</option>
+          <option value="Conejo">Otro</option>
+          </select>
+        </div>
+        <div class="item horizontal-fields">
+          <ion-label>Sexo</ion-label>
+          <select
+            interface="popover"
+            name="sexo"
+            class="sexo"
+            [(ngModel)]="pet.sexo"
+            required
+            ngDefaultControl
+          >
+            <option value="Macho">Macho</option>
+            <option value="Hembra">Hembra</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="item">
+        <ion-label>Raza</ion-label>
+        <ion-input
+          type="text"
+          name="raza"
+          [(ngModel)]="pet.raza"
+          ngDefaultControl
+        ></ion-input>
+      </div>
+
+      <div class="horizontal-fields-container">
+        <div class="item horizontal-fieldsv2">
+          <ion-label>Fecha de Nacimiento</ion-label>
+          <ion-input
+            type="date"
+            name="fechanacimiento"
+            required
+            [(ngModel)]="pet.fechanacimiento"
+            ngDefaultControl
+          >
+          </ion-input>
+        </div>
+
+        <div class="item horizontal-fieldsv2">
+          <ion-label>Peso (Kg)</ion-label>
+          <ion-input
+            type="number"
+            name="peso"
+            required
+            [(ngModel)]="pet.peso"
+            min=1
+            step=1
+            ngDefaultControl
+          ></ion-input>
+        </div>
+      </div>
+
+      <div class="item">
+        <ion-label>Color</ion-label>
+        <ion-input
+          type="text"
+          name="color"
+          maxlength=20
+          required
+          [(ngModel)]="pet.color"
+          ngDefaultControl
+        ></ion-input>
+      </div>
+
+      <div class="horizontal-fields-container">
+        <!-- <div class="item horizontal-fields">
+          <ion-label>Seguro</ion-label>
+          <ion-input
+            type="text"
+            name="seguro"
+            [(ngModel)]="pet.seguro"
+            ngDefaultControl
+          >
+          </ion-input>
+        </div> -->
+        <div class="item horizontal-fields">
+          <ion-label>Temperamento</ion-label>
+          <select
+            class="temperament"
+            name="temperamento"
+            [(ngModel)]="pet.temperamento"
+            required
+            ngDefaultControl
+          >
+            <option value="Tranquilo">Tranquilo</option>
+            <option value="Amistoso">Amistoso</option>
+            <option value="Agresivo">Agresivo</option>
+            <option value="Miedoso">Miedoso</option>
+          </select>
+        </div>
+
+        <div class="item horizontal-fields">
+          <ion-label>Estatura (Cm)</ion-label>
+          <ion-input
+            type="number"
+            name="estatura"
+            [(ngModel)]="pet.estatura"
+            required
+            min=1
+            step=1
+            ngDefaultControl
+          ></ion-input>
+        </div>
+      </div>
+
+      <div class="horizontal-fields-container">
+
+        <div class="item horizontal-fields">
+          <ion-label>No. Chip (Opcional)</ion-label>
+          <ion-input
+            type="number"
+            name="nochip"
+            [(ngModel)]="pet.nochip"
+            ngDefaultControl
+          ></ion-input>
+        </div>
+      </div>
+
+      <div class="item">
+        <ion-label>Descripción</ion-label>
+        <ion-textarea
+          name="descripcion"
+          rows="4"
+          fill="outline"
+          [autoGrow]="true"
+          maxlength=300
+          required
+          [(ngModel)]="pet.descripcion"
+          ngDefaultControl
+        ></ion-textarea>
+      </div>
+    </ion-list>
+    <section id="buttons">
+      <button class="button" (click)="savePet(petForm)">
+        <label>Guardar Mascota</label>
+      </button>
+    </section>
+  </form>
+</div>

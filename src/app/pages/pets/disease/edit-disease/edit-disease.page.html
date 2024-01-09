@@ -1,0 +1,83 @@
+<div class="info">
+  <p>Por favor, ingresa los datos de Salud de tu mascota.</p>
+</div>
+
+<form #form="ngForm" enctype="multipart/form-data">
+  <ion-list mode="md">
+    <div class="item">
+      <ion-label>Tipo de Enfermedad o Condición</ion-label>
+      <select
+        interface="popover"
+        class="blue-select"
+        name="typediseasecondition"
+        [(ngModel)]="disease.typediseasecondition"
+        required
+        ngDefaultControl
+      >
+        <option value="Enfermedad">Enfermedad</option>
+        <option value="Condición">Condición</option>
+      </select>
+    </div>
+
+    <div class="item">
+      <ion-label>Nombre / Diagnóstico</ion-label>
+      <ion-input
+        type="text"
+        name="name"
+        [(ngModel)]="disease.name"
+        required
+        ngDefaultControl
+      ></ion-input>
+    </div>
+
+    <div class="horizontal-fields-container">
+      <div class="item horizontal-fields">
+        <ion-label>Fecha de Diagnóstico</ion-label>
+        <ion-input
+          type="date"
+          class="input-orange"
+          name="diagnosticDate"
+          [(ngModel)]="disease.diagnosticdate"
+          required
+          ngDefaultControl
+        >
+        </ion-input>
+      </div>
+
+      <div class="item horizontal-fields">
+        <ion-label>Estado</ion-label>
+        <select
+          interface="popover"
+          name="status"
+          class="input-orange"
+          [(ngModel)]="disease.status"
+          required
+          ngDefaultControl
+        >
+        <option value="Confirmado">Confirmado</option>
+        <option value="En Tratamiento">En Tratamiento</option>
+        <option value="Resuelto">Resuelto</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="item horizontal-fields">
+      <ion-label>Descripción</ion-label>
+      <ion-textarea
+        rows="4"
+        fill="outline"
+        [autoGrow]="true"
+        maxlength=50
+        name="description"
+        [(ngModel)]="disease.description"
+        required
+        ngDefaultControl
+      ></ion-textarea>
+    </div>
+  </ion-list>
+  <div class="buttons">
+    <button class="button" (click)="update(form)">
+      <label>Actualizar</label>
+    </button>
+  </div>
+</form>

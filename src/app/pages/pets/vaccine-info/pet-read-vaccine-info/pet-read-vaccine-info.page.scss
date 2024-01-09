@@ -1,0 +1,161 @@
+// ============== Show Vaccines =========================================================================
+
+ion-spinner {
+  color: #fff;
+  width: 100px;
+  height: 100px;
+}
+
+.vaccines {
+  display: flex;
+  flex-direction: column;
+  margin-top: 150px;
+  margin-bottom: 100px;
+  align-items: center;
+}
+
+.v-card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: #fff;
+  width: 350px;
+  height: 160px;
+  border-radius: 20px;
+  margin: 10px 0 10px 0;
+
+  background-image: url("/assets/pets/bg-orange-xlarge.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1;
+}
+
+.v-container {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  width: 350px;
+  height: 160px;
+  border-radius: 20px;
+  padding: 15px;
+}
+
+
+.v-photo {
+  width: 150px;
+  height: 130px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-right: 20px;
+  overflow: hidden;
+}
+
+.vac-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.v-photo ion-img {
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.v-pencil {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  left: 150px;
+  bottom: 35px;
+}
+
+.v-pencil:active {
+  transform: translateY(4px);
+}
+
+.v-info {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+
+.v-name {
+  font-family: "Quicksand", sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.v-lab {
+  font-family: "Quicksand", sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.v-lab {
+  margin-bottom: 5px;
+}
+
+.v-date,
+.v-dose {
+  font-family: "Quicksand", sans-serif;
+  font-weight: lighter;
+  font-size: 0.9rem;
+}
+
+.v-add {
+  display: flex;
+  position: fixed;
+  margin-bottom: 50px;
+  padding: 10px 0 10px 0;
+  bottom: 0;
+  left: 3%;
+  right: 0;
+  width: 100%;
+  align-items: center;
+  color: #549ebd;
+  background-color: #d8e7ee;
+
+  label {
+    margin-left: 20px;
+    font-family: "Quicksand", sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 389px) {
+  .v-add {
+    font-size: 2rem;
+  }
+  .v-name,
+  .v-lab {
+    font-size: 1rem;
+  }
+  .v-date,
+  .v-dose {
+    font-size: 0.8rem;
+  }
+
+}
+
+@media only screen and (max-width: 280px) {
+  .v-container {
+    width: 250px;
+  }
+  .v-photo{
+    width: 100px;
+    height: 120px;
+  }
+  .v-card {
+    width: 250px;
+  }
+  .v-pencil {
+    width: 110px;
+    left: 60px;
+    bottom: 25px;
+  }
+}

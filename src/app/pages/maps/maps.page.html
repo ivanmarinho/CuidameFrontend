@@ -1,0 +1,31 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="sign">
+      <ion-icon class="ico" src="/assets/images/logo_cuidame.svg" alt="cuidame"></ion-icon>
+      <label>Veterinarias en tu zona</label>
+    </div>
+  </div>
+  <div #map id="map"></div>
+</ion-content>
+
+<!-- <google-map
+  #map
+  [height]="'500px'"
+  [width]="'100%'"
+  [center]="center"
+  [zoom]="zoom"
+>
+  <map-marker
+    *ngFor="let place of places"
+    [position]="place.geometry.location"
+    (mapClick)="openInfoWindow(place)"
+  >
+  </map-marker>
+  <map-info-window [options]="infoWindowOptions">
+    <div>
+      <h4>{{selectedPlace?.name}}</h4>
+      <p>{{selectedPlace?.vicinity}}</p>
+      <p>Rating: {{selectedPlace?.rating}}</p>
+    </div>
+  </map-info-window>
+</google-map>  -->

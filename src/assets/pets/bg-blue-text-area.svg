@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="309" height="97" viewBox="0 0 309 97">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="309" height="97" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectángulo_85" data-name="Rectángulo 85" width="97" height="309" rx="15" transform="translate(-0.46 0.297)" fill="#fff"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="0.5" y1="1" x2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#40d8ab"/>
+      <stop offset="1" stop-color="#36abde"/>
+    </linearGradient>
+  </defs>
+  <g id="Cuadrícula_de_repetición_1" data-name="Cuadrícula de repetición 1" clip-path="url(#clip-path)">
+    <g transform="translate(0 0.46)">
+      <g id="Grupo_3" data-name="Grupo 3" transform="translate(309.297) rotate(90)" clip-path="url(#clip-path-2)">
+        <g id="Grupo_5" data-name="Grupo 5" transform="translate(-78.249 -86.362)">
+          <rect id="Rectángulo_84" data-name="Rectángulo 84" width="277.12" height="459.155" transform="translate(0 52.9)" fill="url(#linear-gradient)"/>
+          <ellipse id="Elipse_16" data-name="Elipse 16" cx="79.661" cy="103.233" rx="79.661" ry="103.233" transform="translate(32.033 273.233)" fill="#1fe1da" opacity="0.27" style="mix-blend-mode: color-dodge;isolation: isolate"/>
+          <ellipse id="Elipse_17" data-name="Elipse 17" cx="56.816" cy="73.444" rx="56.816" ry="73.444" transform="translate(20.909)" fill="#1fe1da" opacity="0.27" style="mix-blend-mode: color-dodge;isolation: isolate"/>
+          <ellipse id="Elipse_18" data-name="Elipse 18" cx="34.765" cy="45.196" rx="34.765" ry="45.196" transform="translate(145.267 124.29)" fill="#1fe1da" opacity="0.27" style="mix-blend-mode: color-dodge;isolation: isolate"/>
+          <ellipse id="Elipse_19" data-name="Elipse 19" cx="47.677" cy="61.632" rx="47.677" ry="61.632" transform="translate(165.133 253.203)" fill="#35ffd7" opacity="0.15" style="mix-blend-mode: color-dodge;isolation: isolate"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

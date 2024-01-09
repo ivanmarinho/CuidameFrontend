@@ -1,0 +1,155 @@
+
+ion-spinner {
+  color: #fff;
+  width: 100px;
+  height: 100px;
+}
+.veterinarian {
+  display: flex;
+  flex-direction: column;
+  margin-top: 150px;
+  margin-bottom: 100px;
+  align-items: center;
+}
+
+.options {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.appointment-container {
+  display: flex;
+  position: relative;
+  justify-content: start;
+  align-items: center;
+  width: 50%;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    width: 80%;
+    height: 20px;
+
+    border-radius: 100px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+
+    background-image: url("/assets/images/bg_btn_login.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1;
+  }
+
+  button:active {
+    transform: translateY(2px);
+  }
+
+  ion-label.a-label {
+    font-family: "Quicksand", sans-serif;
+    font-weight: bold;
+    color: #fff;
+    font-size: 0.8rem;
+  }
+}
+
+.vet-card {
+  display: grid;
+  justify-content: start;
+  align-items: center;
+  color: #fff;
+  width: 350px;
+  height: 220px;
+  border-radius: 20px;
+  padding: 15px;
+  margin: 10px 0 10px 0;
+
+  background-image: url("/assets/pets/bg-blue-xlarge.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1;
+}
+
+.vet-profile {
+  width: 130px;
+}
+
+.vet-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.vet-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4%;
+
+  .vet-title {
+    font-family: "Quicksand", sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+
+  .vet-desc {
+    font-family: "Quicksand", sans-serif;
+    font-size: 0.9rem;
+  }
+}
+
+.v-add {
+  display: flex;
+  position: fixed;
+  margin-bottom: 50px;
+  padding: 10px 0 10px 0;
+  bottom: 0;
+  left: 3%;
+  right: 0;
+  width: 100%;
+  align-items: center;
+  color: #549ebd;
+  background-color: #d8e7ee;
+
+  label {
+    margin-left: 20px;
+    font-family: "Quicksand", sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+}
+
+.v-edit {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  position: relative;
+  bottom: -5px;
+  left: 15px;
+}
+
+.v-edit:active {
+  transform: translateY(4px);
+}
+
+@media only screen and (max-width: 280px) {
+  .vet-card {
+    width: 250px;
+  }
+  .vet-profile {
+    width: 90px;
+  }
+  .vet-info {
+    margin-left: 10px;
+  }
+}

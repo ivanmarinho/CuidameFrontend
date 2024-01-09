@@ -1,0 +1,99 @@
+<ion-content class="background">
+  <ion-img id="img-logo" src="assets/images/logo_cuidame.svg"></ion-img>
+  <main>
+
+    <div class="buttons-select-service" *ngIf="!showOptions">
+      <div class="info">
+        <p>Selecciona tu servicio</p>
+      </div>
+      <div class="health-button">
+        <div class="icon-container">
+          <ion-icon
+            style="font-size: 35px"
+            src="assets/pets/pet-paw.svg"
+          ></ion-icon>
+        </div>
+        <div class="text-container">
+          <label>SALUD</label>
+        </div>
+      </div>
+      <div class="pet-button" (click)="toggleOptions()">
+        <div class="icon-container">
+          <ion-icon
+            style="font-size: 30px"
+            src="assets/pets/shield.svg"
+          ></ion-icon>
+        </div>
+        <div class="text-container" style="position: relative; right: 20px">
+          <label>MASCOTAS</label>
+        </div>
+      </div>
+    </div>
+
+      <div class="options" *ngIf="showOptions">
+        <div class="band-info">
+          <p>¿Tu mascota tiene seguro?</p>
+        </div>
+        <form #code="ngForm">
+          <ion-list mode="md">
+            <div class="item">
+              <ion-label color="primary" class="select-label">Seguro</ion-label>
+              <ion-select
+                interface="popover"
+                name="agreement"
+                [(ngModel)]="band.agreement"
+                required
+              >
+                <ion-select-option
+                  *ngFor="let item of insurances"
+                  value="{{item.value}}"
+                  required
+                  >{{item.name}}</ion-select-option
+                >
+              </ion-select>
+            </div>
+            <div class="item">
+              <ion-label color="primary">Código de seguro</ion-label>
+              <ion-input
+                type="text"
+                name="code"
+                required
+                [(ngModel)]="band.code"
+              ></ion-input>
+            </div>
+          </ion-list>
+        </form>
+  
+        <div class="link-container" (click)="buyLicense()">
+          <label class="link">¡Compra un seguro para tu mascota!</label>
+        </div>
+  
+        <section id="buttons">
+          <div class="button" (click)="send(code)">
+            <label>Confimar</label>
+          </div>
+          <div class="register-button" (click)="addPet()">
+            <label>Continuar sin seguro</label>
+          </div>
+        </section>
+      </div>
+
+  </main>
+</ion-content>
+
+<div class="flex-container">
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button class="button" (click)="goToPets()">
+      <ion-icon
+        class="ion-icon"
+        src="/assets/images/btn_back_arrow.svg"
+      ></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button class="button" (click)="menu()">
+      <ion-icon class="ion-icon" src="/assets/images/btn_menu.svg"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button (click)="exitApp()" class="button" routerLink="/initial">
+      <ion-icon class="ion-icon" src="/assets/images/btn_exit.svg"></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+</div>

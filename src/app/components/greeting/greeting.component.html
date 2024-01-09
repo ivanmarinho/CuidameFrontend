@@ -1,0 +1,9 @@
+<div class="icon-container">
+  <div *ngIf="agreement === 'IKE'" class="agreement"><img src="/assets/pets/ike_35_years.svg" alt="ike"></div>
+  <div *ngIf="agreement === 'SeguroPeludo'" style="width: 170px;"><img src="/assets/pets/agreement/seguro_peludov2.jpg" alt="Seguro_Peludo"></div>
+  <div class="cuidame"><img src="/assets/images/logo_cuidame.svg" alt="cuidame"></div>
+</div>
+<div class="container-greeting" *ngIf="greeting">
+  <label class="greeting">Hola, {{name}}</label>
+  <label class="greeting-time">{{greetingMessage}}</label>
+</div>

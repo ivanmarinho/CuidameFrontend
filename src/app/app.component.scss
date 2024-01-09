@@ -1,0 +1,11 @@
+.short-modal {
+  background: rgba(0, 0, 0, 0.5) !important;
+  padding: 20% 10%  !important;
+}
+
+ion-loading.custom-loading {
+  --background: #e3edff;
+  --spinner-color: #1c6dff;
+
+  color: #1c6dff;
+}

@@ -1,0 +1,36 @@
+.container-greeting {
+    font-family: 'Quicksand', sans-serif;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    text-align: start;
+    color: #275289;
+    bottom: 30px;
+    .greeting {
+      font-weight: bold;
+      font-size: small;
+      font-size: 1rem;
+    }
+    .greeting-time {
+      @extend .greeting;
+      font-weight: lighter;
+      font-size: 2.3rem;
+    }
+  }
+
+  .icon-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    justify-content: space-around;
+
+    .cuidame {
+        width: 120px;
+    }
+    .agreement {
+        width: 150px;
+    }
+  }

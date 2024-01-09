@@ -1,0 +1,101 @@
+<!--*ngIf="finishedLoading; else loading"  -->
+<div class="pet" *ngIf="finishedLoading; else loading">
+  <div class="edit-container">
+    <div class="circle" (click)="editPet()">
+      <ion-icon src="/assets/pets/ico-pencil-edit.svg"></ion-icon>
+    </div>
+  </div>
+  <ion-label class="rectangle">
+    <ion-img
+      class="pet-photo"
+      src="{{productionServerUrl}}{{pet.photourl}}"
+      (click)="showImageModal(productionServerUrl,pet.photourl)"
+    ></ion-img>
+  </ion-label>
+  <div class="pet-card">
+    <div class="pet-info">
+      <div class="pet-header">
+        <label class="pet-name">{{pet.nombre}}</label>
+        <label class="pet-breed">{{pet.especie}}</label>
+      </div>
+      <div class="pet-content">
+        <div class="left-card">
+          <label>{{age}}</label>
+        </div>
+        <div class="right-card">
+          <label>{{pet.color}}</label>
+        </div>
+      </div>
+      <div class="pet-content">
+        <div class="left-card">
+          <label>{{pet.sexo}}</label>
+        </div>
+        <div class="right-card">
+          <label>ID: {{pet.petid}}</label>
+        </div>
+      </div>
+
+      <div class="pet-scontent">
+        <div class="pet-column">
+          <label class="pet-title">Peso</label>
+          <label class="pet-desc">{{pet.peso}} kg</label>
+        </div>
+        <div class="pet-column">
+          <label class="pet-title">Estatura</label>
+          <label class="pet-desc">{{pet.estatura}} cm</label>
+        </div>
+        <div class="pet-column">
+          <label class="pet-title">Temperamento</label>
+          <label class="pet-desc">{{pet.temperamento}}</label>
+        </div>
+      </div>
+      <div class="pet-address">
+        <img src="/assets/pets/icon-map-marker.svg" alt="map-marker" />
+        <label>{{owner.city}}, {{owner.department}}</label>
+      </div>
+    </div>
+  </div>
+  <div class="owner-content" *ngIf="finishedOwnerLoading; else loading">
+    <img src="/assets/pets/owner-profile.svg" alt="person" />
+    <div class="owner">
+      <div class="info">
+        <label class="owner-title">{{owner.name}}</label>
+        <label class="owner-desc">Nombre propietario</label>
+      </div>
+      <div class="info">
+        <label class="owner-title">{{owner.city}}, {{owner.department}}</label>
+        <label class="owner-desc">Ubicación</label>
+      </div>
+      <div class="info">
+        <label class="owner-title">{{owner.phone}}</label>
+        <label class="owner-desc">Teléfono</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="advertising" (click)="openAd()">
+    <div class="ad">
+      <ion-img *ngIf="agreement === 'IKE'" class="agreement" src="/assets/pets/logo_ike.svg"></ion-img>
+      <ion-img *ngIf="agreement === 'SeguroPeludo'" style="width: 170px;" class="agreement" src="/assets/pets/agreement/seguros_mundial.svg"></ion-img>
+      <label>Adquiere tu Asistencia</label>
+    </div>
+  </div>
+</div>
+
+<ng-template #nochip>
+  <label>{{pet.nochip}}</label>
+</ng-template>
+
+<ng-template #loading>
+  <div
+    style="
+      margin-top: 100%;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+    "
+  >
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+</ng-template>

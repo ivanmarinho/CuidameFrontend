@@ -1,0 +1,145 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/tab1"
+        *ngIf="editFlag === 'edit'"
+      ></ion-back-button>
+
+      <ion-back-button
+        defaultHref=""
+        (click)="logOut()"
+        *ngIf="editFlag !== 'edit'"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title color="primary">{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+  <!-- <div id="header">
+    <h1> {{name}}</h1>
+    <ion-img src="assets/images/logo_eSMART.png" ></ion-img>
+  </div> -->
+
+  <form #fFormMascota="ngForm">
+    <ion-grid fixed>
+      <ion-row class="ion-align-items-center">
+        <ion-col class="ion-text-center">
+          <!-- <p class="ion-margin ion-margin-bottom" id="label">¡Gracias por adquirir uno de nuestros productos!</p> -->
+          <h3 class="ion-margin">
+            A continuación, ingresa los datos de tu mascota
+          </h3>
+
+          <ion-list class="lista" mode="md">
+            <div id="divv">
+              <ion-item>
+                <ion-label position="floating">Nombre:</ion-label>
+                <ion-input
+                  type="text"
+                  name="nombre"
+                  [(ngModel)]="mascota.nombre"
+                  required
+                ></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="floating">Especie:</ion-label>
+                <ion-input
+                  type="text"
+                  name="especie"
+                  [(ngModel)]="mascota.especie"
+                  required
+                ></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="floating">Raza:</ion-label>
+                <ion-input
+                  type="text"
+                  name="raza"
+                  [(ngModel)]="mascota.raza"
+                  required
+                ></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="floating">Descripción:</ion-label>
+                <ion-input
+                  type="text"
+                  name="descripcion"
+                  [(ngModel)]="mascota.descripcion"
+                  required
+                ></ion-input>
+              </ion-item>
+            </div>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
+
+<div *ngIf="editFlag === 'edit'">
+  <ion-footer no-border>
+    <ion-toolbar>
+      <ion-row>
+        <!-- <ion-col>
+            <ion-button
+                        size="small"
+                        fill="outline"
+                        color="danger"
+                        (click)="logOut()">
+              Cerrar sesión
+            </ion-button>
+        </ion-col> -->
+
+        <ion-col>
+          <div class="btn-wrapper">
+            <ion-button
+              size="small"
+              fill="outline"
+              color="primary"
+              (click)="guardar(fFormMascota)"
+            >
+              {{textNextButton}}
+              <ion-icon slot="end" name="caret-forward-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-footer>
+</div>
+
+<div *ngIf="editFlag !== 'edit'">
+  <ion-footer no-border>
+    <ion-toolbar>
+      <ion-row>
+        <!-- <ion-col>
+            <ion-button
+                        size="small"
+                        fill="outline"
+                        color="danger"
+                        (click)="logOut()">
+              Cerrar sesión
+            </ion-button>
+        </ion-col> -->
+
+        <ion-col>
+          <div class="btn-wrapper">
+              <ion-button
+                size="small"
+                fill="outline"
+                color="primary"
+                (click)="guardar(fFormMascota)"
+              >
+                Guardar
+                <ion-icon slot="end" name="caret-forward-outline"></ion-icon>
+              </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-footer>
+</div>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="324" height="51" viewBox="0 0 324 51">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectángulo_85" data-name="Rectángulo 85" width="51" height="324" rx="15" fill="#fff"/>
+    </clipPath>
+  </defs>
+  <g id="Grupo_3" data-name="Grupo 3" transform="translate(324) rotate(90)" clip-path="url(#clip-path)">
+    <g id="Grupo_5" data-name="Grupo 5" transform="translate(-40.715 -90.468)">
+      <path id="Trazado_73" data-name="Trazado 73" d="M0,0H144.476V480.982H0Z" transform="translate(0 55.415)" fill="#f78a0f"/>
+      <ellipse id="Elipse_16" data-name="Elipse 16" cx="41.531" cy="108.14" rx="41.531" ry="108.14" transform="translate(16.7 286.222)" fill="#1fe1da" opacity="0.27" style="mix-blend-mode: color-dodge;isolation: isolate"/>
+      <ellipse id="Elipse_17" data-name="Elipse 17" cx="29.621" cy="76.936" rx="29.621" ry="76.936" transform="translate(10.901)" fill="#1fe1da" opacity="0.27" style="mix-blend-mode: color-dodge;isolation: isolate"/>
+      <ellipse id="Elipse_18" data-name="Elipse 18" cx="18.125" cy="47.345" rx="18.125" ry="47.345" transform="translate(75.735 130.199)" fill="#1fe1da" opacity="0.27" style="mix-blend-mode: color-dodge;isolation: isolate"/>
+      <ellipse id="Elipse_19" data-name="Elipse 19" cx="24.857" cy="64.561" rx="24.857" ry="64.561" transform="translate(86.092 265.24)" fill="#35ffd7" opacity="0.15" style="mix-blend-mode: color-dodge;isolation: isolate"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,43 @@
+
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button color="primary" defaultHref="/initial"></ion-back-button>
+  </ion-buttons>
+  <ion-title color="primary">Registro exitoso</ion-title>
+</ion-toolbar>
+
+<ion-content class="background">
+<ion-img id="img-logo" src="assets/images/loco_cuidame.png"></ion-img>
+<main>
+  <ion-card id="bgcard">
+    <p class="ion-margin-bottom" id="label">¡El proceso de registro se realizó correctamente!</p>
+    <br>
+    <p id="crearCuenta">Se ha enviado un correo electrónico de confirmación, por favor revisa tu bandeja de entrada antes de iniciar sesión. (Recuerda la carpeta de spam)</p>
+    <p>¿No llega el correo?</p>
+    <ion-button [disabled]="desactivarBotonReenviar" (click)="reenviar()">
+      Reenviar
+    </ion-button>
+    <p>Reenviar en {{totalSecs}} segundos</p>
+
+
+
+
+
+
+  </ion-card>
+  <!-- <p class="ion-margin">A continuación ingresa tus datos de registro y autenticación, ten en cuenta que estos son los datos de inicio de sesión, más no los de la persona que usará la banda.</p> -->
+
+
+
+
+
+
+  <section id="buttons">
+  <!-- <ion-button color="secondary" class="btn"  expand="block"  shape="round" (click)="register(fRegister)"> -->
+    <!-- Registrate
+  </ion-button> -->
+</section>
+  <!-- <p style="text-align: center;">ó</p>
+  <p>Escanea un código QR</p>
+  <ion-img id="scan-icon" src="assets/images/scan-icon.png"></ion-img> -->
+</main>

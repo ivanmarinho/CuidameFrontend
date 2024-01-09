@@ -1,0 +1,256 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" defaultHref="/initial"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="primary">{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+  <!-- <div id="header">
+      <h1> {{name}}</h1>
+      <ion-img src="assets/images/logo_eSMART.png" ></ion-img>
+    </div> -->
+
+  <form #fForm3="ngForm">
+    <ion-grid fixed>
+      <ion-row class="ion-align-items-center">
+        <ion-col class="ion-text-center">
+          <!-- <p class="ion-margin ion-margin-bottom" id="label">¡Gracias por adquirir uno de nuestros productos!</p> -->
+          <p class="ion-margin">
+            A continuación, ingresa los información de la persona que deseas cuidar:
+          </p>
+          <ion-list class="lista" mode="md">
+            <section>
+              <p id="listheader">Antecedentes personales:</p>
+              <p>
+                Los antecedentes personales, se refiere a todas esas
+                enfermedades, cirugías y traumas importantes que ha padecido,
+                pero ya se encuentran curadas.
+              </p>
+
+              <ion-item>
+                <ion-label>¿Tiene antecedentes personales?</ion-label>
+                <ion-select
+                  interface="popover"
+                  name="enfermedad_B"
+                  placeholder="Seleccionar..."
+                  required
+                  [(ngModel)]="antPBoolean"
+                >
+                  <ion-select-option value="si" required>Sí</ion-select-option>
+                  <ion-select-option value="no" required>No</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <div *ngIf="antPBoolean === 'si'">
+                <p>Por favor diligenciar la siguiente información:</p>
+
+                <div *ngFor="let item of listAntP; let index = index">
+                  <p *ngIf="noAntP !== 1" id="numeral">
+                    Antecedente personal {{index + 1}}:
+                  </p>
+
+                  <ion-item>
+                    <ion-label>Tipo de antecedentes</ion-label>
+                    <ion-select
+                      interface="popover"
+                      name="tipoAntecedente{{index}}"
+                      placeholder="Seleccionar..."
+                      [(ngModel)]="form3Ant[index].tipoAntecedente"
+                      required
+                    >
+                      <ion-select-option value="patologico" required
+                        >Patológicos</ion-select-option
+                      >
+                      <ion-select-option value="quirurgico" required
+                        >Quirúrgicos</ion-select-option
+                      >
+                      <ion-select-option value="traumatico" required
+                        >Traumáticos</ion-select-option
+                      >
+                      <ion-select-option value="farmacologicos" required
+                        >Farmacológicos</ion-select-option
+                      >
+                      <ion-select-option value="otros" required
+                        >Otros</ion-select-option
+                      >
+                    </ion-select>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label position="floating">Descripción</ion-label>
+                    <ion-input
+                      name="descripcionAntecedente{{index}}"
+                      type="text"
+                      [(ngModel)]="form3Ant[index].descripcionAntecedente"
+                      required
+                    ></ion-input>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label position="floating">Fecha</ion-label>
+                    <ion-input
+                      name="fechaAntecedente{{index}}"
+                      type="date"
+                      placeholder="dd/mm/yyyy"
+                      [(ngModel)]="form3Ant[index].fechaAntecedente"
+                      required
+                    ></ion-input>
+                  </ion-item>
+
+                  <!-- <ion-item button="true" id="open-date-input">
+                <ion-label>Fecha</ion-label>
+                  <ion-text slot="end">{{ dateValue }}</ion-text>
+                  <ion-popover trigger="open-date-input" show-backdrop="false" >
+                    <ng-template>
+                      <ion-datetime
+                        name="fechaAntecedente"
+                        presentation="date"
+                        #popoverDatetime
+                        value=""
+                        (ionChange)="dateValue = formatDate(popoverDatetime.value)"
+                        [(ngModel)]="form3Ant[index].fechaAntecedente"
+                      >
+                    </ion-datetime>
+                    </ng-template>
+                  </ion-popover>
+                </ion-item> -->
+                </div>
+                <div class="botones">
+                  <p id="anadir" (click)="anadirAntP(true)">
+                    Añadir antecedente
+                    <ion-icon slot="start" name="add"></ion-icon>
+                  </p>
+                  <p
+                    *ngIf="noAntP !== 1"
+                    id="quitar"
+                    (click)="anadirAntP(false)"
+                    style="text-align: end"
+                  >
+                    Quitar
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <p id="listheader">Enfermedades importantes en la familia:</p>
+
+              <ion-item>
+                <ion-label>¿Enfermedades familiares?</ion-label>
+                <ion-select
+                  interface="popover"
+                  name="enfermedad_B"
+                  placeholder="Seleccionar..."
+                  required
+                  [(ngModel)]="antFBoolean"
+                >
+                  <ion-select-option value="si" required>Sí</ion-select-option>
+                  <ion-select-option value="no" required>No</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <div *ngIf="antFBoolean === 'si'">
+                <p>Por favor diligenciar la siguiente información:</p>
+
+                <div *ngFor="let item of listAntFam; let index = index">
+                  <p *ngIf="noAntFam !== 1" id="numeral">
+                    Enfermedad familiar {{index + 1}}:
+                  </p>
+                  <ion-item>
+                    <ion-label>Tipo de enfermedad</ion-label>
+                    <ion-select
+                      interface="popover"
+                      name="tipoAntecedenteF{{item}}"
+                      placeholder="Seleccionar..."
+                      [(ngModel)]="form6AntF[index].tipoAntecedenteF"
+                      required
+                    >
+                      <ion-select-option value="patologico" required
+                        >Patológicos</ion-select-option
+                      >
+                      <ion-select-option value="quirurgico" required
+                        >Quirúrgicos</ion-select-option
+                      >
+                      <!-- <ion-select-option value="traumatico" required>Traumáticos</ion-select-option>
+                <ion-select-option value="farmacologicos" required>Farmacológicos</ion-select-option> -->
+                      <ion-select-option value="otros" required
+                        >Otros</ion-select-option
+                      >
+                    </ion-select>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label position="floating">Parentesco</ion-label>
+                    <ion-input
+                      name="parentescoF{{item}}"
+                      type="text"
+                      [(ngModel)]="form6AntF[index].parentescoF"
+                      required
+                    ></ion-input>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label position="floating">Descripción</ion-label>
+                    <ion-input
+                      name="descripcionAntecedenteF{{item}}"
+                      type="text"
+                      [(ngModel)]="form6AntF[index].descripcionAntecedenteF"
+                      required
+                    ></ion-input>
+                  </ion-item>
+                </div>
+                <div class="botones">
+                  <p id="anadir" (click)="anadirAntFam(true)">
+                    Añadir enfermedad
+                    <ion-icon slot="start" name="add"></ion-icon>
+                  </p>
+                  <p
+                    *ngIf="noAntFam !== 1"
+                    id="quitar"
+                    (click)="anadirAntFam(false)"
+                    style="text-align: end"
+                  >
+                    Quitar
+                  </p>
+                </div>
+              </div>
+            </section>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
+
+<ion-footer no-border>
+  <ion-toolbar>
+    <ion-row>
+      <!-- <ion-col>
+          <ion-button
+                      size="small"
+                      fill="outline"
+                      color="danger"
+                      (click)="logOut()">
+            Cerrar sesión
+          </ion-button>
+      </ion-col> -->
+
+      <ion-col>
+        <div class="btn-wrapper">
+          <ion-button
+            size="small"
+            fill="outline"
+            color="primary"
+            (click)="onClickNext(fForm3)"
+          >
+            {{textNextButton}}
+            <ion-icon slot="end" name="caret-forward-outline"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

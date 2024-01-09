@@ -1,0 +1,34 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" defaultHref="/help"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="primary">Contáctanos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+
+  <div class="ion-margin">
+
+    <ion-list class="ion-margin" lines="none">
+
+      <ion-item (click)="openWhatsapp()">
+        <ion-icon name="logo-whatsapp"></ion-icon>
+        <ion-label style="margin-left: 5px;">Hablemos por Whatsapp</ion-label>
+      </ion-item>  
+
+      <ion-item (click)="openEmail()">
+        <ion-icon name="mail-outline"></ion-icon>
+        <ion-label style="margin-left: 5px;">Envíanos un correo </ion-label>
+      </ion-item>  
+
+
+    </ion-list>
+
+  </div>
+
+
+
+
+</ion-content>

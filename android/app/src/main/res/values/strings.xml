@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Cuidame</string>
+    <string name="title_activity_main">Cuidame</string>
+    <string name="package_name">com.esmarttek.cuidame</string>
+    <string name="custom_url_scheme">com.esmarttek.cuidame</string>
+</resources>

@@ -1,0 +1,28 @@
+<!-- <div class="flag">
+  <div class="flag-inside" *ngFor="let category of categories; index as i">
+    <ion-img src="/assets/pets/{{ icons[i] }}" class="flag-icon"></ion-img>
+    <ion-label class="flag-text">{{ category }}</ion-label>
+  </div>
+</div> -->
+
+<div  [ngClass]="{'flag':  background(blue_urls), 'flag-white': !background(urls)}">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="3" *ngFor="let category of categories; index as i"
+        ><div
+          class="flag-inside"
+          *ngIf="shouldShowFlag(i)"
+          (click)="toggleActiveFlag(i)"
+          [ngClass]="{'active': activeFlagIndex === i}"
+          [routerLink]="[urls[i]]"
+        >
+          <ion-img
+            src="/assets/pets/{{ icons[i] }}"
+            class="flag-icon"
+          ></ion-img>
+          <ion-label class="flag-text">{{ category }}</ion-label>
+        </div></ion-col
+      >
+    </ion-row>
+  </ion-grid>
+</div>

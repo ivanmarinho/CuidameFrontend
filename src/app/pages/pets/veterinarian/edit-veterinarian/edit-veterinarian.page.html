@@ -1,0 +1,138 @@
+<div class="container-col">
+  <div class="info">
+    <p>
+      Por favor, ingresa los datos del Veterinario o Clínica que atiende a tu
+      mascota.
+    </p>
+  </div>
+
+  <form #vetForm="ngForm">
+    <ion-list mode="md">
+      <div class="item">
+        <ion-label>Nombre</ion-label>
+        <ion-input
+          type="text"
+          name="fullName"
+          [(ngModel)]="veterinarian.fullname"
+          maxlength=20
+          required
+          ngDefaultControl
+        ></ion-input>
+      </div>
+
+      <div class="horizontal-fields-container">
+        <div class="item horizontal-fields">
+          <ion-label>Identificación</ion-label>
+          <ion-select
+              interface="popover"
+              class="blue-select"
+              name="typeID"
+              required
+              [(ngModel)]="veterinarian.idtype"
+            >
+              <ion-select-option
+                *ngFor="let item of types"
+                value="{{item.valor}}"
+                required
+                >{{item.etiqueta}}</ion-select-option
+              >
+            </ion-select>
+        </div>
+
+        <div class="item horizontal-fields-id" style="margin-left: 5px;">
+          <ion-label>&nbsp;</ion-label>
+          <ion-input
+            type="number"
+            name="idNumber"
+            [(ngModel)]="veterinarian.idnumber"
+            required
+            ngDefaultControl
+          ></ion-input>
+        </div>
+      </div>
+
+      <div class="horizontal-fields-container">
+        <div class="item horizontal-fields">
+          <ion-label color="primary">Departamento</ion-label>
+          <ion-select
+            class="blue-select"
+            interface="popover"
+            name="department"
+            required
+            (ionChange)="onDepartmentChange($event)"
+            [(ngModel)]="veterinarian.department"
+          >
+            <ion-select-option
+              *ngFor="let department of departments"
+              [value]="department.id"
+              required
+            >
+              {{ department.name }}
+            </ion-select-option>
+          </ion-select>
+        </div>
+
+        <div class="item horizontal-fields">
+          <ion-label color="primary">Ciudad</ion-label>
+          <ion-select
+            class="blue-select"
+            interface="popover"
+            name="city_id"
+            (change)="onDepartmentChange($event)"
+            [(ngModel)]="veterinarian.city_id"
+            required
+          >
+            <ion-select-option
+              *ngFor="let township of townships"
+              [value]="township.id"
+              required
+            >
+              {{ township.name }}
+            </ion-select-option>
+          </ion-select>
+        </div>
+      </div>
+
+      <div class="item">
+        <ion-label>Dirección</ion-label>
+        <ion-input
+          type="text"
+          name="address"
+          [(ngModel)]="veterinarian.address"
+          class="input-orange"
+          maxlength=20
+          required
+          ngDefaultControl
+        ></ion-input>
+      </div>
+      <div class="item">
+        <ion-label>Teléfono</ion-label>
+        <ion-input
+          type="text"
+          name="phone"
+          [(ngModel)]="veterinarian.phone"
+          maxlength=10
+          class="input-orange"
+          required
+          ngDefaultControl
+        ></ion-input>
+      </div>
+      <div class="item">
+        <ion-label>Correo Electrónico</ion-label>
+        <ion-input
+          type="text"
+          name="email"
+          [(ngModel)]="veterinarian.email"
+          class="input-orange"
+          required
+          ngDefaultControl
+        ></ion-input>
+      </div>
+    </ion-list>
+  </form>
+  <div class="buttons">
+    <button class="button" (click)="update(vetForm)">
+      <label>Actualizar</label>
+    </button>
+  </div>
+</div>

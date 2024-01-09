@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="38" height="47.5" viewBox="0 0 38 47.5">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="38" height="47.5" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Cuadrícula_de_repetición_2" data-name="Cuadrícula de repetición 2" clip-path="url(#clip-path)">
+    <g transform="translate(-70 -594.575)">
+      <path id="health_and_safety_FILL0_wght400_GRAD0_opsz24" d="M175.438-847.937h7.125v-5.937H188.5V-861h-5.938v-5.937h-7.125V-861H169.5v7.125h5.938ZM179-832.5a23.663,23.663,0,0,1-13.627-9.47A27.274,27.274,0,0,1,160-858.388v-14.488L179-880l19,7.125v14.488a27.274,27.274,0,0,1-5.373,16.417A23.663,23.663,0,0,1,179-832.5Zm0-4.987a19.327,19.327,0,0,0,10.212-7.838,22.558,22.558,0,0,0,4.038-13.062v-11.222L179-874.953l-14.25,5.344v11.222a22.558,22.558,0,0,0,4.037,13.063A19.327,19.327,0,0,0,179-837.487ZM179-856.25Z" transform="translate(-90 1474.575)" fill="#fff"/>
+    </g>
+  </g>
+</svg>
