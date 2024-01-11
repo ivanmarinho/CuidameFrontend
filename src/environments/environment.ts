@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
 
-  // url: 'http://192.168.1.7:3000/', // -> Anthony Sog
-  url: 'https://api.cuidame.tech/',
+  url: 'http://192.168.1.11:3000/', // -> Anthony Sog
+  // url: 'https://api.cuidame.tech/',
   // images: 'http://localhost:3000/',
   mapsKey: 'AIzaSyBOYnIDyO_2Fy1XkEz9XN_Y_Kv4YTyV1NI'
 };

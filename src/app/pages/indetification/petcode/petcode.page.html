@@ -2,11 +2,11 @@
   <ion-img id="img-logo" src="assets/images/logo_cuidame.svg"></ion-img>
   <main>
 
-    <div class="buttons-select-service" *ngIf="!showOptions">
+    <div class="buttons-select-service" *ngIf="!showOptions && !showPersonaOptions">
       <div class="info">
-        <p>Selecciona tu servicio</p>
+        <p>Elige al ser querido que deseas cuidar</p>
       </div>
-      <div class="health-button">
+      <div class="health-button" (click)="togglePersonaOptions()">
         <div class="icon-container">
           <ion-icon
             style="font-size: 35px"
@@ -14,7 +14,7 @@
           ></ion-icon>
         </div>
         <div class="text-container">
-          <label>SALUD</label>
+          <label>PERSONA</label>
         </div>
       </div>
       <div class="pet-button" (click)="toggleOptions()">
@@ -32,7 +32,7 @@
 
       <div class="options" *ngIf="showOptions">
         <div class="band-info">
-          <p>¿Tu mascota tiene seguro?</p>
+          <p>¿Tu mascota a cuidar tiene seguro?</p>
         </div>
         <form #code="ngForm">
           <ion-list mode="md">
@@ -77,6 +77,57 @@
           </div>
         </section>
       </div>
+
+      <div class="options" *ngIf="showPersonaOptions">
+        <div class="band-info">
+          <p>¿Tu persona a cuidar tiene seguro?</p>
+        </div>
+        <form #code="ngForm">
+          <ion-list mode="md">
+            <div class="item">
+              <ion-label color="primary" class="select-label">Seguro</ion-label>
+              <ion-select
+                interface="popover"
+                name="agreement"
+                [(ngModel)]="band.agreement"
+                required
+              >
+                <ion-select-option
+                  *ngFor="let item of insurances"
+                  value="{{item.value}}"
+                  required
+                  >{{item.name}}</ion-select-option
+                >
+              </ion-select>
+            </div>
+            <div class="item">
+              <ion-label color="primary">Código de seguro</ion-label>
+              <ion-input
+                type="text"
+                name="code"
+                required
+                [(ngModel)]="band.code"
+              ></ion-input>
+            </div>
+          </ion-list>
+        </form>
+  
+        <div class="link-container" (click)="buyLicense()">
+          <label class="link">¡Compra un seguro para tu persona a cuidar!</label>
+        </div>
+  
+        <section id="buttons">
+          <div class="button" (click)="send(code)">
+            <label>Confimar</label>
+          </div>
+          <div class="register-button" (click)="addPersona()">
+            <label>Continuar sin seguro</label>
+          </div>
+        </section>
+      </div>
+
+
+
 
   </main>
 </ion-content>

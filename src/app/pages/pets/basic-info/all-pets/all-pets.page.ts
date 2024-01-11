@@ -21,7 +21,7 @@ export class AllPetsPage implements AfterViewInit {
   id = 0;
 
   localServerUrl = 'http://localhost:3000/';
-  productionServerUrl = 'https://api.cuidame.tech';
+  productionServerUrl = 'https://api.cuidame.tech/';
   uidentificador: string = '';
 
   pet: boolean = false;

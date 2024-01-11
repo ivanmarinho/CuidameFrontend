@@ -23,10 +23,11 @@ export class PetcodePage implements OnInit {
   result: string;
   band = {
     code: '',
-    agreement: ''
+    agreement: '',
   };
-  
-  showOptions = false;
+
+  showOptions : boolean;
+  showPersonaOptions: boolean;
   insurances = [
     {
       value: 'IKE',
@@ -47,27 +48,32 @@ export class PetcodePage implements OnInit {
     public toastMessage: ToastMessage,
     private storageService: StorageService,
     public inAppBrows: InAppBrowser,
-    private userService: UserService,
-
+    private userService: UserService
   ) {
     this.showOptions = false;
+    this.showPersonaOptions = false;
   }
 
   toggleOptions() {
     this.showOptions = !this.showOptions;
-    console.log("🚀 ~ file: petcode.page.ts:58 ~ PetcodePage ~ toggleOptions ~ this.showOptions:", this.showOptions)
-    
   }
 
-
+  togglePersonaOptions() {
+    this.showPersonaOptions = !this.showPersonaOptions;
+  }
 
   ngOnInit() {
     this.navCtrl.navigateRoot('/petcode');
+    this.showOptions = false;
+  }
+
+  addPersona(){
+    this.navCtrl.navigateForward('/form1/new');
   }
 
   addPet() {
     const addpet = true;
-    const dataToSend = ''
+    const dataToSend = '';
     this.dataService.setDataPage(addpet);
     this.dataService.setCode(dataToSend);
     this.navCtrl.navigateForward('/private/pets/addpet');
@@ -85,7 +91,6 @@ export class PetcodePage implements OnInit {
   openWhatsapp = async () => {
     this.inAppBrows.create('https://walink.co/26ea7b', '_system');
   };
-
 
   buyLicense = async () => {
     this.inAppBrows.create('https://wa.link/acbmse', '_system');
@@ -209,7 +214,12 @@ export class PetcodePage implements OnInit {
     this.navCtrl.navigateForward('/help');
   }
   goToPets() {
-    this.navCtrl.navigateForward('/private/pets/all');
+    if (!this.showOptions && !this.showPersonaOptions) {
+      this.navCtrl.navigateForward('/private/pets/all');
+    } else {
+      this.showOptions = false;
+      this.showPersonaOptions = false;
+    }
   }
 
   async logOut() {
