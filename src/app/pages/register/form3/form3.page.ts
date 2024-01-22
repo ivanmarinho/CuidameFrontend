@@ -76,18 +76,18 @@ export class Form3Page implements OnInit {
       this.antPBoolean = 'si';
       const lastIndex = this.dataService.dataPaciente.antecedentes.length-1;
       this.noAntP = this.dataService.dataPaciente.antecedentes[lastIndex - 1];
-      console.log(this.listAntP);
+      // console.log(this.listAntP);
       for (let i = 0; i<this.noAntP; i++ ){
         if (i === 0){
         this.form3Ant[0] = this.dataService.dataPaciente.antecedentes[i];
         continue;
         }
-        console.log('hola',i);
+        // console.log('hola',i);
         this.listAntP.push(i+1);
         this.form3Ant.push(this.dataService.dataPaciente.antecedentes[i]);
       }
       this.noAntFam = this.dataService.dataPaciente.antecedentes[lastIndex];
-      console.log(this.dataService.dataPaciente);
+      // console.log(this.dataService.dataPaciente);
       for (let i = this.noAntP; i<this.noAntFam+this.noAntP; i++ ){
         if (i === this.noAntP){
         this.form6AntF[0] = this.dataService.dataPaciente.antecedentes[i];
@@ -96,14 +96,14 @@ export class Form3Page implements OnInit {
 
         this.listAntFam.push(i - this.noAntP + 1);
         this.form6AntF.push(this.dataService.dataPaciente.antecedentes[i]);
-        console.log('form6antf',this.form6AntF);
+        // console.log('form6antf',this.form6AntF);
       }
     }
   }
 
   async onClickNext( fForm3: NgForm ){
-    console.log(this.form3Ant);
-    console.log(this.form6AntF);
+    // console.log(this.form3Ant);
+    // console.log(this.form6AntF);
 
     let info = {};
 
@@ -139,7 +139,7 @@ export class Form3Page implements OnInit {
         this.toastMessage.presentToast('Por favor, revisa el formulario.');
       }
     }catch(e){
-      console.log('sigo',e);
+      // console.log('sigo',e);
     }
 
 
@@ -198,7 +198,7 @@ export class Form3Page implements OnInit {
       if(userp){
         this.user = userp;
         // this.dataService.user = userp;
-        console.log('User coming from storage',this.user);
+        // console.log('User coming from storage',this.user);
         // console.log('User coming from data service',this.dataService.user);
       }
     }).catch( (e) => console.log('Error obteniento user storage',e));

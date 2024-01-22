@@ -8,7 +8,7 @@ import { PetReadBasicInfoPage } from './pet-read-basic-info/pet-read-basic-info.
 import { PetEditBasicInfoPage } from './pet-edit-basic-info/pet-edit-basic-info.page';
 import { IonicModule } from '@ionic/angular';
 import { AllPetsPage } from './all-pets/all-pets.page';
-import { FilterPetsPipe } from 'src/app/utils/filter-pets.pipe';
+import { FilterArrayPipe } from 'src/app/utils/filter-array.pipe';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { FilterPetsPipe } from 'src/app/utils/filter-pets.pipe';
     PetReadBasicInfoPage,
     PetEditBasicInfoPage,
     AllPetsPage,
-    FilterPetsPipe,
+    FilterArrayPipe,
   ],
   imports: [
     CommonModule,

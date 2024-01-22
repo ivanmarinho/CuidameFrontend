@@ -104,8 +104,8 @@ export class RegisterPage implements OnInit {
     this.userService.getDepartments().subscribe(
       (data: any) => {
         this.departments = data;
-        console.log(this.departments);
-        console.log(this.selectedDepartment);
+        // console.log(this.departments);
+        // console.log(this.selectedDepartment);
       },
       (error) => console.error('Error al obtener los departamentos:', error)
     );
@@ -116,7 +116,7 @@ export class RegisterPage implements OnInit {
       this.userService.getTownships(this.selectedDepartment).subscribe(
         (data: any) => {
           this.townships = data;
-          console.log(this.townships);
+          // console.log(this.townships);
         },
         (error) => console.error('Error al obtener las ciudades:', error)
       );
@@ -172,7 +172,7 @@ export class RegisterPage implements OnInit {
           }
         });
       } catch (e) {
-        console.log('sigo');
+        // console.log('sigo');
       }
     } else {
       this.toastMessage.presentToast('Por favor, revisa el formulario.');

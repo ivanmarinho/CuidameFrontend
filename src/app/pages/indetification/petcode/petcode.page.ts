@@ -76,7 +76,7 @@ export class PetcodePage implements OnInit {
     const dataToSend = '';
     this.dataService.setDataPage(addpet);
     this.dataService.setCode(dataToSend);
-    this.navCtrl.navigateForward('/private/pets/addpet');
+    this.navCtrl.navigateForward('/private/data/addpet');
   }
 
   exitApp(): void {
@@ -215,7 +215,7 @@ export class PetcodePage implements OnInit {
   }
   goToPets() {
     if (!this.showOptions && !this.showPersonaOptions) {
-      this.navCtrl.navigateForward('/private/pets/all');
+      this.navCtrl.navigateForward('/private/data/all');
     } else {
       this.showOptions = false;
       this.showPersonaOptions = false;
@@ -257,7 +257,7 @@ export class PetcodePage implements OnInit {
           const addpet = true;
           this.dataService.setDataPage(addpet);
           this.dataService.setCode(dataToSend);
-          this.navCtrl.navigateForward('/private/pets/addpet');
+          this.navCtrl.navigateForward('/private/data/addpet');
         }
         this.toastMessage.presentToast(resp.message);
         console.log(resp);

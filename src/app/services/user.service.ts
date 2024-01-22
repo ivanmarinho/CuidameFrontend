@@ -36,6 +36,18 @@ export class UserService {
 
   ///// CREAR NUEVO USUARIO /////
 
+  addPersonaImage( formData: FormData, token: string = '') {
+    const headers = {
+      Authorization: token,
+    };
+    return this.http
+      .post(`${url}api/persona/addimage`, formData, {
+        headers,
+      })
+      .pipe(catchError(this.handleError));
+  }
+
+
   updateUser(info, token: string = '') {
     return this.http
       .post(`${url}api/users/updateuser`, info, {
@@ -137,6 +149,21 @@ export class UserService {
           Authorization: token,
         },
       })
+      .pipe(catchError(this.handleError));
+  }
+
+  getAllPersons(id: string, token: string = '') {
+    return this.http
+      .post(
+        `${url}api/person/all`,
+        { id },
+        {
+          headers: {
+            'Content-type': 'application/json',
+            Authorization: token,
+          },
+        }
+      )
       .pipe(catchError(this.handleError));
   }
 

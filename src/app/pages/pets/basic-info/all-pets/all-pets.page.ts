@@ -15,8 +15,10 @@ import { environment } from 'src/environments/environment';
 })
 export class AllPetsPage implements AfterViewInit {
   public finishedLoading: boolean;
+  public finishedPersonaLoading: boolean;
   public user: User;
   private subscription: Subscription = new Subscription();
+  private subscriptionPersona: Subscription = new Subscription();
   public searchTerm: string = '';
   id = 0;
 
@@ -31,6 +33,7 @@ export class AllPetsPage implements AfterViewInit {
   };
 
   petsArray = [{ id: '', nombre: '', agreement: '', photourl: '' }];
+  personaArray = [{ id: '', nombre: '', agreement: '', photourl: '' }];
 
   hashcode: '';
 
@@ -43,6 +46,7 @@ export class AllPetsPage implements AfterViewInit {
     private storageService: StorageService,
     private petsService: PetsService,
     private dataService: DataService,
+    private userService: UserService
   ) {
     this.finishedLoading = false;
   }
@@ -68,6 +72,11 @@ export class AllPetsPage implements AfterViewInit {
     this.storageService.setPetAgreement(agreement);
   }
 
+  goToPerson(hashcode: string) {
+    this.navCtrl.navigateForward('/tab1');
+    this.storageService.setPacientHashcode(hashcode);
+  }
+
   async getUsersPets() {
     this.storageService
       .loadUser()
@@ -88,11 +97,29 @@ export class AllPetsPage implements AfterViewInit {
                 this.finishedLoading = false;
               }
             );
+
+          const personaSub = this.userService
+            .getAllPersons(this.uidentificador, this.user.session_token)
+            .subscribe(
+              (response) => {
+                this.personaArray = response;
+                // console.log("🚀 ~ AllPetsPage ~ .then ~ this.personaArray:", this.personaArray)
+                
+                this.finishedPersonaLoading = true;
+              },
+              (error) => {
+                console.error(error);
+                this.finishedPersonaLoading = false;
+              }
+            );
           this.subscription.add(petSubscription);
+          this.subscription.add(personaSub);
         }
       })
       .catch((error) => {
         this.finishedLoading = false;
+        this.finishedPersonaLoading = false;
+
         // console.error(error);
       });
   }

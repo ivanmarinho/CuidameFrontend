@@ -12,13 +12,13 @@ export class ContainerDashComponent implements OnInit {
   ngOnInit() {}
 
   urls = [
-    '/private/pets/all',
+    '/private/data/all',
     '/private/vaccine/show',
     '/private/treatment/show',
     '/private/veterinarian/show',
     '/private/history/show',
-    '/private/pets/show',
-    '/private/pets/code',
+    '/private/data/show',
+    '/private/data/code',
     '/private/pages/manage',
     '/private/pages/care',
     '/private/pages/veterinarians',
@@ -33,9 +33,9 @@ export class ContainerDashComponent implements OnInit {
     '/private/disease/edit',
     '/private/treatment/edit',
     '/private/vaccine/edit',
-    '/private/pets/editpet',
-    '/private/pets/all',
-    '/private/pets/code',
+    '/private/data/editpet',
+    '/private/data/all',
+    '/private/data/code',
     '/private/pages/manage',
     '/private/pages/care',
     '/private/pages/veterinarians',
@@ -49,7 +49,7 @@ export class ContainerDashComponent implements OnInit {
     '/private/disease/edit',
     '/private/treatment/edit',
     '/private/vaccine/edit',
-    '/private/pets/editpet',
+    '/private/data/editpet',
   ];
 
   isUrlInArray(urls: string[]): boolean {

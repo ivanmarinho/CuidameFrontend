@@ -62,7 +62,7 @@ export class ManagementPage implements AfterViewInit {
   }
 
   goToPetInfo() {
-    this.navCtrl.navigateForward('/private/pets/show');
+    this.navCtrl.navigateForward('/private/data/show');
   }
   goToPetCare() {
     const dataToSend = false;

@@ -79,7 +79,7 @@ export class Form5Page implements OnInit {
 
     if(fForm4.valid && this.editFlag === 'new'){
       this.waitMessage.present();
-      console.log(fForm4.valid);
+      // console.log(fForm4.valid);
       // this.dataService.setFormMedAlergia(this.form4Med, this.listMed, this.form5Alergia, this.listAlergias);
       let info = {};
 
@@ -87,12 +87,17 @@ export class Form5Page implements OnInit {
 
         //////PACIENTE
 
-        console.log(this.dataService.getForm1());
+        // console.log(this.dataService.getForm1());
         let resp = await this.userService.createForm(this.dataService.getForm1(),this.user.session_token).toPromise();
       if (resp.success){
         this.idPaciente = resp.data; //Asignar id para relacionar los siguiente formularios al mismo paciente
+        
+        const formData = this.dataService.getImage()
+        formData.append('id',this.idPaciente)
+        this.userService.addPersonaImage(formData, this.user.session_token).toPromise();
+
       }else{this.check = false;}
-      console.log('Registro paciente',resp);
+      // console.log('Registro paciente',resp);
 
 
         ////CONDICION
@@ -103,9 +108,9 @@ export class Form5Page implements OnInit {
         enfermedades: this.dataService.formEnf
 
       };
-      console.log(infoCondicion);
+      // console.log(infoCondicion);
       resp = await this.userService.createForm(infoCondicion,this.user.session_token).toPromise();
-      console.log('Registro condicion',resp);
+      // console.log('Registro condicion',resp);
       if (!resp.success){this.check = false;}
 
       //ANTECEDENTES
@@ -115,7 +120,7 @@ export class Form5Page implements OnInit {
           form: 3
         };
         resp = await this.userService.createForm(info,this.user.session_token).toPromise();
-        console.log('Registro antecedente personal',resp);
+        // console.log('Registro antecedente personal',resp);
         if (!resp.success){this.check = false;}
 
         info = {
@@ -124,7 +129,7 @@ export class Form5Page implements OnInit {
           form: 6
         };
          resp = await this.userService.createForm(info,this.user.session_token).toPromise();
-         console.log('Registro antecedente familiar',resp);
+        //  console.log('Registro antecedente familiar',resp);
          if (!resp.success){this.check = false;}
 
 
@@ -135,9 +140,9 @@ export class Form5Page implements OnInit {
           medicamentos: this.dataService.form4Med,
           form: 4
         };
-        console.log(info);
+        // console.log(info);
         resp = await this.userService.createForm(info,this.user.session_token).toPromise();
-        console.log('Registro medciamentos',resp);
+        // console.log('Registro medciamentos',resp);
         if (!resp.success){this.check = false;}
 
 
@@ -146,9 +151,9 @@ export class Form5Page implements OnInit {
           alergias: this.dataService.form5Alergia,
           form: 5
         };
-        console.log(info);
+        // console.log(info);
         resp = await this.userService.createForm(info,this.user.session_token).toPromise();
-        console.log('Registro alergias',resp);
+        // console.log('Registro alergias',resp);
         if (!resp.success){this.check = false;}
 
         //VACUNAS
@@ -158,20 +163,20 @@ export class Form5Page implements OnInit {
           idPaciente: this.idPaciente,
           form: 7
         };
-        console.log('INFOVACUNAS',info);
+        // console.log('INFOVACUNAS',info);
         resp = await this.userService.createForm(info,this.user.session_token).toPromise();
-        console.log('Registro vacunas',resp);
+        // console.log('Registro vacunas',resp);
         if (!resp.success){this.check = false;}
 
-      if (this.check){this.navCtrl.navigateRoot('/tab1');}
+      if (this.check){this.navCtrl.navigateRoot('/private/data/all');}
       else{this.toastMessage.presentToast('Hubo un error con el registro de la información');this.check = true;}
 
       }catch(e){
-        console.log('error al subir',e);
+        // console.log('error al subir',e);
       }
     }
     else if (fForm4.valid && this.editFlag === 'edit'){
-      console.log('form5vacunas',this.form5Vacunas);
+      // console.log('form5vacunas',this.form5Vacunas);
       const info = {
         vacunas: this.form5Vacunas,
         idPaciente: this.dataService.currentUserId,
@@ -179,7 +184,7 @@ export class Form5Page implements OnInit {
       };
       const resp = await this.userService.updateInfo(info,this.user.session_token).toPromise();
       if (resp.success){
-        this.navCtrl.navigateRoot('/tab1');
+        this.navCtrl.navigateRoot('/private/data/all');
         this.toastMessage.presentToast(resp.message);
       }
     }
@@ -193,7 +198,7 @@ export class Form5Page implements OnInit {
     if (this.editFlag === 'edit'){
       this.title = 'Editar';
       this.textNextButton = 'Guardar';
-      console.log('info edit',this.dataService.dataPaciente.vacunas);
+      // console.log('info edit',this.dataService.dataPaciente.vacunas);
       this.form5Vacunas = this.dataService.dataPaciente.vacunas; //Lenar campos
     }
   }
@@ -203,7 +208,7 @@ export class Form5Page implements OnInit {
       if(userp){
         this.user = userp;
         // this.dataService.user = userp;
-        console.log('User coming from storage',this.user);
+        // console.log('User coming from storage',this.user);
         // console.log('User coming from data service',this.dataService.user);
       }
     }).catch( (e) => console.log('Error obteniento user storage',e));

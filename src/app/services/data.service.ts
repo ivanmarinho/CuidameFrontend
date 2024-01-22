@@ -278,4 +278,28 @@ private showPage: any;
    return this.req;
  }
 
+
+ private image: any;
+
+ setImage(data: any) {
+   this.image = data;
+ }
+
+ getImage() {
+   return this.image;
+ }
+
+
+ private pacientId: any;
+
+ setPacientHashcode(data: any) {
+   this.pacientId = data;
+ }
+
+ getPacientHashcode() {
+   return this.pacientId;
+ }
+
 }
+
+

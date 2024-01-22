@@ -3,13 +3,14 @@ import { Component, ContentChild, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 // import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
-import { IonInput, NavController } from '@ionic/angular';
+import { IonInput, ModalController, NavController } from '@ionic/angular';
 import { DataService } from 'src/app/services/data.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { UserService } from 'src/app/services/user.service';
 import { ToastMessage } from 'src/app/utils/toastMessage';
 import { WaitMessage } from 'src/app/utils/waitMessage';
 import { Keyboard } from '@capacitor/keyboard';
+import { ImageModalPage } from 'src/app/components/image-modal/image-modal.page';
 
 @Component({
   selector: 'app-initial',
@@ -70,7 +71,7 @@ export class InitialPage implements OnInit {
     private userService: UserService,
     private storageService: StorageService,
     private dataService: DataService,
-    public waitMessage: WaitMessage
+    public waitMessage: WaitMessage,
   ) {}
 
   async ngOnInit() {
@@ -79,10 +80,12 @@ export class InitialPage implements OnInit {
     if (user) {
       if (user.session_token !== null) {
         this.dataService.setUsuarioRegistrado(user);
-        this.navCtrl.navigateRoot('/logged');
+        this.navCtrl.navigateRoot('/private/data/all');
       }
     }
   }
+
+
 
   async login(fLogin: NgForm) {
     if (fLogin.valid) {
@@ -105,13 +108,12 @@ export class InitialPage implements OnInit {
           if (resp.message === 'emailnoverificado') {
             this.navCtrl.navigateRoot('/check');
           } else {
-            this.navCtrl.navigateRoot('/logged');
+            this.navCtrl.navigateRoot('/private/data/all');
           }
         } else {
-          this.logUser.password = ''; //VAciar campo de contrsena
+          this.logUser.password = '';
           await this.storageService.clear();
           if (!resp.message) {
-            // Se puede utilizar cualquier propiedad de la respuesta HTTP, que no sea success. Se hace con el fin de mostrar mensaje diferente cuando el servidor no respodne
             this.waitMessage.dismiss();
             this.toastMessage.presentToast(
               'Se produjo un error al iniciar sesión, por favor intenta nuevamente'
@@ -147,12 +149,4 @@ export class InitialPage implements OnInit {
     this.waitMessage.dismiss();
   }
 
-  // scan(){
-  //   this.barcodeScanner.scan().then(barcodeData => {
-  //     console.log('EL barcode es el siguiente');
-  //     console.log('Barcode data', barcodeData.text);
-  //    }).catch(err => {
-  //        console.log('Error', err);
-  //    });
-  // }
 }

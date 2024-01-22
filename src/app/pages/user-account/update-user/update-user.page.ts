@@ -68,7 +68,6 @@ export class UpdateUserPage implements AfterViewInit, OnInit {
   type: string;
   service: '';
 
-
   license = {
     code: '',
   };
@@ -209,10 +208,9 @@ export class UpdateUserPage implements AfterViewInit, OnInit {
           this.toastMessage.presentToast(
             'Algunos cambios se actualizarán después de iniciar sesión.'
           );
-          if (this.service.includes('health')) this.navCtrl.navigateRoot(['/logged']);
-          if (this.service.includes('pets'))  this.navCtrl.navigateRoot('/private/pets/all');
-            
-        }else {
+
+          this.navCtrl.navigateRoot('/private/data/all');
+        } else {
           this.toastMessage.presentToast(resp.message);
         }
       } catch (e) {
@@ -235,9 +233,8 @@ export class UpdateUserPage implements AfterViewInit, OnInit {
         if (user) {
           this.user = user;
           this.getOneUser();
-          const {service } = user;
+          const { service } = user;
           this.service = service;
-          console.log("🚀 ~ file: update-user.page.ts:240 ~ UpdateUserPage ~ .then ~ this.service:", this.service)
         }
       })
       .catch((e) =>

@@ -100,7 +100,7 @@ export class Form2Page implements OnInit {
         this.listEnf.push(i+1);
         this.formEnf.push(this.dataService.dataPaciente.condición[i]);
       }
-      console.log(this.dataService.dataPaciente.condición[this.noEnf]);
+      // console.log(this.dataService.dataPaciente.condición[this.noEnf]);
       this.form2.discapacidad = this.dataService.dataPaciente.condición[this.noEnf].discapacidad;
       this.form2.cicatricesDescripcion = this.dataService.dataPaciente.condición[this.noEnf].cicatrices;
       this.form2.tatuajesDescripcion = this.dataService.dataPaciente.condición[this.noEnf].tatuajes;
@@ -110,8 +110,8 @@ export class Form2Page implements OnInit {
   
 
   async onClickNext( fForm2: NgForm ){
-    console.log(fForm2.form.value);
-    console.log(fForm2.valid);
+    // console.log(fForm2.form.value);
+    // console.log(fForm2.valid);
     // console.log(this.formEnf);
     if(fForm2.valid){
       if(this.editFlag === 'new'){
@@ -121,7 +121,7 @@ export class Form2Page implements OnInit {
         };
         this.dataService.setFormEnfermedades(this.formEnf,this.listEnf);
         this.dataService.setFormCondicion(info);
-        console.log(info);
+        // console.log(info);
         this.navCtrl.navigateForward('/form3/new');
         //  this.userService.createForm(info,this.user.session_token).subscribe( resp => {
         //    if (resp.success){
@@ -139,7 +139,7 @@ export class Form2Page implements OnInit {
           enfermedades: this.formEnf,
         };
         const resp = await this.userService.updateInfo(info,this.user.session_token).toPromise(); //Servicio para actualizar informacion
-        console.log(resp);
+        // console.log(resp);
         if (resp.success){
           this.toastMessage.presentToast(resp.message);
           this.navCtrl.navigateRoot('/tab1');
@@ -176,7 +176,7 @@ export class Form2Page implements OnInit {
     await this.storageService.loadUser().then( (userp) => {
       if(userp){
         this.user = userp;
-        console.log('User coming from storage form2',this.user);
+        // console.log('User coming from storage form2',this.user);
       }
     }).catch( (e) => console.log('Error obteniento user storage',e));
   }

@@ -40,9 +40,9 @@ export class TabBarDashComponent implements OnInit {
   // Routes on which the tab-bar will be blue
 
   urls = [
-    '/private/pets/all',
+    '/private/data/all',
     '/logged',
-    '/private/pets/show',
+    '/private/data/show',
     '/private/vaccine/show',
     '/private/treatment/show',
     '/private/veterinarian/show',
@@ -57,7 +57,7 @@ export class TabBarDashComponent implements OnInit {
   }
 
   isHomeRoute(): boolean {
-    return this.router.url === '/private/pets/all';
+    return this.router.url === '/private/data/all';
   }
 
   isEditRoute(): boolean {
@@ -258,10 +258,10 @@ export class TabBarDashComponent implements OnInit {
     const currentUrl = this.router.url;
 
     const targetRoutes = [
-      '/private/pets/all',
+      '/private/data/all',
 
       '/private/pages/manage',
-      '/private/pets/show',
+      '/private/data/show',
       '/private/vaccine/show',
       '/private/history/show',
       '/private/veterinarian/show',

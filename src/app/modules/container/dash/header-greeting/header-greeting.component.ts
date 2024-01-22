@@ -34,7 +34,7 @@ export class HeaderGreetingComponent implements OnInit {
     if (this.dataReceived.includes('vaccine')) {
       this.category = 'Vacunas';
       this.icon = 'ico_blue_vaccine.svg';
-    } else if (this.dataReceived.includes('pets')) {
+    } else if (this.dataReceived.includes('data')) {
       this.category = 'Datos';
       this.icon = 'ico_blue_footprint.svg';
     } else if (this.dataReceived.includes('history')) {

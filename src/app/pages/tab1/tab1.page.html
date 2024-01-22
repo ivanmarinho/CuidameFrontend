@@ -23,7 +23,7 @@
         <ion-label>Contactos</ion-label>
         <ion-icon size="small" name="chevron-forward-outline" slot="end"></ion-icon>
       </ion-item> -->
-      <ion-item (click)="goHelpPage()">
+      <!-- <ion-item (click)="goHelpPage()">
         <ion-icon name="help-circle-outline" slot="start"></ion-icon>
         <ion-label>Ayuda</ion-label>
         <ion-icon
@@ -31,23 +31,14 @@
           name="chevron-forward-outline"
           slot="end"
         ></ion-icon>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="moon-outline" slot="start"></ion-icon>
-        <ion-label>Dark mode</ion-label>
-        <ion-toggle slot="end" (ionChange)="toogleTheme($event)"></ion-toggle>
-      </ion-item>
+      </ion-item> -->
       <ion-item (click)="goMenu()">
         <ion-icon name="grid-outline" slot="start"></ion-icon>
-        <ion-label>Menú</ion-label>
+        <ion-label>Home</ion-label>
       </ion-item>
-      <ion-item (click)="logOut()">
+      <!-- <ion-item (click)="logOut()">
         <ion-icon name="power-outline" slot="start"></ion-icon>
         <ion-label>Cerrar sesión</ion-label>
-      </ion-item>
-      <!-- <ion-item (click)="testing()">
-        <ion-icon name="power-outline" slot="start"></ion-icon>
-        <ion-label>Hacer test</ion-label>
       </ion-item> -->
     </ion-list>
   </ion-content>
@@ -72,7 +63,7 @@
 
   <ion-content [fullscreen]="true" class="background">
     <div *ngIf="!isCivilAccesing">
-      <ion-segment  
+      <ion-segment
         [value]="selectedCategory"
         (ionChange)="segmentChanged($event)"
         scrollable
@@ -110,7 +101,7 @@
             </ion-card-header>
 
             <ion-card-content>
-               <span id="span-card"> {{mayus(modeloPaciente[6][1])}}</span>
+              <span id="span-card"> {{mayus(modeloPaciente[6][1])}}</span>
               <br /><label id="label-card">
                 {{mayus(modeloPaciente[6][0])}}</label
               >
@@ -139,12 +130,21 @@
         </div>
 
         <div *ngIf="!isCivilAccesing">
+          <div class="profile">
+            <ion-label class="circle">
+              <ion-img
+                src="{{localServerUrl}}{{imageUrl}}"
+                (click)="showImageModal(localServerUrl,imageUrl)"
+              ></ion-img>
+            </ion-label>
+          </div>
+
           <p class="title">Información básica:</p>
 
           <div *ngFor="let item of modeloPaciente ">
             <div
               class="li-item"
-              *ngIf="item[0] !== 'id' && item[0] !== 'a_cargo_id'  && item[1] !== null"
+              *ngIf="item[0] !== 'id' && item[0] !== 'a_cargo_id'  && item[1] !== null  && item[0] !== 'photourl'"
             >
               <li>
                 <!-- <label id="label1" class="label" color="primary"> {{mayus(item[0])}}: </label> -->

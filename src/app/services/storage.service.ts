@@ -59,6 +59,18 @@ getPetAgreement(): string | null {
   return null;
 }
 
+async setPacientHashcode(hashcode: string) {
+  localStorage.setItem('pacient', hashcode);
+}
+
+getPacientHashcode(): string | null {
+  const hashcode = localStorage.getItem('pacient');
+  if (hashcode) {
+    return hashcode;
+  }
+  return null;
+}
+
 async clear(){
   await this._storage.clear();
 }

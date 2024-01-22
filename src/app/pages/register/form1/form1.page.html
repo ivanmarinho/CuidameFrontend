@@ -1,245 +1,292 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/tab1"
+        *ngIf="editFlag === 'edit'"
+      ></ion-back-button>
 
+      <ion-back-button
+        defaultHref=""
+        (click)="back()"
+        *ngIf="editFlag !== 'edit'"
+      ></ion-back-button>
+    </ion-buttons>
+    <ion-title color="primary">{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <ion-header class="ion-no-border">
-    <ion-toolbar>
-      <ion-buttons slot="start">
-
-        <ion-back-button  defaultHref="/tab1" *ngIf="editFlag === 'edit'"></ion-back-button>
-
-        <ion-back-button  defaultHref="" (click)="logOut()" *ngIf="editFlag !== 'edit'"></ion-back-button>
-      </ion-buttons>
-      <ion-title color="primary">{{ title }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <ion-content class="background">
-    <!-- <div id="header">
-      <h1> {{name}}</h1>
-      <ion-img src="assets/images/logo_eSMART.png" ></ion-img>
-    </div> -->
-
-
+<ion-content class="background">
 
   <form #fForm1="ngForm">
     <ion-grid fixed>
       <ion-row class="ion-align-items-center">
         <ion-col class="ion-text-center">
-          <!-- <p class="ion-margin ion-margin-bottom" id="label">¡Gracias por adquirir uno de nuestros productos!</p> -->
-          <h3 class="ion-margin">A continuación, ingresa los datos de la persona que deseas cuidar:</h3>
-
-
+          <h3 class="ion-margin">
+            A continuación, ingresa los datos de la persona que deseas cuidar:
+          </h3>
 
           <ion-list class="lista" mode="md">
-            <ion-item lines="none">
-              <ion-label>Cód. Pulsera: </ion-label>
-              <ion-input  type="text" name="code" [(ngModel)]="newPacient.code" readonly></ion-input>
-            </ion-item>
+
             <div id="divv">
-              <p>Datos personales: </p>
+              <p>Datos personales:</p>
 
-            <ion-item>
-              <ion-label position="floating">Nombres*</ion-label>
-              <ion-input type="text" name="nombre" [(ngModel)]="newPacient.nombre" required></ion-input>
-            </ion-item>
+            <form action="">
+                <div class="user-profile">
+                <ion-item lines="none" class="item-with-circle">
+                  <div style="padding: 10px;">
+                    <ion-label class="circle">
+                      <ion-img
+                      src="{{localServerUrl}}{{newPacient.photourl}}"
+                      *ngIf="imageLoaded === false"
+                    ></ion-img>
+                      <ion-img [src]="imageUrl" *ngIf="imageUrl"></ion-img>
+                    </ion-label>
+                  </div>
+                  <div class="small-circle">
+                    <ion-icon
+                      (click)="openFileInput()"
+                      (click)="fileInput.click()"
+                      class="camera-ico"
+                      src="/assets/images/add_img.svg"
+                      role="img"
+                    ></ion-icon>
+                  </div>
+                  <input
+                    #fileInput
+                    type="file"
+                    name="image"
+                    accept="image/*"
+                    style="display: none"
+                    (change)="handleFileInput($event)"
+                  />
+                </ion-item>
+              </div>
+            </form>
 
-            <ion-item>
-              <ion-label position="floating">Apellidos*</ion-label>
-              <ion-input type="text" name="apellido" [(ngModel)]="newPacient.apellido" required></ion-input>
-            </ion-item>
+              <ion-item>
+                <ion-label position="floating">Nombres*</ion-label>
+                <ion-input
+                  type="text"
+                  name="nombre"
+                  [(ngModel)]="newPacient.nombre"
+                  required
+                ></ion-input>
+              </ion-item>
 
-            <ion-item>
-              <ion-label>Tipo de identificación*</ion-label>
-              <ion-select interface="popover" name="tipoID"  placeholder="Seleccionar..." required [(ngModel)]="newPacient.tipoID">
-                <ion-select-option *ngFor="let item of tiposID" value="{{item.valor}}" required>{{item.etiqueta}}</ion-select-option>
-              </ion-select>
-            </ion-item>
+              <ion-item>
+                <ion-label position="floating">Apellidos*</ion-label>
+                <ion-input
+                  type="text"
+                  name="apellido"
+                  [(ngModel)]="newPacient.apellido"
+                  required
+                ></ion-input>
+              </ion-item>
 
-            <ion-item>
-              <ion-label position="floating">No. de identificación*</ion-label>
-              <ion-input name="numeroID" type="number" required [(ngModel)]="newPacient.numeroID"></ion-input>
-            </ion-item>
+              <ion-item>
+                <ion-label>Tipo de identificación*</ion-label>
+                <ion-select
+                  interface="popover"
+                  name="tipoID"
+                  placeholder="Seleccionar..."
+                  required
+                  [(ngModel)]="newPacient.tipoID"
+                >
+                  <ion-select-option
+                    *ngFor="let item of tiposID"
+                    value="{{item.valor}}"
+                    required
+                    >{{item.etiqueta}}</ion-select-option
+                  >
+                </ion-select>
+              </ion-item>
 
-            <ion-item>
-              <ion-label position="floating">Fecha de nacimiento</ion-label>
-              <ion-input name="fechaNacimiento" type="date" placeholder="dd/mm/yyyy" [(ngModel)]="newPacient.fechaNacimiento" required></ion-input>
-            </ion-item>
+              <ion-item>
+                <ion-label position="floating"
+                  >No. de identificación*</ion-label
+                >
+                <ion-input
+                  name="numeroID"
+                  type="number"
+                  required
+                  [(ngModel)]="newPacient.numeroID"
+                ></ion-input>
+              </ion-item>
 
-            <ion-item>
-              <ion-label >Género*</ion-label>
-              <ion-select interface="popover" name="genero" (ionChange)="recoverGender($event)" placeholder="Seleccionar..." [ngModel]="newPacient.genero">
-                <ion-select-option *ngFor="let item of generos" value="{{item.valor}}" required>{{item.etiqueta}}</ion-select-option>
-              </ion-select>
-            </ion-item>
+              <ion-item>
+                <ion-label position="floating">Fecha de nacimiento</ion-label>
+                <ion-input
+                  name="fechaNacimiento"
+                  type="date"
+                  placeholder="dd/mm/yyyy"
+                  [(ngModel)]="newPacient.fechaNacimiento"
+                  required
+                ></ion-input>
+              </ion-item>
 
-            <ion-item *ngIf="flagGeneroOtros">
-              <ion-label position="floating">¿Cómo te identificas?*</ion-label>
-              <ion-input name="otroGenero" type="text" required></ion-input>
-            </ion-item>
+              <ion-item>
+                <ion-label>Género*</ion-label>
+                <ion-select
+                  interface="popover"
+                  name="genero"
+                  (ionChange)="recoverGender($event)"
+                  placeholder="Seleccionar..."
+                  [ngModel]="newPacient.genero"
+                >
+                  <ion-select-option
+                    *ngFor="let item of generos"
+                    value="{{item.valor}}"
+                    required
+                    >{{item.etiqueta}}</ion-select-option
+                  >
+                </ion-select>
+              </ion-item>
 
-        </div>
+              <ion-item *ngIf="flagGeneroOtros">
+                <ion-label position="floating"
+                  >¿Cómo te identificas?*</ion-label
+                >
+                <ion-input name="otroGenero" type="text" required></ion-input>
+              </ion-item>
+            </div>
 
-        <div id="divv">
-          <p>Datos de contacto:</p>
-          <ion-item>
-            <ion-label position="floating">Dirección*</ion-label>
-            <ion-input name="direccion" type="text" [(ngModel)]="newPacient.direccion"></ion-input>
-          </ion-item>
+            <div id="divv">
+              <p>Datos de contacto:</p>
+              <ion-item>
+                <ion-label position="floating">Dirección*</ion-label>
+                <ion-input
+                  name="direccion"
+                  type="text"
+                  [(ngModel)]="newPacient.direccion"
+                ></ion-input>
+              </ion-item>
 
-            <ion-item>
-              <ion-label position="floating">Ciudad*</ion-label>
-              <ion-input name="ciudad" type="text" [(ngModel)]="newPacient.ciudad"></ion-input>
-            </ion-item>
+              <ion-item>
+                <ion-label position="floating">Ciudad*</ion-label>
+                <ion-input
+                  name="ciudad"
+                  type="text"
+                  [(ngModel)]="newPacient.ciudad"
+                ></ion-input>
+              </ion-item>
 
-            <ion-item>
-              <ion-label position="floating">Departamento*</ion-label>
-              <ion-input name="departamento" type="text" [(ngModel)]="newPacient.departamento"></ion-input>
-            </ion-item>
+              <ion-item>
+                <ion-label position="floating">Departamento*</ion-label>
+                <ion-input
+                  name="departamento"
+                  type="text"
+                  [(ngModel)]="newPacient.departamento"
+                ></ion-input>
+              </ion-item>
 
-            <ion-item>
-              <ion-label position="floating">Teléfono*</ion-label>
-              <ion-input name="telefono" type="number" required [(ngModel)]="newPacient.telefono"></ion-input>
-            </ion-item>
-          </div>
+              <ion-item>
+                <ion-label position="floating">Teléfono*</ion-label>
+                <ion-input
+                  name="telefono"
+                  type="number"
+                  required
+                  [(ngModel)]="newPacient.telefono"
+                ></ion-input>
+              </ion-item>
+            </div>
 
-          <div id="divv">
-            <p>Informacion de importancia:</p>
-            <ion-item>
-              <ion-label  position="floating">Tipo de sangre (RH)*</ion-label>
-              <ion-input name="rh" type="text" [(ngModel)]="newPacient.rh" required></ion-input>
-            </ion-item>
+            <div id="divv">
+              <p>Informacion de importancia:</p>
+              <ion-item>
+                <ion-label position="floating">Tipo de sangre (RH)*</ion-label>
+                <ion-input
+                  name="rh"
+                  type="text"
+                  [(ngModel)]="newPacient.rh"
+                  required
+                ></ion-input>
+              </ion-item>
 
-            <ion-item>
-              <ion-label  position="floating">EPS</ion-label>
-              <ion-input name="eps" type="text" [(ngModel)]="newPacient.eps"></ion-input>
-            </ion-item>
+              <ion-item>
+                <ion-label position="floating">EPS</ion-label>
+                <ion-input
+                  name="eps"
+                  type="text"
+                  [(ngModel)]="newPacient.eps"
+                ></ion-input>
+              </ion-item>
 
-            <ion-item>
-              <ion-label  position="floating">Prepagada</ion-label>
-              <ion-input name="prepagada" type="text" [(ngModel)]="newPacient.prepagada" ></ion-input>
-            </ion-item>
+              <ion-item>
+                <ion-label position="floating">Prepagada</ion-label>
+                <ion-input
+                  name="prepagada"
+                  type="text"
+                  [(ngModel)]="newPacient.prepagada"
+                ></ion-input>
+              </ion-item>
 
-            <ion-item>
-              <ion-label  position="floating">ARL</ion-label>
-              <ion-input name="arl" type="text" [(ngModel)]="newPacient.arl"></ion-input>
-            </ion-item>
+              <ion-item>
+                <ion-label position="floating">ARL</ion-label>
+                <ion-input
+                  name="arl"
+                  type="text"
+                  [(ngModel)]="newPacient.arl"
+                ></ion-input>
+              </ion-item>
 
-            <ion-item>
-              <ion-label  position="floating">Seguro funerario</ion-label>
-              <ion-input name="seguroFunerario" type="text" [(ngModel)]="newPacient.seguroFunerario" ></ion-input>
-            </ion-item>
-
-          </div>
-
-          <!-- <div id="divv">
-            <p>Familiar o persona allegada:</p>
-
-            <ion-item>
-              <ion-label  position="floating">Nombre de persona a cargo*</ion-label>
-              <ion-input name="nombreACargo" type="text" [(ngModel)]="newPacient.nombreACargo" required></ion-input>
-            </ion-item>
-
-            <ion-item>
-              <ion-label  position="floating">Parentesco de persona a cargo</ion-label>
-              <ion-input name="parentescoACargo" type="text" [(ngModel)]="newPacient.parentescoACargo" required></ion-input>
-            </ion-item>
-
-            <ion-item>
-              <ion-input name="telefonoACargo" type="number" [(ngModel)]="newPacient.telefonoACargo" required ></ion-input>
-            </ion-item>
-            </div> -->
-
-
-
-
-            <!-- <ion-button  color="secondary" class="submitbutton" type="submit" shape="round" expand="block">Aceptar</ion-button> -->
-
+              <ion-item>
+                <ion-label position="floating">Seguro funerario</ion-label>
+                <ion-input
+                  name="seguroFunerario"
+                  type="text"
+                  [(ngModel)]="newPacient.seguroFunerario"
+                ></ion-input>
+              </ion-item>
+            </div>
 
           </ion-list>
-
-
         </ion-col>
       </ion-row>
     </ion-grid>
   </form>
+</ion-content>
 
+<div *ngIf="editFlag === 'edit'">
+  <ion-footer no-border>
+    <ion-toolbar>
+      <ion-row>
+        <ion-col>
+          <div class="btn-wrapper">
+            <ion-button
+              size="small"
+              fill="outline"
+              color="primary"
+              (click)="onClickNext(fForm1)"
+            >
+              {{textNextButton}}
+              <ion-icon slot="end" name="caret-forward-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-footer>
+</div>
 
-
-
-  </ion-content>
-
-  <div *ngIf="editFlag === 'edit'">
-    <ion-footer no-border>
-      <ion-toolbar>
-
-        <ion-row>
-
-          <!-- <ion-col>
-              <ion-button
-                          size="small"
-                          fill="outline"
-                          color="danger"
-                          (click)="logOut()">
-                Cerrar sesión
-              </ion-button>
-          </ion-col> -->
-
-          <ion-col>
-            <div class="btn-wrapper">
-              <ion-button
-                          size="small"
-                          fill="outline"
-                          color="primary"
-                          (click)="onClickNext(fForm1)">
-                {{textNextButton}}
-                <ion-icon slot="end" name="caret-forward-outline"></ion-icon>
-              </ion-button>
-
-            </div>
-          </ion-col>
-
-        </ion-row>
-
-
-
-      </ion-toolbar>
-    </ion-footer>
-  </div>
-
-
-  <div *ngIf="editFlag !== 'edit'">
-    <ion-footer no-border>
-      <ion-toolbar>
-
-        <ion-row>
-
-          <!-- <ion-col>
-              <ion-button
-                          size="small"
-                          fill="outline"
-                          color="danger"
-                          (click)="logOut()">
-                Cerrar sesión
-              </ion-button>
-          </ion-col> -->
-
-          <ion-col>
-            <div class="btn-wrapper">
-              <ion-button
-                          size="small"
-                          fill="outline"
-                          color="primary"
-                          (click)="onClickNext(fForm1)">
-                Siguiente
-                <ion-icon slot="end" name="caret-forward-outline"></ion-icon>
-              </ion-button>
-
-            </div>
-          </ion-col>
-
-        </ion-row>
-
-
-
-      </ion-toolbar>
-    </ion-footer>
-  </div>
+<div *ngIf="editFlag !== 'edit'">
+  <ion-footer no-border>
+    <ion-toolbar>
+      <ion-row>
+        <ion-col>
+          <div class="btn-wrapper">
+            <ion-button
+              size="small"
+              fill="outline"
+              color="primary"
+              (click)="onClickNext(fForm1)"
+            >
+              Siguiente
+              <ion-icon slot="end" name="caret-forward-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-footer>
+</div>

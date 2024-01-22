@@ -36,14 +36,14 @@ export class HeaderDashComponent implements AfterViewInit {
   ];
 
   public urls: string[] = [
-    '/private/pets/show',
+    '/private/data/show',
     '/private/vaccine/show',
     '/private/history/show',
     '/private/veterinarian/show',
   ];
 
   public blue_urls: string[] = [
-    '/private/pets/show',
+    '/private/data/show',
     '/private/vaccine/show',
     '/private/history/show',
     '/private/veterinarian/show',
@@ -64,7 +64,7 @@ export class HeaderDashComponent implements AfterViewInit {
 
   shouldShowFlag(index: number): boolean {
     const url = this.router.url;
-    if (url.includes('pets/addpet')) {
+    if (url.includes('data/addpet')) {
       return index === 0;
     }
     if (url.includes('vaccine/add')) {
@@ -95,7 +95,7 @@ export class HeaderDashComponent implements AfterViewInit {
     '/private/disease/add',
     '/private/treatment/add',
     '/private/vaccine/add',
-    '/private/pets/addpet',
+    '/private/data/addpet',
   ];
 
   background(urls: string[]): boolean {

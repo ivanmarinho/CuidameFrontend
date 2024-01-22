@@ -15,9 +15,10 @@ import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 import { ToastMessage } from 'src/app/utils/toastMessage';
 import { InfoPaciente, User } from '../../interfaces/index';
 import { StorageService } from 'src/app/services/storage.service';
-import { AlertController, MenuController, NavController } from '@ionic/angular';
+import { AlertController, MenuController, ModalController, NavController } from '@ionic/angular';
 import { menuController } from '@ionic/core';
 import { QrCodeService } from 'src/app/services/qr-code.service';
+import { ImageModalPage } from 'src/app/components/image-modal/image-modal.page';
 
 @Component({
   selector: 'app-tab1',
@@ -31,6 +32,10 @@ export class Tab1Page implements OnInit {
   infoToShow = ['nombres', 'eps'];
 
   contacts = [[], [], []];
+
+  localServerUrl = 'http://localhost:3000/';
+  productionServerUrl = 'https://api.cuidame.tech';
+
 
   user: User;
   code: string;
@@ -77,6 +82,10 @@ export class Tab1Page implements OnInit {
     'medvac.svg',
     'vacunas.svg',
   ];
+
+  public imageUrl: string
+
+  public hashcode: string;
   public selectedCategory: string = this.categories[0];
   public modeloPaciente: any[] = [];
   private currentUserId: string; //This is actually the patient ID
@@ -93,10 +102,30 @@ export class Tab1Page implements OnInit {
     private storageService: StorageService,
     private menu: MenuController,
     public alertController: AlertController,
-    private qrCode: QrCodeService
+    private qrCode: QrCodeService,
+    private modalController: ModalController
+
   ) {
 
-    
+    this.hashcode = storageService.getPacientHashcode()
+  }
+
+
+  async getPacientHashcode() {
+    this.hashcode = this.storageService.getPacientHashcode();
+    // console.log(this.petId);
+  }
+
+  async showImageModal(url: string, path: string) {
+    path = path.replace(/\\/g, '/');
+    const modal = await this.modalController.create({
+      component: ImageModalPage,
+      componentProps: {
+        imageUrl: url + path,
+      },
+    });
+
+    return await modal.present();
   }
 
   formatDateInModel() {
@@ -144,8 +173,9 @@ export class Tab1Page implements OnInit {
     this.infoPaciente[this.selectedCategory] = await this.retrieveInfo();
     this.modeloPaciente = this.infoPaciente[this.selectedCategory];
     this.formatDateInModel()
-    
-    console.log('Modelo paciente', this.modeloPaciente);
+    this.imageUrl = this.modeloPaciente[18][1]
+    // console.log("🚀 ~ Tab1Page ~ ngOnInit ~ this.imageUrl:", this.imageUrl)
+    // console.log('Modelo paciente', this.modeloPaciente);
 
   }
 
@@ -157,7 +187,7 @@ export class Tab1Page implements OnInit {
         this.dataService.verifObjeto
       )
       .toPromise();
-    console.log('codrequest', resp);
+    // console.log('codrequest', resp);
     // if(!resp.success){this.notFound = true;}
     this.toastMessage.presentToast(resp.message);
   }
@@ -169,7 +199,9 @@ export class Tab1Page implements OnInit {
   setTab1() {
     if (this.user) {
       this.nameUser['el'].innerHTML = `Hola ${this.user.name}`; //Titulo tab1
-      this.code = this.user.hashcode;
+      this.code = this.hashcode;
+      // console.log("🚀 ~ Tab1Page ~ setTab1 ~ this.code:", this.code)
+      
     } else {
       this.code = this.dataService.getCodeRequest();
     }
@@ -187,13 +219,13 @@ export class Tab1Page implements OnInit {
       this.infoPaciente[this.selectedCategory] = await this.retrieveInfo();
       this.modeloPaciente = this.infoPaciente[this.selectedCategory];
     }
-    console.log('modelo paciente', this.modeloPaciente);
-    console.log('infoPaciente', this.infoPaciente);
+    // console.log('modelo paciente', this.modeloPaciente);
+    // console.log('infoPaciente', this.infoPaciente);
     //Enfermedades condicion
 
     if (this.selectedCategory === 'condición' && this.enfToShow.length === 0) {
       //Enfermedades  
-      console.log('Enfermedades', this.enfToShow);
+      // console.log('Enfermedades', this.enfToShow);
       for (let i = 0; i < this.noEnf; i++) {
         this.enfToShow.push(this.modeloPaciente.shift());
       }
@@ -252,11 +284,11 @@ export class Tab1Page implements OnInit {
       //Vacuans
       // eslint-disable-next-line @typescript-eslint/prefer-for-of
       const noVacunas = this.modeloPaciente.length;
-      console.log('modelo pacienasdaste', this.modeloPaciente.length);
+      // console.log('modelo pacienasdaste', this.modeloPaciente.length);
       for (let i = 0; i < noVacunas; i++) {
         this.vacunasToShow.push(this.modeloPaciente.shift());
       }
-      console.log('va', this.vacunasToShow);
+      // console.log('va', this.vacunasToShow);
     }
   }
 
@@ -265,6 +297,9 @@ export class Tab1Page implements OnInit {
     let datosPaciente = [];
 
     try {
+
+      // TO DO:
+      // Check how to send the code from 
       let resp = await this.userService
         .retrieveInfo(this.code, this.selectedCategory, this.currentUserId)
         .toPromise();
@@ -315,7 +350,7 @@ export class Tab1Page implements OnInit {
         );
       }
     } catch (e) {
-      console.log('error trayendo info', e);
+      // console.log('error trayendo info', e);
     }
 
     return datosPaciente;
@@ -391,7 +426,7 @@ export class Tab1Page implements OnInit {
   }
 
   async goMenu() {
-    this.navCtrl.navigateRoot('logged');
+    this.navCtrl.navigateRoot('/private/data/all');
   }
 
   mayus(str: string): string {

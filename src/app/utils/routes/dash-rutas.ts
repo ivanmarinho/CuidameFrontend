@@ -4,7 +4,7 @@ export const PETS_ROUTES: Routes = [
 
   // Pets Routes
   {
-    path: 'pets',
+    path: 'data',
     loadChildren: () =>
       import('src/app/pages/pets/basic-info/pets.module').then((m) => m.PetsModule),
   },

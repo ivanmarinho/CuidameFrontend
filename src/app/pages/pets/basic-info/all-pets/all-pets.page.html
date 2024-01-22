@@ -25,7 +25,7 @@
   <div class="container" *ngIf="finishedLoading; else loading">
     <div
       class="card-container"
-      *ngFor="let pet of petsArray | filterPets: searchTerm"
+      *ngFor="let pet of petsArray | filterArray: searchTerm:'nombre'"
     >
       <ion-label class="card" (click)="goToPet(pet.id, pet.agreement)">
         <ion-img
@@ -33,7 +33,20 @@
           src="{{productionServerUrl}}{{pet.photourl}}"
         ></ion-img>
       </ion-label>
-      <div class="pet-name"><label>{{pet.nombre}}</label></div>
+      <div class="pet-name"><label>{{pet.nombre.split(' ')[0]}}</label></div>
+    </div>
+
+    <div
+      class="card-container"
+      *ngFor="let per of personaArray | filterArray: searchTerm:'nombre'"
+    >
+      <ion-label class="card" (click)="goToPerson(per.code, per.agreement)">
+        <ion-img
+          class="pet-photo"
+          src="{{localServerUrl}}{{per.photourl}}"
+        ></ion-img>
+      </ion-label>
+      <div class="pet-name"><label>{{per.nombre.split(' ')[0]}}</label></div>
     </div>
 
 

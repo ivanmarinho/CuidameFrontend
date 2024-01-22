@@ -70,7 +70,7 @@ export class Form4Page implements OnInit {
   setEdit(){ //La parte visual de la edicion se hace con angular en el documento html
     if (this.editFlag === 'edit'){
 
-      console.log('infor a editaaras',this.dataService.dataPaciente.medAlergias);
+      // console.log('infor a editaaras',this.dataService.dataPaciente.medAlergias);
 
       this.title = 'Editar';
       this.textNextButton = 'Guardar';
@@ -105,18 +105,18 @@ export class Form4Page implements OnInit {
 
    async onClickNext( fForm4: NgForm ){
 
-    console.log(this.form4Med);
-    console.log(this.form5Alergia);
-    console.log(this.noMeds, this.listMed);
-    console.log(this.noAlergias, this.listAlergias);
-    console.log(fForm4.form.value);
+    // console.log(this.form4Med);
+    // console.log(this.form5Alergia);
+    // console.log(this.noMeds, this.listMed);
+    // console.log(this.noAlergias, this.listAlergias);
+    // console.log(fForm4.form.value);
 
 
 
     if(fForm4.valid && this.editFlag === 'new'){
 
       this.dataService.setFormMedAlergia(this.form4Med,this.form5Alergia);
-      console.log('info desde data service',this.dataService.form4Med, this.dataService.form5Alergia);
+      // console.log('info desde data service',this.dataService.form4Med, this.dataService.form5Alergia);
       this.navCtrl.navigateForward('/form5/new');
       return;
       // this.waitMessage.present();
@@ -128,12 +128,12 @@ export class Form4Page implements OnInit {
 
         //////PACIENTE
 
-        console.log(this.dataService.getForm1());
+        // console.log(this.dataService.getForm1());
         let resp = await this.userService.createForm(this.dataService.getForm1(),this.user.session_token).toPromise();
       if (resp.success){
         this.idPaciente = resp.data; //Asignar id para relacionar los siguiente formularios al mismo paciente
       }else{this.check = false;}
-      console.log('Registro paciente',resp);
+      // console.log('Registro paciente',resp);
 
 
         ////CONDICION
@@ -144,9 +144,9 @@ export class Form4Page implements OnInit {
         enfermedades: this.dataService.formEnf
 
       };
-      console.log(infoCondicion);
+      // console.log(infoCondicion);
       resp = await this.userService.createForm(infoCondicion,this.user.session_token).toPromise();
-      console.log('Registro condicion',resp);
+      // console.log('Registro condicion',resp);
       if (!resp.success){this.check = false;}
 
       //ANTECEDENTES
@@ -156,7 +156,7 @@ export class Form4Page implements OnInit {
           form: 3
         };
         resp = await this.userService.createForm(info,this.user.session_token).toPromise();
-        console.log('Registro antecedente personal',resp);
+        // console.log('Registro antecedente personal',resp);
         if (!resp.success){this.check = false;}
 
         info = {
@@ -165,7 +165,7 @@ export class Form4Page implements OnInit {
           form: 6
         };
          resp = await this.userService.createForm(info,this.user.session_token).toPromise();
-         console.log('Registro antecedente familiar',resp);
+        //  console.log('Registro antecedente familiar',resp);
          if (!resp.success){this.check = false;}
 
 
@@ -176,9 +176,9 @@ export class Form4Page implements OnInit {
           medicamentos: this.form4Med,
           form: 4
         };
-        console.log(info);
+        // console.log(info);
         resp = await this.userService.createForm(info,this.user.session_token).toPromise();
-        console.log('Registro medciamentos',resp);
+        // console.log('Registro medciamentos',resp);
         if (!resp.success){this.check = false;}
 
 
@@ -187,16 +187,16 @@ export class Form4Page implements OnInit {
           alergias: this.form5Alergia,
           form: 5
         };
-        console.log(info);
+        // console.log(info);
         resp = await this.userService.createForm(info,this.user.session_token).toPromise();
-        console.log('Registro alergias',resp);
+        // console.log('Registro alergias',resp);
         if (!resp.success){this.check = false;}
 
       if (this.check){this.navCtrl.navigateRoot('/tab1');}
       else{this.toastMessage.presentToast('Hubo un error con el registro de la información');this.check = true;}
 
       }catch(e){
-        console.log('error al subir',e);
+        // console.log('error al subir',e);
       }
     }
     else if (fForm4.valid && this.editFlag === 'edit'){
@@ -266,7 +266,7 @@ export class Form4Page implements OnInit {
       if(userp){
         this.user = userp;
         // this.dataService.user = userp;
-        console.log('User coming from storage',this.user);
+        // console.log('User coming from storage',this.user);
         // console.log('User coming from data service',this.dataService.user);
       }
     }).catch( (e) => console.log('Error obteniento user storage',e));
