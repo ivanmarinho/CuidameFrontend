@@ -85,19 +85,20 @@
         <form #code="ngForm">
           <ion-list mode="md">
             <div class="item">
-              <ion-label color="primary" class="select-label">Seguro</ion-label>
+              <ion-label color="primary" class="select-label">Seguro o Convenio</ion-label>
               <ion-select
                 interface="popover"
                 name="agreement"
                 [(ngModel)]="band.agreement"
                 required
               >
-                <ion-select-option
-                  *ngFor="let item of insurances"
-                  value="{{item.value}}"
-                  required
-                  >{{item.name}}</ion-select-option
-                >
+              <ion-select-option
+              *ngFor="let agreement of agreements"
+              [value]="agreement.agreement"
+              required
+            >
+              {{ agreement.agreement }}
+            </ion-select-option>
               </ion-select>
             </div>
             <div class="item">

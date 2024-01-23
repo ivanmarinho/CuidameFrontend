@@ -59,12 +59,12 @@ getPetAgreement(): string | null {
   return null;
 }
 
-async setPacientHashcode(hashcode: string) {
-  localStorage.setItem('pacient', hashcode);
+async setPersonHashcode(hashcode: string) {
+  localStorage.setItem('person', hashcode);
 }
 
-getPacientHashcode(): string | null {
-  const hashcode = localStorage.getItem('pacient');
+getPersonHashcode(): string | null {
+  const hashcode = localStorage.getItem('person');
   if (hashcode) {
     return hashcode;
   }

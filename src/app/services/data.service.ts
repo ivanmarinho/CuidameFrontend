@@ -4,10 +4,9 @@ import { EditInfo, InfoPaciente, Paciente } from '../interfaces';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataService {
-
   deviceNotificationID: string;
   codeRequest: string;
   isCivilAccesing: boolean;
@@ -15,13 +14,13 @@ export class DataService {
   public registerBand = {
     code: '',
     pin: '',
-    parentesco: ''
+    parentesco: '',
   };
 
   public avatar = {
     img: '',
     label: 'Ciudadano',
-    seleccionado: true
+    seleccionado: true,
   };
 
   womanFlag = false;
@@ -60,7 +59,6 @@ export class DataService {
   // listAnt: number[];
   // listAntFam: number[];
 
-
   listMed: number[];
   listAlergias: number[];
   form4Med = {};
@@ -70,7 +68,7 @@ export class DataService {
   usuarioPaciente: boolean; //Bolean que indica que el usuario será la persona que usara la manilla y no un tercero.
   usuarioRegistrado = {}; //Objeto usado para rellenar automaticamente datos del paciente cuando el paciente es el mismo usuario
 
-/////Edit service
+  /////Edit service
 
   dataPaciente: EditInfo = {};
 
@@ -80,107 +78,100 @@ export class DataService {
 
   scanLocation = {};
 
-  constructor() { }
+  constructor() {}
 
-  public setNotificationID(notificationId: string){
+  public setNotificationID(notificationId: string) {
     this.deviceNotificationID = notificationId;
   }
 
-  public getNotificationID(){
+  public getNotificationID() {
     return this.deviceNotificationID;
   }
 
-
-  public setCodeRequest(code: string){
+  public setCodeRequest(code: string) {
     this.codeRequest = code;
   }
 
-  public getCodeRequest(){
+  public getCodeRequest() {
     // console.log('hashcode dataservice',this.codeRequest);
     return this.codeRequest;
   }
 
-  public setScanLocation(location: Record<string, unknown>){
+  public setScanLocation(location: Record<string, unknown>) {
     this.scanLocation = location;
   }
 
-  public getScanLocation(){
+  public getScanLocation() {
     return this.scanLocation;
   }
 
-
-
-  public setAvatar(valor){
+  public setAvatar(valor) {
     this.avatar = valor;
   }
-  public getAvatar(){
+  public getAvatar() {
     return this.avatar;
   }
 
-
   //USUARIO REGISTRADO
 
-  public setUsuarioRegistrado(info: Record<string, unknown>){
+  public setUsuarioRegistrado(info: Record<string, unknown>) {
     this.usuarioRegistrado = info;
   }
 
-  public getUsuarioRegistrado(){
+  public getUsuarioRegistrado() {
     return this.usuarioRegistrado;
   }
 
-
-  public setUsuarioPaciente(info: boolean){
+  public setUsuarioPaciente(info: boolean) {
     this.usuarioPaciente = info;
-
   }
 
-
-  public getUsuarioPaciente(){
+  public getUsuarioPaciente() {
     return this.usuarioPaciente;
   }
 
-
   //
 
-  public setWomanFlag(flag: boolean){
+  public setWomanFlag(flag: boolean) {
     this.womanFlag = flag;
   }
-  public getWomanFlag(){
+  public getWomanFlag() {
     return this.womanFlag;
   }
 
-
-
-  public setForm1(info){
+  public setForm1(info) {
     this.infoFormPaciente = info;
   }
   public getForm1() {
     return this.infoFormPaciente;
   }
 
-
-
-  public setFormEnfermedades(formEnf: Record<string, unknown>[], listEnf: number[]){
+  public setFormEnfermedades(
+    formEnf: Record<string, unknown>[],
+    listEnf: number[]
+  ) {
     this.formEnf = formEnf;
     this.listEnf = listEnf;
   }
 
-  public setFormCondicion(info: Record<string, unknown>){
+  public setFormCondicion(info: Record<string, unknown>) {
     this.infoFormCondicion = info;
   }
-  public getFormCondicion(){
+  public getFormCondicion() {
     return this.infoFormCondicion;
   }
 
-
-  public setFormAntecedentes(form3Ant: Record<string, unknown>[], listAnt: number[],
-                            form6AntF: Record<string, unknown>[], listAntFam: number[]){
+  public setFormAntecedentes(
+    form3Ant: Record<string, unknown>[],
+    listAnt: number[],
+    form6AntF: Record<string, unknown>[],
+    listAntFam: number[]
+  ) {
     this.form3Ant = form3Ant;
     // this.listAnt = listAnt;
     this.form6AntF = form6AntF;
     // this.listAntFam = listAntFam;
   }
-
 
   // public setFormMedAlergia(form4Med: Record<string, unknown>[], listMed: number[],
   //                           form5Alergia: Record<string, unknown>[], listAlergias: number[]){
@@ -191,115 +182,133 @@ export class DataService {
 
   // }
 
-  public setFormMedAlergia(form4Med: Record<string, unknown>[], form5Alergia: Record<string, unknown>[]){
-
-        this.form4Med = form4Med;
-        this.form5Alergia = form5Alergia;
-
+  public setFormMedAlergia(
+    form4Med: Record<string, unknown>[],
+    form5Alergia: Record<string, unknown>[]
+  ) {
+    this.form4Med = form4Med;
+    this.form5Alergia = form5Alergia;
   }
 
-  public setFormVacunas(formVacunas: Record<string, string>[]){
+  public setFormVacunas(formVacunas: Record<string, string>[]) {
     this.formVacunas = formVacunas;
   }
 
-
   ////Edit getter and setter
-  public setInfoPaciente(category: string,info){
+  public setInfoPaciente(category: string, info) {
     this.dataPaciente[category] = info;
-
   }
 
- public getDataPaciente(){
-   return this.dataPaciente;
- }
+  public getDataPaciente() {
+    return this.dataPaciente;
+  }
 
+  private data: any;
 
+  setData(data: any) {
+    this.data = data;
+  }
 
- private data: any;
+  getData() {
+    return this.data;
+  }
 
- setData(data: any) {
-   this.data = data;
- }
+  private dataHeader: any;
 
- getData() {
-   return this.data;
- }
+  setDataHeader(data: any) {
+    this.dataHeader = data;
+  }
 
- private dataHeader: any;
+  getDataHeader() {
+    return this.dataHeader;
+  }
 
- setDataHeader(data: any) {
-   this.dataHeader = data;
- }
+  private showPage: any;
 
- getDataHeader() {
-   return this.dataHeader;
- }
+  setDataPage(data: any) {
+    this.showPage = data;
+  }
 
+  getDataPage() {
+    return this.showPage;
+  }
 
-private showPage: any;
+  private hcode: any;
 
- setDataPage(data: any) {
-   this.showPage = data;
- }
+  setCode(data: any) {
+    this.hcode = data;
+  }
 
- getDataPage() {
-   return this.showPage;
- }
+  getCode() {
+    return this.hcode;
+  }
 
+  private flagSubject = new BehaviorSubject<number>(-1);
+  flag$ = this.flagSubject.asObservable();
 
- private hcode: any;
+  setActiveFlag(data: number) {
+    this.flagSubject.next(data);
+  }
 
- setCode(data: any) {
-   this.hcode = data;
- }
+  getActiveFlag(): Observable<number> {
+    return this.flag$;
+  }
 
- getCode() {
-   return this.hcode;
- }
+  private req: any;
 
- private flagSubject = new BehaviorSubject<number>(-1);
- flag$ = this.flagSubject.asObservable();
+  setVetRequest(data: any) {
+    this.req = data;
+  }
 
- setActiveFlag(data: number) {
-   this.flagSubject.next(data);
- }
+  getVetRequest() {
+    return this.req;
+  }
 
- getActiveFlag(): Observable<number> {
-   return this.flag$;
- }
+  private image: any;
 
- private req: any;
+  setImage(data: any) {
+    this.image = data;
+  }
 
- setVetRequest(data: any) {
-   this.req = data;
- }
+  getImage() {
+    return this.image;
+  }
 
- getVetRequest() {
-   return this.req;
- }
+  private pacientId: any;
 
+  setPacientHashcode(data: any) {
+    this.pacientId = data;
+  }
 
- private image: any;
+  getPacientHashcode() {
+    return this.pacientId;
+  }
 
- setImage(data: any) {
-   this.image = data;
- }
+  private personOrPet: boolean;
+  setPersonOrPet(data: boolean) {
+    this.personOrPet = data;
+  }
 
- getImage() {
-   return this.image;
- }
+  getPersonOrPet() {
+    return this.personOrPet;
+  }
 
+  private personName: string;
+  setPersonName(data: string) {
+    this.personName = data;
+  }
 
- private pacientId: any;
+  getPersonName() {
+    return this.personName;
+  }
 
- setPacientHashcode(data: any) {
-   this.pacientId = data;
- }
+  private personGender: string;
 
- getPacientHashcode() {
-   return this.pacientId;
- }
+  setPersonGender(gender: string) {
+    this.personGender = gender;
+  }
 
+  getPersonGender(): string {
+    return this.personGender;
+  }
 }
-
-

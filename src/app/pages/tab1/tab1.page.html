@@ -133,8 +133,8 @@
           <div class="profile">
             <ion-label class="circle">
               <ion-img
-                src="{{localServerUrl}}{{imageUrl}}"
-                (click)="showImageModal(localServerUrl,imageUrl)"
+                [src]="getImageUrlByTipoPersona(localServerUrl, gender, imageUrl)"
+                (click)="showImageModal(localServerUrl, imageUrl)"
               ></ion-img>
             </ion-label>
           </div>

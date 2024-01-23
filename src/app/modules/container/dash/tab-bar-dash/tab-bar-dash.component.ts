@@ -256,6 +256,12 @@ export class TabBarDashComponent implements OnInit {
 
   goBack() {
     const currentUrl = this.router.url;
+    
+    const noBack = ['/private/data/all']
+
+    if (noBack.includes(currentUrl)) {
+      return;
+    }
 
     const targetRoutes = [
       '/private/data/all',

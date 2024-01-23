@@ -25,8 +25,11 @@ export class ManagementPage implements AfterViewInit {
   await this.getPet();
  }
 
+ public pacientOrPet: boolean;
   public petId: string = '';
   public user: User;
+
+  personName: string
 
   pet = {
     id: '',
@@ -35,10 +38,20 @@ export class ManagementPage implements AfterViewInit {
 
   async getPetId() {
     this.petId = this.storageService.getPetId();
-    // console.log(this.petId);
+    this.pacientOrPet = this.dataService.getPersonOrPet();
+    this.personName = this.dataService.getPersonName()
   }
 
+  goToPersonCare() {
+    const dataToSend = true;
+    this.dataService.setData(dataToSend);
+    this.navCtrl.navigateForward('/private/pages/care');
+  }
 
+  goToPersonInfo(){
+    this.navCtrl.navigateForward('/tab1');
+
+  }
   async getPet() {
     this.storageService
       .loadUser()

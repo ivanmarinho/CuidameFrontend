@@ -141,7 +141,7 @@ export class UserService {
   // }
 
   createForm(info, token: string = '') {
-    console.log('Esta es la info que se envia a al query', info);
+    // console.log('Esta es la info que se envia a al query', info);
     return this.http
       .post(`${url}api/users/registerForm`, info, {
         headers: {
@@ -168,7 +168,7 @@ export class UserService {
   }
 
   updateInfo(info, token: string = '') {
-    console.log('Esta es la info que se envia a al query', info);
+    // console.log('Esta es la info que se envia a al query', info);
     return this.http
       .post(`${url}api/users/updateInfo`, info, {
         headers: {
@@ -180,7 +180,7 @@ export class UserService {
   }
 
   registerContacts(info, token: string = '') {
-    console.log('Esta es la info que se envia a al query contactos', info);
+    // console.log('Esta es la info que se envia a al query contactos', info);
     return this.http
       .post(`${url}api/users/registerContact`, info, {
         headers: {
@@ -248,10 +248,10 @@ export class UserService {
   }
 
   deleteObject(info, token: string = '') {
-    console.log(
-      'Esta es la info que se envia a al query de registrar objeto',
-      info
-    );
+    // console.log(
+    //   'Esta es la info que se envia a al query de registrar objeto',
+    //   info
+    // );
     return this.http
       .post(`${url}api/users/deleteObject`, info, {
         headers: {
@@ -537,4 +537,12 @@ export class UserService {
       }
     );
   }
+
+
+  getAgreements() {
+    return this.http
+      .get(`${url}api/qr/agreements`)
+      .pipe(catchError(this.handleError));
+  }
+
 }

@@ -33,7 +33,16 @@ export class AllPetsPage implements AfterViewInit {
   };
 
   petsArray = [{ id: '', nombre: '', agreement: '', photourl: '' }];
-  personaArray = [{ id: '', nombre: '', agreement: '', photourl: '' }];
+  personaArray = [
+    {
+      code: '',
+      nombre: '',
+      agreement: '',
+      photourl: '',
+      fecha_nacimiento: '',
+      genero: '',
+    },
+  ];
 
   hashcode: '';
 
@@ -55,7 +64,31 @@ export class AllPetsPage implements AfterViewInit {
     await this.storageService.init();
     await this.getUser();
     await this.getUsersPets();
-    this.navCtrl.navigateRoot('/private/pets/all');
+    this.navCtrl.navigateRoot('/private/data/all');
+  }
+
+  getEdadYGenero(persona: any): { edad: number; genero: string } {
+    const fechaNacimiento = new Date(persona.fecha_nacimiento);
+    const hoy = new Date();
+    const edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+
+    const genero = persona.genero.toLowerCase();
+
+    return { edad: Number(edad.toString()), genero: genero };
+  }
+
+  getImagenPorEdadYGenero(persona: any): string {
+    const { edad, genero } = this.getEdadYGenero(persona);
+
+    if (edad < 18) {
+      return genero === 'masculino'
+        ? 'uploads/person/avatars/avatar_child.png'
+        : 'uploads/person/avatars/avatar_girl.jpg';
+    } else {
+      return genero === 'masculino'
+        ? 'uploads/person/avatars/avatar_man.png'
+        : 'uploads/person/avatars/avatar_woman.jpg';
+    }
   }
 
   ngOnDestroy(): void {
@@ -70,11 +103,29 @@ export class AllPetsPage implements AfterViewInit {
     this.navCtrl.navigateForward('/private/pages/manage');
     this.storageService.setPetId(id);
     this.storageService.setPetAgreement(agreement);
+    this.dataService.setPersonOrPet(true);
   }
 
-  goToPerson(hashcode: string) {
-    this.navCtrl.navigateForward('/tab1');
-    this.storageService.setPacientHashcode(hashcode);
+  goToPerson(hashcode: string, agreement: string, name: string) {
+
+    const persona = this.personaArray.find((per) => per.code === hashcode);
+    const { edad, genero } = this.getEdadYGenero(persona);
+
+    let tipoPersona: string;
+    if (edad < 18) {
+      tipoPersona = genero === 'masculino' ? 'niño' : 'niña';
+    } else {
+      tipoPersona = genero === 'masculino' ? 'hombre' : 'mujer';
+    }
+
+    this.navCtrl.navigateForward('/private/pages/manage');
+    this.storageService.setPersonHashcode(hashcode);
+    this.dataService.setPersonOrPet(false);
+    this.storageService.setPetAgreement(agreement);
+
+    this.dataService.setPersonName(name);
+
+    this.dataService.setPersonGender(tipoPersona);
   }
 
   async getUsersPets() {
@@ -104,7 +155,7 @@ export class AllPetsPage implements AfterViewInit {
               (response) => {
                 this.personaArray = response;
                 // console.log("🚀 ~ AllPetsPage ~ .then ~ this.personaArray:", this.personaArray)
-                
+
                 this.finishedPersonaLoading = true;
               },
               (error) => {

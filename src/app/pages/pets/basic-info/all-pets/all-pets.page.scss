@@ -93,6 +93,8 @@
     font-weight: bold;
     color: #fff;
     font-size: 1.5rem;
+  z-index: 2;
+
   }
 }
 
@@ -175,4 +177,16 @@ ion-loading.custom-loading {
   --spinner-color: #1c6dff;
 
   color: #1c6dff;
+}
+
+.grey-gradient {
+  width: 167px;
+  height: 245px;
+  position: absolute;
+  top: -215px;
+  right: 10px;
+  border-radius: 20px;
+  background: linear-gradient(to top, #0000004f, transparent);
+  z-index: 1;
+  opacity: 0.8;
 }

@@ -15,7 +15,12 @@ import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 import { ToastMessage } from 'src/app/utils/toastMessage';
 import { InfoPaciente, User } from '../../interfaces/index';
 import { StorageService } from 'src/app/services/storage.service';
-import { AlertController, MenuController, ModalController, NavController } from '@ionic/angular';
+import {
+  AlertController,
+  MenuController,
+  ModalController,
+  NavController,
+} from '@ionic/angular';
 import { menuController } from '@ionic/core';
 import { QrCodeService } from 'src/app/services/qr-code.service';
 import { ImageModalPage } from 'src/app/components/image-modal/image-modal.page';
@@ -35,7 +40,6 @@ export class Tab1Page implements OnInit {
 
   localServerUrl = 'http://localhost:3000/';
   productionServerUrl = 'https://api.cuidame.tech';
-
 
   user: User;
   code: string;
@@ -57,7 +61,6 @@ export class Tab1Page implements OnInit {
 
   vacunasToShow = [];
 
-  
   contact = [
     {
       nombre: '',
@@ -65,8 +68,7 @@ export class Tab1Page implements OnInit {
     },
   ];
 
-  contactshow: any[]
-
+  contactshow: any[];
 
   public categories: string[] = [
     'usuario',
@@ -83,7 +85,13 @@ export class Tab1Page implements OnInit {
     'vacunas.svg',
   ];
 
-  public imageUrl: string
+  imagenNiño = 'uploads/person/avatars/avatar_child.png';
+  imagenNiña = 'uploads/person/avatars/avatar_girl.jpg';
+  imagenHombre = 'uploads/person/avatars/avatar_man.png';
+  imagenMujer = 'uploads/person/avatars/avatar_woman.jpg';
+
+  public imageUrl: string;
+  public gender: string;
 
   public hashcode: string;
   public selectedCategory: string = this.categories[0];
@@ -104,20 +112,24 @@ export class Tab1Page implements OnInit {
     public alertController: AlertController,
     private qrCode: QrCodeService,
     private modalController: ModalController
-
   ) {
-
-    this.hashcode = storageService.getPacientHashcode()
+    this.hashcode = storageService.getPersonHashcode();
   }
 
-
   async getPacientHashcode() {
-    this.hashcode = this.storageService.getPacientHashcode();
-    // console.log(this.petId);
+    this.hashcode = this.storageService.getPersonHashcode();
+    this.gender = this.dataService.getPersonGender();
   }
 
   async showImageModal(url: string, path: string) {
+    
+
     path = path.replace(/\\/g, '/');
+
+    if (path === '') {
+      return;
+    }
+
     const modal = await this.modalController.create({
       component: ImageModalPage,
       componentProps: {
@@ -128,43 +140,75 @@ export class Tab1Page implements OnInit {
     return await modal.present();
   }
 
+  // ...
+
+  getImageUrlByTipoPersona( localServerUrl: string, tipoPersona: string, imageUrl: string ): string {
+    if (imageUrl === '') {
+      return imageUrl;
+    }
+
+    switch (tipoPersona) {
+      case 'niño':
+        return `${localServerUrl}${this.imagenNiño}`;
+      case 'niña':
+        return `${localServerUrl}${this.imagenNiña}`;
+      case 'hombre':
+        return `${localServerUrl}${this.imagenHombre}`;
+      case 'mujer':
+        return `${localServerUrl}${this.imagenMujer}`;
+      default:
+        // Devuelve una imagen predeterminada o una ruta vacía según tus necesidades
+        return '';
+    }
+  }
+
   formatDateInModel() {
     const monthNames = [
-      "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-      "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+      'Enero',
+      'Febrero',
+      'Marzo',
+      'Abril',
+      'Mayo',
+      'Junio',
+      'Julio',
+      'Agosto',
+      'Septiembre',
+      'Octubre',
+      'Noviembre',
+      'Diciembre',
     ];
-  
+
     for (const item of this.modeloPaciente) {
-      if (item[0] === "fechaNacimiento") {
+      if (item[0] === 'fechaNacimiento') {
         const date = new Date(item[1]);
         const day = date.getDate();
         const month = monthNames[date.getMonth()]; // Obtener el nombre del mes
         const year = date.getFullYear();
         item[1] = `${day} de ${month} de ${year}`;
       }
-      if (item[0] === "fechaNacimiento") {
-        item[0] = "Fecha Nacimiento";
+      if (item[0] === 'fechaNacimiento') {
+        item[0] = 'Fecha Nacimiento';
       }
-      if (item[0] === "telefono") {
-        item[0] = "Teléfono";
+      if (item[0] === 'telefono') {
+        item[0] = 'Teléfono';
       }
-      if (item[0] === "genero") {
-        item[0] = "Género";
+      if (item[0] === 'genero') {
+        item[0] = 'Género';
       }
-      if (item[0] === "direccion") {
-        item[0] = "Dirección";
+      if (item[0] === 'direccion') {
+        item[0] = 'Dirección';
       }
     }
   }
-  
 
   async ngOnInit() {
-    
+    this.getPacientHashcode();
+
     this.isCivilAccesing = this.dataService.isCivilAccesing; //Para saber si se esta accediendo como una persona normal (civil)
-    
+
     await this.storageService.init(); //Iniciar servicio storage
     await this.getUser(); //Obtener informacion de usuario para inicio de sesion
-    
+
     if (!this.user) {
       this.enviarNotificacion(); //Si no hay un usuario, entonces es un escaneo, por lo tanto se envia notificacion
     }
@@ -172,11 +216,8 @@ export class Tab1Page implements OnInit {
     this.setTab1(); //Configuraciones
     this.infoPaciente[this.selectedCategory] = await this.retrieveInfo();
     this.modeloPaciente = this.infoPaciente[this.selectedCategory];
-    this.formatDateInModel()
-    this.imageUrl = this.modeloPaciente[18][1]
-    // console.log("🚀 ~ Tab1Page ~ ngOnInit ~ this.imageUrl:", this.imageUrl)
-    // console.log('Modelo paciente', this.modeloPaciente);
-
+    this.formatDateInModel();
+    this.imageUrl = this.modeloPaciente[18][1];
   }
 
   async enviarNotificacion() {
@@ -201,7 +242,6 @@ export class Tab1Page implements OnInit {
       this.nameUser['el'].innerHTML = `Hola ${this.user.name}`; //Titulo tab1
       this.code = this.hashcode;
       // console.log("🚀 ~ Tab1Page ~ setTab1 ~ this.code:", this.code)
-      
     } else {
       this.code = this.dataService.getCodeRequest();
     }
@@ -224,7 +264,7 @@ export class Tab1Page implements OnInit {
     //Enfermedades condicion
 
     if (this.selectedCategory === 'condición' && this.enfToShow.length === 0) {
-      //Enfermedades  
+      //Enfermedades
       // console.log('Enfermedades', this.enfToShow);
       for (let i = 0; i < this.noEnf; i++) {
         this.enfToShow.push(this.modeloPaciente.shift());
@@ -297,9 +337,8 @@ export class Tab1Page implements OnInit {
     let datosPaciente = [];
 
     try {
-
       // TO DO:
-      // Check how to send the code from 
+      // Check how to send the code from
       let resp = await this.userService
         .retrieveInfo(this.code, this.selectedCategory, this.currentUserId)
         .toPromise();

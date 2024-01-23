@@ -26,6 +26,9 @@ export class PetcodePage implements OnInit {
     agreement: '',
   };
 
+  agreements: any[] = [];
+
+
   showOptions : boolean;
   showPersonaOptions: boolean;
   insurances = [
@@ -65,6 +68,7 @@ export class PetcodePage implements OnInit {
   ngOnInit() {
     this.navCtrl.navigateRoot('/petcode');
     this.showOptions = false;
+    this.getAgreements()
   }
 
   addPersona(){
@@ -247,6 +251,16 @@ export class PetcodePage implements OnInit {
 
     await alert.present();
   }
+
+  getAgreements() {
+    this.userService.getAgreements().subscribe(
+      (data: any) => {
+        this.agreements = data;
+      },
+      (error) => console.error('Error al obtener los acuerdos:', error)
+    );
+  }
+  
 
   async send(regBand: NgForm) {
     if (regBand.valid) {
