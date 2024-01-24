@@ -118,7 +118,6 @@ export class PetCreateBasicInfoPage implements OnInit, OnDestroy {
           (response) => {
             const { hashcode } = response;
             this.hashcode = hashcode;
-            // console.log(this.hashcode);
           },
           (error) => {
             console.error(error);

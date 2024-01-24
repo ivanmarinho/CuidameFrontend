@@ -123,7 +123,7 @@ export class AllPetsPage implements AfterViewInit {
     this.dataService.setPersonOrPet(false);
     this.storageService.setPetAgreement(agreement);
 
-    this.dataService.setPersonName(name);
+    this.storageService.setPersonName(name);
 
     this.dataService.setPersonGender(tipoPersona);
   }

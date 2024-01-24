@@ -143,23 +143,24 @@ export class Tab1Page implements OnInit {
   // ...
 
   getImageUrlByTipoPersona( localServerUrl: string, tipoPersona: string, imageUrl: string ): string {
-    if (imageUrl === '') {
-      return imageUrl;
+    if (imageUrl === null || imageUrl === undefined || imageUrl === '') {
+      switch (tipoPersona) {
+        case 'niño':
+          return `${localServerUrl}${this.imagenNiño}`;
+        case 'niña':
+          return `${localServerUrl}${this.imagenNiña}`;
+        case 'hombre':
+          return `${localServerUrl}${this.imagenHombre}`;
+        case 'mujer':
+          return `${localServerUrl}${this.imagenMujer}`;
+        default:
+          return '';
+      }
+    } else {
+      return `${localServerUrl}${imageUrl}`
     }
 
-    switch (tipoPersona) {
-      case 'niño':
-        return `${localServerUrl}${this.imagenNiño}`;
-      case 'niña':
-        return `${localServerUrl}${this.imagenNiña}`;
-      case 'hombre':
-        return `${localServerUrl}${this.imagenHombre}`;
-      case 'mujer':
-        return `${localServerUrl}${this.imagenMujer}`;
-      default:
-        // Devuelve una imagen predeterminada o una ruta vacía según tus necesidades
-        return '';
-    }
+    
   }
 
   formatDateInModel() {

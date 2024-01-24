@@ -25,7 +25,7 @@
   <div class="container" *ngIf="finishedLoading; else loading">
     <div class="card-container" *ngFor="let per of personaArray | filterArray: searchTerm:'nombre'">
       <ion-label class="card">
-        <ion-img class="pet-photo" src="{{localServerUrl}}{{per.photourl ? per.photourl : getImagenPorEdadYGenero(per)}}">
+        <ion-img class="pet-photo" src="{{productionServerUrl}}{{per.photourl ? per.photourl : getImagenPorEdadYGenero(per)}}">
         </ion-img>
       </ion-label>
       <div class="pet-name"><label>{{per.nombre.split(' ')[0]}}</label><div class="grey-gradient" (click)="goToPerson(per.code, per.agreement, per.nombre.split(' ')[0])"></div></div>

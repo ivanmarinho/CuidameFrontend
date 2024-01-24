@@ -33,6 +33,8 @@ export class Form1Page implements OnInit {
 
   photos = new Array<string>();
   image = '';
+  code = '';
+  hashcode = '';
 
   openFileInput() {
     const fileInput = document.querySelector('#fileInput') as HTMLInputElement;
@@ -132,6 +134,8 @@ export class Form1Page implements OnInit {
     this.editFlag = this.route.snapshot.paramMap.get('editFlag');
     this.setEdit();
     this.setUsuarioPaciente();
+    this.code = this.dataService.getCode();
+    await this.getHashcode();
     await this.storageService.init(); //Await para darle tiempo a que se inicie el servicio antes de obtener el usuario (LoadUser)
     await this.getUser();
     // this.newPacient.code = this.user.hashcode;
@@ -239,6 +243,29 @@ export class Form1Page implements OnInit {
     await alert.present();
   }
 
+  async getHashcode() {
+    try {
+      console.log("🚀 ~ Form1Page ~ getHashcode ~ this.code :", this.code )
+      
+      if (this.code != '') {
+        this.userService.getHashcode(this.code).subscribe(
+          (response) => {
+            const { hashcode } = response;
+            this.hashcode = hashcode;
+            console.log("🚀 ~ Form1Page ~ getHashcode ~  this.hashcode:",  this.hashcode)
+          },
+          (error) => {
+            console.error(error);
+          }
+        );
+      } else {
+        this.hashcode = '';
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   //Codigo para logica campo "Embarazada"
 
   recoverGender(event) {
@@ -282,9 +309,9 @@ export class Form1Page implements OnInit {
       formData.append('file', this.image);
 
       this.dataService.setImage(formData);
-
+      
       const info = {
-        // code: this.code,
+        code: this.hashcode,
         ...fLogin.form.value,
         form: 1,
         aCargoId: this.user.id,

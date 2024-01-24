@@ -39,7 +39,7 @@ export class ManagementPage implements AfterViewInit {
   async getPetId() {
     this.petId = this.storageService.getPetId();
     this.pacientOrPet = this.dataService.getPersonOrPet();
-    this.personName = this.dataService.getPersonName()
+    this.personName = this.storageService.getPersonName()
   }
 
   goToPersonCare() {

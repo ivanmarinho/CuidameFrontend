@@ -274,7 +274,6 @@ export class PetcodePage implements OnInit {
           this.navCtrl.navigateForward('/private/data/addpet');
         }
         this.toastMessage.presentToast(resp.message);
-        console.log(resp);
       } catch (e) {
         console.log('Error auth band', e);
       }
@@ -283,4 +282,24 @@ export class PetcodePage implements OnInit {
     }
     this.waitMessage.dismiss();
   }
+
+  async valid(regBand: NgForm) {
+    if (regBand.valid) {
+      try {
+        const resp = await this.petsService.personBandAuth(regBand).toPromise();
+        if (resp.success == true) {
+          const dataToSend = this.band.code;
+          this.dataService.setCode(dataToSend);
+          this.navCtrl.navigateForward('/form1/new');
+        }
+        this.toastMessage.presentToast(resp.message);
+      } catch (e) {
+        console.log('Error auth band', e);
+      }
+    } else {
+      this.toastMessage.presentToast('Por favor, revisa el formulario');
+    }
+    this.waitMessage.dismiss();
+  }
+
 }

@@ -37,3 +37,14 @@ button.action-sheet-button.ion-activatable.ion-focusable.sc-ion-action-sheet-ios
     justify-content: start !important;
   }
 }
+
+
+::host ion-modal {
+  height: 50%;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  box-shadow: 1px 1px 0px 10px;
+}

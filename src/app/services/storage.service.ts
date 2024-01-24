@@ -71,6 +71,19 @@ getPersonHashcode(): string | null {
   return null;
 }
 
+async setPersonName(name: string) {
+  localStorage.setItem('name', name);
+}
+
+getPersonName(): string | null {
+  const name = localStorage.getItem('name');
+  if (name) {
+    return name;
+  }
+  return null;
+}
+
+
 async clear(){
   await this._storage.clear();
 }

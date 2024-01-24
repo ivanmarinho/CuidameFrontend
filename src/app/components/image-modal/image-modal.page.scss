@@ -1,0 +1,28 @@
+::host ion-modal {
+  height: 50%;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+:host ion-modal .ios.modal-default.hydrated.show-modal {
+    height: 50%;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+  }
+
+  ion-modal.ios.modal-default {
+    height: 50%;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+  }
+
+

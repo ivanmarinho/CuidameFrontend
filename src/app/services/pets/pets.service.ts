@@ -140,11 +140,23 @@ export class PetsService {
       .pipe(catchError(this.handleError));
   }
 
+  personBandAuth(fLogin: NgForm) {
+    return this.http
+      .post(`${url}api/person/bandauth`, fLogin.form.value, {
+        headers: {
+          'Content-type': 'application/json',
+        },
+      })
+      .pipe(catchError(this.handleError));
+  }
+
   getHashcode(code: string) {
     return this.http
       .post(`${url}api/pets/gethashcode`, { code })
       .pipe(catchError(this.handleError));
   }
+
+
 
   addupdate(formData: FormData, token: string = '') {
     const headers = {

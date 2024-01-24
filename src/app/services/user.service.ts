@@ -538,6 +538,12 @@ export class UserService {
     );
   }
 
+  getHashcode(code: string) {
+    return this.http
+      .post(`${url}api/person/gethashcode`, { code })
+      .pipe(catchError(this.handleError));
+  }
+
 
   getAgreements() {
     return this.http
