@@ -39,7 +39,7 @@ export class Tab1Page implements OnInit {
   contacts = [[], [], []];
 
   localServerUrl = 'http://localhost:3000/';
-  productionServerUrl = 'https://api.cuidame.tech';
+  productionServerUrl = 'https://api.cuidame.tech/';
 
   user: User;
   code: string;
@@ -217,6 +217,7 @@ export class Tab1Page implements OnInit {
     this.setTab1(); //Configuraciones
     this.infoPaciente[this.selectedCategory] = await this.retrieveInfo();
     this.modeloPaciente = this.infoPaciente[this.selectedCategory];
+    console.log("🚀 ~ Tab1Page ~ ngOnInit ~ this.modeloPaciente:", this.modeloPaciente)
     this.formatDateInModel();
     this.imageUrl = this.modeloPaciente[18][1];
   }

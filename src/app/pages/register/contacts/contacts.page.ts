@@ -65,7 +65,7 @@ contacts = [
   async fillContacts(){
 
     const resp = await this.userService.retrieveInfo(this.user.hashcode,'contacts',this.user.id).toPromise();
-    console.log(resp);
+    // console.log(resp);
     this.contacts[0].nombre = resp.data.nombre1;
     this.contacts[1].nombre = resp.data.nombre2;
     this.contacts[2].nombre = resp.data.nombre3;
@@ -86,7 +86,7 @@ contacts = [
     };
     const resp = await this.userService.registerContacts(formContacts,this.user.session_token).toPromise();
     this.toastMessage.presentToast(resp.message);
-    this.navCtrl.navigateRoot('/logged');
+    this.navCtrl.navigateRoot('/private/data/all');
     // console.log(resp);
 
 

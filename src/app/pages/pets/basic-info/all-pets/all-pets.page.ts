@@ -121,7 +121,7 @@ export class AllPetsPage implements AfterViewInit {
     this.navCtrl.navigateForward('/private/pages/manage');
     this.storageService.setPersonHashcode(hashcode);
     this.dataService.setPersonOrPet(false);
-    this.storageService.setPetAgreement(agreement);
+    this.storageService.setPetAgreement(' ');
 
     this.storageService.setPersonName(name);
 

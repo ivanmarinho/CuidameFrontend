@@ -9,7 +9,7 @@
 
     <!-- -->
     <section class="btn-container">
-      <div *ngIf="service === 'health' || service === 'enterprise'">
+      <div *ngIf="service && (service === 'health' || service === 'enterprise')">
         <div class="button" (click)="goTab1()">
           <ion-icon class="ico" name="medkit-outline"></ion-icon>
           <label>Mi información personal</label>

@@ -56,6 +56,8 @@ export class LoggedPage implements OnInit, OnDestroy {
     }
   }
 
+  
+
   public user: User;
   id: number = 0;
 

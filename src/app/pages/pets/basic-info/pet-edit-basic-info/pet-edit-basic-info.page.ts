@@ -188,7 +188,7 @@ export class PetEditBasicInfoPage implements OnInit {
           .toPromise();
         this.toastMessage.presentToast(resp.message);
         if (resp.success) {
-          this.navCtrl.navigateForward('/private/pets/show');
+          this.navCtrl.navigateForward('/private/data/show');
         }
       }
       // console.log(resp.message);

@@ -15,10 +15,10 @@ export class QrCodeService {
   constructor(private http: HttpClient,) { }
 
   findByCode(code_request: string, ubicacion: Record<string, unknown>, objeto = ''){
-    console.log({
-      code_request,
-      ...ubicacion
-    });
+    // console.log({
+    //   code_request,
+    //   ...ubicacion
+    // });
     return this.http.get(`${url}api/auth/bandreq`,{
       params: {
         code_request,
@@ -29,10 +29,10 @@ export class QrCodeService {
   }
 
   sendNotification(code_request: string, ubicacion: Record<string, unknown>, objeto = '', mascota = ''){
-    console.log({
-      code_request,
-      ...ubicacion
-    });
+    // console.log({
+    //   code_request,
+    //   ...ubicacion
+    // });
     return this.http.get(`${url}api/auth/sendNot`,{
       params: {
         code_request,
@@ -44,10 +44,10 @@ export class QrCodeService {
   }
 
   sendPetNotification(code_request: string, ubicacion: Record<string, unknown>, objeto = '', mascota = ''){
-    console.log({
-      code_request,
-      ...ubicacion
-    });
+    // console.log({
+    //   code_request,
+    //   ...ubicacion
+    // });
     return this.http.get(`${url}api/auth/sendpetnotification`,{
       params: {
         code_request,

@@ -17,7 +17,7 @@ import { User } from '../../../interfaces/index';
 })
 export class Form1Page implements OnInit {
   editFlag: string;
-  title = 'Datos paciente';
+  title = 'Datos persona';
   textNextButton = 'Siguiente';
 
   // code: string;
@@ -135,7 +135,7 @@ export class Form1Page implements OnInit {
     this.setEdit();
     this.setUsuarioPaciente();
     this.code = this.dataService.getCode();
-    await this.getHashcode();
+    if (this.editFlag !== 'edit')  await this.getHashcode();
     await this.storageService.init(); //Await para darle tiempo a que se inicie el servicio antes de obtener el usuario (LoadUser)
     await this.getUser();
     // this.newPacient.code = this.user.hashcode;
@@ -245,14 +245,11 @@ export class Form1Page implements OnInit {
 
   async getHashcode() {
     try {
-      console.log("🚀 ~ Form1Page ~ getHashcode ~ this.code :", this.code )
-      
-      if (this.code != '') {
+      if (this.code != '' || this.code != null || this.code != undefined) {
         this.userService.getHashcode(this.code).subscribe(
           (response) => {
             const { hashcode } = response;
             this.hashcode = hashcode;
-            console.log("🚀 ~ Form1Page ~ getHashcode ~  this.hashcode:",  this.hashcode)
           },
           (error) => {
             console.error(error);

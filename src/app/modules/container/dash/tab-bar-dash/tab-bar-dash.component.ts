@@ -186,6 +186,14 @@ export class TabBarDashComponent implements OnInit {
           },
         },
         {
+          icon: 'people',
+          text: 'Contactos',
+
+          handler: () => {
+            this.goContacts();
+          },
+        },
+        {
           icon: 'key',
           text: 'Cambiar Contraseña',
 
@@ -217,6 +225,10 @@ export class TabBarDashComponent implements OnInit {
     this.result = JSON.stringify(result, null, 2);
   }
 
+  
+  goContacts() {
+    this.navCtrl.navigateForward('/contacts');
+  }
   goHelpPage() {
     this.navCtrl.navigateForward('/help');
   }

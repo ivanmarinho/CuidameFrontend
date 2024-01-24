@@ -95,6 +95,14 @@
           <img id="logo-image" src="/assets/images/loco_cuidame.png" alt="" />
 
           <ion-card>
+            <div class="profile">
+              <ion-label class="circle">
+                <ion-img
+                  src="{{productionServerUrl}}{{imageUrl}}"
+                  (click)="showImageModal(productionServerUrl, imageUrl)"
+                ></ion-img>
+              </ion-label>
+            </div>
             <ion-card-header>
               <ion-card-title>{{mayus(modeloPaciente[2][1])}}</ion-card-title>
               <label id="label-card"> {{mayus(modeloPaciente[2][0])}}</label>
@@ -116,12 +124,12 @@
               >
               <br /><label id="label-card"> Dirección</label>
 
-              <br /><span id="span-card">{{mayus(modeloPaciente[18][1])}}</span>
+              <br /><span id="span-card">{{mayus(modeloPaciente[19][1])}}</span>
               <br /><label id="label-card"
                 >{{mayus(modeloPaciente[18][0])}}</label
               >
 
-              <br /><span id="span-card">{{mayus(modeloPaciente[19][1])}}</span>
+              <br /><span id="span-card">{{mayus(modeloPaciente[20][1])}}</span>
               <br /><label id="label-card"
                 >{{mayus(modeloPaciente[19][0])}}</label
               >

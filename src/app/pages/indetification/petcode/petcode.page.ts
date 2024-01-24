@@ -183,6 +183,14 @@ export class PetcodePage implements OnInit {
           },
         },
         {
+          icon: 'people',
+          text: 'Contactos',
+
+          handler: () => {
+            this.goContacts();
+          },
+        },
+        {
           icon: 'key',
           text: 'Cambiar Contraseña',
 
@@ -212,6 +220,10 @@ export class PetcodePage implements OnInit {
 
     const result = await actionSheet.onDidDismiss();
     this.result = JSON.stringify(result, null, 2);
+  }
+
+  goContacts() {
+    this.navCtrl.navigateForward('/contacts');
   }
 
   goHelpPage() {

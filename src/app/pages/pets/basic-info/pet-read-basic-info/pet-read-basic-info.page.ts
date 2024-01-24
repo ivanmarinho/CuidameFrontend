@@ -121,7 +121,7 @@ export class PetReadBasicInfoPage implements AfterViewInit, OnDestroy {
   async getPetAgreement() {
     const selectedAgreement = this.getRandomAgreement();
     this.agreement = this.storageService.getPetAgreement();
-    console.log(this.agreement);
+    // console.log(this.agreement);
     if (this.agreement === 'null') {
       this.agreement = selectedAgreement;
     }
@@ -204,7 +204,7 @@ export class PetReadBasicInfoPage implements AfterViewInit, OnDestroy {
   }
 
   editPet() {
-    this.navCtrl.navigateForward('/private/pets/editpet');
+    this.navCtrl.navigateForward('/private/data/editpet');
     const dataToSendHeader = 'pets';
     this.dataService.setDataHeader(dataToSendHeader);
   }
