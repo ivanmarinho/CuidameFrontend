@@ -2,6 +2,13 @@ import { Routes } from '@angular/router';
 
 export const PETS_ROUTES: Routes = [
 
+//Diagnostics Routes
+{
+  path: 'diagnostics',
+  loadChildren: () =>
+    import('src/app/pages/diagnostics/diagnostic-pages/diagnostic-pages.module').then((m) => m.DiagnosticPagesModule),
+},
+
   // Pets Routes
   {
     path: 'data',

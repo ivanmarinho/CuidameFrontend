@@ -1,0 +1,48 @@
+<app-greeting></app-greeting>
+<div>
+
+  <div class="cat-container" *ngIf="pacientOrPet">
+    <img class="cat" src="/assets/pets/care/catdog.svg" alt="cat" />
+  </div>
+
+ 
+  <form method="post">
+    <div class="search-container">
+      <ion-input
+        name="searchTerm"
+        [(ngModel)]="searchTerm"
+        [ngModelOptions]="{standalone: true}"
+      ></ion-input>
+      <ion-icon src="/assets/pets/icon-search.svg"></ion-icon>
+    </div>
+  </form>
+
+
+
+  <div  *ngIf="!pacientOrPet"> 
+    <div class="button" (click)="goToPersonInfo()">
+      <img class="icon" src="/assets/pets/ico_edit_info.svg" />
+      <label>Presion Arterial</label>
+    </div>
+    
+    <div class="button" (click)="goToPersonCare()">
+      <img class="icon" src="/assets/pets/pet_square.svg" />
+      <label>Horas de capasitación</label>
+    </div>
+  </div>
+
+  <div  *ngIf="!pacientOrPet"> 
+    <div class="button" (click)="goToPersonInfo()">
+      <img class="icon" src="/assets/pets/ico_edit_info.svg" />
+      <label>Actividades realizadas</label>
+    </div>
+
+    <div class="button" (click)="goToPersonCare()">
+      <img class="icon" src="/assets/pets/pet_square.svg" />
+      <label>Indice de masa corporal</label>
+    </div>
+  </div>
+
+ 
+</div>
+

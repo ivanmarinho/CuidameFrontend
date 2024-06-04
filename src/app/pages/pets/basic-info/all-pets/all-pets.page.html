@@ -11,6 +11,9 @@
     <label>Tus seres queridos, </label>
     <label>selecciona el que quieres consultar</label>
   </div>
+
+
+
   <form method="post">
     <div class="search-container">
       <ion-input
@@ -21,6 +24,8 @@
       <ion-icon src="/assets/pets/icon-search.svg"></ion-icon>
     </div>
   </form>
+
+  
 
   <div class="container" *ngIf="finishedLoading; else loading">
     <div class="card-container" *ngFor="let per of personaArray | filterArray: searchTerm:'nombre'">

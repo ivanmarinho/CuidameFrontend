@@ -180,6 +180,15 @@ const routes: Routes = [
         (m) => m.ContactusModule
       ),
   },
+
+  {
+    path: 'prueba',
+    loadChildren: () =>
+      import('./pages/help/prueba/prueba.module').then(
+        (m) => m.PruebaModule
+      ),
+  },
+
   {
     path: 'identify',
     loadChildren: () =>
